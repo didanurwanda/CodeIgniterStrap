@@ -4,41 +4,41 @@ class Bootstrap
 {
 	// TEXT
 	const TEXT_COLOR_DEFAULT = 'primary';
-    const TEXT_COLOR_MUTTED = 'mutted';
-    const TEXT_COLOR_PRIMARY = 'primary';
-    const TEXT_COLOR_SUCCESS = 'success';
-    const TEXT_COLOR_INFO = 'info';
-    const TEXT_COLOR_WARNING = 'warning';
-    const TEXT_COLOR_DANGER = 'danger';
+	const TEXT_COLOR_MUTTED = 'mutted';
+	const TEXT_COLOR_PRIMARY = 'primary';
+	const TEXT_COLOR_SUCCESS = 'success';
+	const TEXT_COLOR_INFO = 'info';
+	const TEXT_COLOR_WARNING = 'warning';
+	const TEXT_COLOR_DANGER = 'danger';
 
-    // BUTTON
-    const BUTTON_COLOR_DEFAULT = 'default';
-    const BUTTON_COLOR_PRIMARY = 'primary';
-    const BUTTON_COLOR_SUCCESS = 'success';
-    const BUTTON_COLOR_INFO = 'info';
-    const BUTTON_COLOR_WARNING = 'warning';
-    const BUTTON_COLOR_DANGER = 'danger';
-    const BUTTON_COLOR_LINK = 'link';
+	// BUTTON
+	const BUTTON_COLOR_DEFAULT = 'default';
+	const BUTTON_COLOR_PRIMARY = 'primary';
+	const BUTTON_COLOR_SUCCESS = 'success';
+	const BUTTON_COLOR_INFO = 'info';
+	const BUTTON_COLOR_WARNING = 'warning';
+	const BUTTON_COLOR_DANGER = 'danger';
+	const BUTTON_COLOR_LINK = 'link';
 
-    const BUTTON_SIZE_LARGE = 'lg';
-    const BUTTON_SIZE_SMALL = 'sm';
-    const BUTTON_SIZE_EXTRA_SMALL = 'xs';
+	const BUTTON_SIZE_LARGE = 'lg';
+	const BUTTON_SIZE_SMALL = 'sm';
+	const BUTTON_SIZE_EXTRA_SMALL = 'xs';
 
-    const BUTTON_BLOCK_TRUE = 'block';
-    const BUTTON_DISABLED_TRUE = 'disabled';
+	const BUTTON_BLOCK_TRUE = 'block';
+	const BUTTON_DISABLED_TRUE = 'disabled';
 
-    const BUTTON_TYPE_LINK = 'link';
-    const BUTTON_TYPE_HTML = 'button';
-    const BUTTON_TYPE_SUBMIT = 'submit';
-    const BUTTON_TYPE_RESET = 'reset';
+	const BUTTON_TYPE_LINK = 'link';
+	const BUTTON_TYPE_HTML = 'button';
+	const BUTTON_TYPE_SUBMIT = 'submit';
+	const BUTTON_TYPE_RESET = 'reset';
 
-    // BUTTON GROUP
-    const BUTTON_GROUP_LARGE = 'lg';
-    const BUTTON_GROUP_SMALL = 'sm';
-    const BUTTON_GROUP_EXTRA_SMALL = 'xs';
+	// BUTTON GROUP
+	const BUTTON_GROUP_LARGE = 'lg';
+	const BUTTON_GROUP_SMALL = 'sm';
+	const BUTTON_GROUP_EXTRA_SMALL = 'xs';
 
-    const BUTTON_GROUP_VERTICAL = 'btn-group-vertical';
-    const BUTTON_GROUP_JUSTIFIED = 'justified';
+	const BUTTON_GROUP_VERTICAL = 'btn-group-vertical';
+	const BUTTON_GROUP_JUSTIFIED = 'justified';
 
 
 	public function __construct()
@@ -83,47 +83,46 @@ class Bootstrap
 	}
 
 	public static function buttonGroup($button = array(), $htmlOptions = array())
-    {
-    	$htmlOptions = self::repValue('class', 'type', 'btn-group', $htmlOptions);
-    	$htmlOptions = self::popValue('class', 'align', $htmlOptions, 'btn-group-');
+	{
+		$htmlOptions = self::repValue('class', 'type', 'btn-group', $htmlOptions);
+		$htmlOptions = self::popValue('class', 'align', $htmlOptions, 'btn-group-');
 
-    	$html = self::openTag('div', $htmlOptions);
-    		foreach($button as $row)
-    		{
-    			$label = '';
-    			if(isset($row['label']))
-    			{
-    				$label = $row['label']; unset($row['label']);
-    			}
-    			$html .= self::button($label, $row);
+		$html = self::openTag('div', $htmlOptions);
+			foreach($button as $row)
+			{
+				$label = '';
+				if(isset($row['label']))
+				{
+					$label = $row['label']; unset($row['label']);
+				}
+				$html .= self::button($label, $row);
+			}
+		$html .= self::closeTag('div');
+		return $html;
+	}
 
-    		}
-    	$html .= self::closeTag('div');
-    	return $html;
-    }
+	public static function button($label, $htmlOptions = array())
+	{
+		$htmlOptions['class'] = 'btn';
+		$htmlOptions = self::repValue('class', 'color', self::BUTTON_COLOR_DEFAULT, $htmlOptions, 'btn-');
+		$htmlOptions = self::popValue('class', 'size', $htmlOptions, 'btn-');
+		$htmlOptions = self::popValue('class', 'block', $htmlOptions, 'btn-');
+		$htmlOptions = self::popValue('disabled', 'disabled', $htmlOptions);
 
-    public static function button($label, $htmlOptions = array())
-    {
-    	$htmlOptions['class'] = 'btn';
-    	$htmlOptions = self::repValue('class', 'color', self::BUTTON_COLOR_DEFAULT, $htmlOptions, 'btn-');
-    	$htmlOptions = self::popValue('class', 'size', $htmlOptions, 'btn-');
-    	$htmlOptions = self::popValue('class', 'block', $htmlOptions, 'btn-');
-    	$htmlOptions = self::popValue('disabled', 'disabled', $htmlOptions);
+		$tag = 'button';
+		if(isset($htmlOptions['type']) && $htmlOptions['type'] == 'link')
+		{
+			$tag = 'a';
+			unset($htmlOptions['type']);
+		}
+		if(isset($htmlOptions['icon']))
+		{
+			$label = self::icon($htmlOptions['icon']). ' ' .$label;
+			unset($htmlOptions['icon']);
+		}
 
-    	$tag = 'button';
-    	if(isset($htmlOptions['type']) && $htmlOptions['type'] == 'link')
-    	{
-    		$tag = 'a';
-    		unset($htmlOptions['type']);
-    	}
-    	if(isset($htmlOptions['icon']))
-    	{
-    		$label = self::icon($htmlOptions['icon']). ' ' .$label;
-    		unset($htmlOptions['icon']);
-    	}
-
-    	return self::tag($tag, $htmlOptions, $label);
-    }
+		return self::tag($tag, $htmlOptions, $label);
+	}
 
 	public static function abbr($text, $title, $htmlOptions = array())
 	{
@@ -158,10 +157,10 @@ class Bootstrap
 		return self::tag('em', $htmlOptions, $text);
 	}
 
-    public static function icon($iconName)
-    {
-    	return self::tag('span', array('class'=>'glyphicon '. $iconName), '');
-    }
+	public static function icon($iconName)
+	{
+		return self::tag('span', array('class'=>'glyphicon '. $iconName), '');
+	}
 
 	public static function tag($tag, $htmlOptions = array(), $content = false, $closeTag = true)
 	{
