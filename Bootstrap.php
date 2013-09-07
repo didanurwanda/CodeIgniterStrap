@@ -2,6 +2,8 @@
 
 class Bootstrap
 {
+    protected static $CI;
+	
     // TEXT
     const TEXT_COLOR_DEFAULT = 'primary';
     const TEXT_COLOR_MUTED = 'muted';
@@ -262,6 +264,7 @@ class Bootstrap
 
     public function __construct()
     {
+        $this->CI = get_instance();
     }
 
     public static function breadcrumbs($options = array())
