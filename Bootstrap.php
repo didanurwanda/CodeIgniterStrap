@@ -264,7 +264,65 @@ class Bootstrap
     {
     }
 
+    public static function breadcrumbs($options = array())
+    {
+        self::addCssClass('breadcrumb', $options);
+        $list = self::getValue($options, 'links', array());
+        $html = self::openTag('ol', $options);
+        foreach ($list as $key => $value) {
+            if(is_string($key)) {
+                $html .= self::openTag('li');
+                $html .= self::tag('a', array('href' => $value), $key);
+                $html .= self::closeTag('li');
+            } else {
+                $html .= self::tag('li', array('class' => 'active'), $value);
+            }
+        }
+        $html .= self::closeTag('ol');
+        return $html;
+    }
 
+    public static function navs($options = array())
+    {
+        self::addCssClass('nav', $options);
+        self::changeValue('class', 'type', $options, 'nav-');
+        self::changeAttrBool('class', 'stacked', $options, 'nav-stacked nav-pills');
+        self::changeAttrBool('class', 'justified', $options, 'nav-justified');
+        $menu = self::getValue($options, 'items', array());
+        $html = self::openTag('ul', $options);
+        foreach ($menu as $row) {
+            $myoptions = array();
+            $linkoptions = array();
+            self::changeAttrBool('navactive', 'active', $row, 'active');
+            self::changeAttrBool('navdisabled', 'disabled', $row, 'disabled');
+            self::moveValue($row, 'url', $linkoptions, 'href', '#');
+            self::moveValue($row, 'navactive', $myoptions, 'class', '');
+            self::moveValue($row, 'navdisabled', $myoptions, 'class', '');
+
+            $label = self::getValue($row, 'label');
+            if(self::getValue($row, 'icon', '', false)) {
+                $label = self::icon(self::getValue($row, 'icon')). ' ' .$label;
+            }
+            
+            if(self::getValue($row, 'items', false, false)) {
+                self::addCssClass('dropdown', $myoptions);
+                self::addCssClass('dropdown-toggle', $linkoptions);
+                self::addAttributes('data-toggle', 'dropdown', $linkoptions);
+                $html .= self::openTag('li', $myoptions);
+                $html .= self::tag('a', $linkoptions, $label . self::tag('span', array('class' => 'caret'), ''));
+                $html .= self::dropdown(self::getValue($row, 'items', array()));
+                $html .= self::closeTag('li');                
+            } else {  
+                $html .= self::openTag('li', $myoptions);
+                $html .= self::tag('a', $linkoptions, $label);
+                $html .= self::closeTag('li');
+            }
+
+        }
+        $html .= self::closeTag('ul');
+        return $html;
+    }
+    
     public static function image($src, $rel = '',  $htmlOptions = array())
     {
         self::changeValue('class', 'type', $htmlOptions, 'img-');
@@ -532,6 +590,12 @@ class Bootstrap
             $htmlOptions[$value] = $default;
         }
         self::changeValue($key, $value, $htmlOptions, $preffix, $suffix);
+    }
+
+    protected static function moveValue(array &$before, $key1, array &$after, $key2, $ifNull = '')
+    {
+        $value = self::getValue($before, $key1, $ifNull);
+        self::addAttributes($key2, $value, $after);
     }
 
     protected static function changeValue(
