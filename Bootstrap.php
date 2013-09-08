@@ -273,27 +273,27 @@ class Bootstrap
 
     public static function passwordField($name, $value = '', $htmlOptions = array())
     {
-        return self::inputField(Tb::INPUT_TYPE_PASSWORD, $name, $value, $htmlOptions);
+        return self::inputField(self::INPUT_TYPE_PASSWORD, $name, $value, $htmlOptions);
     }
 
     public static function fileField($name, $value = '', $htmlOptions = array())
     {
-        return self::inputField(Tb::INPUT_TYPE_FILE, $name, $value, $htmlOptions);
+        return self::inputField(self::INPUT_TYPE_FILE, $name, $value, $htmlOptions);
     }
 
     public static function emailField($name, $value = '', $htmlOptions = array())
     {
-        return self::inputField(Tb::INPUT_TYPE_EMAIL, $name, $value, $htmlOptions);
+        return self::inputField(self::INPUT_TYPE_EMAIL, $name, $value, $htmlOptions);
     }
 
     public static function textField($name, $value = '', $htmlOptions = array())
     {
-        return self::inputField(Tb::INPUT_TYPE_TEXT, $name, $value, $htmlOptions);
+        return self::inputField(self::INPUT_TYPE_TEXT, $name, $value, $htmlOptions);
     }
 
     public static function inputField($type, $name, $value, $htmlOptions = array())
     {
-        if($type !== Tb::INPUT_TYPE_FILE) {
+        if($type !== self::INPUT_TYPE_FILE) {
             self::addCssClass('form-control', $htmlOptions);
         }
         self::addAttributes('type', $type, $htmlOptions);
