@@ -2,8 +2,6 @@
 
 class Bootstrap
 {
-    protected static $CI;
-	
     // TEXT
     const TEXT_COLOR_DEFAULT = 'primary';
     const TEXT_COLOR_MUTED = 'muted';
@@ -50,15 +48,15 @@ class Bootstrap
     const TEXT_ALIGN_RIGHT = 'right';
 
     // FORM
-    const FORM_TYPE_INLINE = 'inline';
-    const FORM_TYPE_HORIZONTAL = 'horizontal';
+    const INPUT_TYPE_PASSWORD = 'password';
+    const INPUT_TYPE_FILE = 'file';
+    const INPUT_TYPE_EMAIL = 'email';
+    const INPUT_TYPE_TEXT = 'text';
 
     // IMAGE
     const IMAGE_TYPE_ROUNDED = 'rounded';
     const IMAGE_TYPE_CIRCLE = 'circle';
     const IMAGE_TYPE_THUMBNAIL = 'thumbnail';
-
-    private static $formOptions = array();
 
     // ICON
     const ICON_ADJUST = 'glyphicon-adjust';
@@ -262,9 +260,81 @@ class Bootstrap
     const ICON_ZOOM_IN = 'glyphicon-zoom-in';
     const ICON_ZOOM_OUT = 'glyphicon-zoom-out';
 
+    protected static $CI;
+    protected static $ID;
+    protected static $idName = 'Tb_';
+    protected static $idNumber = 0;
+
     public function __construct()
     {
         $this->CI = get_instance();
+        $this->CI->load->helper('url');
+    }
+
+    public static function passwordField($name, $value = '', $htmlOptions = array())
+    {
+        return self::inputField(Tb::INPUT_TYPE_PASSWORD, $name, $value, $htmlOptions);
+    }
+
+    public static function fileField($name, $value = '', $htmlOptions = array())
+    {
+        return self::inputField(Tb::INPUT_TYPE_FILE, $name, $value, $htmlOptions);
+    }
+
+    public static function emailField($name, $value = '', $htmlOptions = array())
+    {
+        return self::inputField(Tb::INPUT_TYPE_EMAIL, $name, $value, $htmlOptions);
+    }
+
+    public static function textField($name, $value = '', $htmlOptions = array())
+    {
+        return self::inputField(Tb::INPUT_TYPE_TEXT, $name, $value, $htmlOptions);
+    }
+
+    public static function inputField($type, $name, $value, $htmlOptions = array())
+    {
+        if($type !== Tb::INPUT_TYPE_FILE) {
+            self::addCssClass('form-control', $htmlOptions);
+        }
+        self::addAttributes('type', $type, $htmlOptions);
+        self::addAttributes('name', $name, $htmlOptions);
+        self::addAttributes('value', $value, $htmlOptions);
+        return self::tag('input', $htmlOptions);
+    }
+
+    public static function navbar($options = array())
+    {
+        self::setId();
+        $items = self::getValue($options, 'items', array());
+        $brandUrl = self::getValue($options, 'brandUrl', '#');
+        $brandLabel = self::getValue($options, 'brandLabel', '');
+        $brandOptions = self::getValue($options, 'brandOptions', array());
+        self::addCssClass('navbar-brand', $brandOptions);
+        self::addCssClass('navbar navbar-default', $options);
+        self::addAttributes('role', 'navigation', $options);
+        $html = self::openTag('nav', $options);
+        
+        $html .= self::openTag('div', array('class' => 'navbar-header'));
+        $html .= self::openTag('button', array('type' => 'button', 'class' => 'navbar-toggle', 'data-toggle' => 'collapse', 'data-target' => '#'.self::getId()));
+        $html .= self::tag('span', array('class' => 'sr-only'), 'Toggle navigation');
+        $html .= self::tag('span', array('class' => 'icon-bar'), '');
+        $html .= self::tag('span', array('class' => 'icon-bar'), '');
+        $html .= self::closeTag('button');
+        $html .= self::link($brandUrl, $brandLabel, $brandOptions);
+        $html .= self::closeTag('div');
+
+        $html .= self::openTag('div', array('class' => 'collapse navbar-collapse', 'id' => self::getId()));
+        foreach ($items as $row) {
+            if(is_array($row)) {
+                self::addCssClass('navbar-nav', $row);
+                $html .= self::navs($row);
+            } else {
+                $html .= $row;
+            }
+        }
+        $html .= self::closeTag('div');
+        $html .= self::closeTag('nav');
+        return $html;
     }
 
     public static function breadcrumbs($options = array())
@@ -291,6 +361,7 @@ class Bootstrap
         self::changeValue('class', 'type', $options, 'nav-');
         self::changeAttrBool('class', 'stacked', $options, 'nav-stacked nav-pills');
         self::changeAttrBool('class', 'justified', $options, 'nav-justified');
+        self::changeValue('class', 'pull', $options, 'navbar-');
         $menu = self::getValue($options, 'items', array());
         $html = self::openTag('ul', $options);
         foreach ($menu as $row) {
@@ -306,7 +377,7 @@ class Bootstrap
             if(self::getValue($row, 'icon', '', false)) {
                 $label = self::icon(self::getValue($row, 'icon')). ' ' .$label;
             }
-            
+
             if(self::getValue($row, 'items', false, false)) {
                 self::addCssClass('dropdown', $myoptions);
                 self::addCssClass('dropdown-toggle', $linkoptions);
@@ -316,6 +387,11 @@ class Bootstrap
                 $html .= self::dropdown(self::getValue($row, 'items', array()));
                 $html .= self::closeTag('li');                
             } else {  
+
+                if(current_url() === self::getValue($linkoptions, 'href', '#', false)) {
+                    self::addCssClass('active', $myoptions);
+                }
+
                 $html .= self::openTag('li', $myoptions);
                 $html .= self::tag('a', $linkoptions, $label);
                 $html .= self::closeTag('li');
@@ -325,12 +401,12 @@ class Bootstrap
         $html .= self::closeTag('ul');
         return $html;
     }
-    
+
     public static function image($src, $rel = '',  $htmlOptions = array())
     {
         self::changeValue('class', 'type', $htmlOptions, 'img-');
-        self::addAttributes('rel', $rel, $htmlOptions);
-        self::addAttributes('src', $src, $htmlOptions);
+		self::addAttributes('rel', $rel, $htmlOptions);
+		self::addAttributes('src', $src, $htmlOptions);
         return self::tag('img', $htmlOptions);
     }
 
@@ -427,7 +503,6 @@ class Bootstrap
 
     public static function button($label, $htmlOptions = array())
     {
-        $tag = 'button';
         self::addCssClass('btn', $htmlOptions);
         self::replaceValue('class', 'color', self::BUTTON_COLOR_DEFAULT, $htmlOptions, 'btn-');
         self::changeValue('class', 'size', $htmlOptions, 'btn-');
@@ -440,9 +515,18 @@ class Bootstrap
         }
 
         if(self::getValue($htmlOptions, 'type') == 'link') {
-            $tag = 'a';
+            return self::link(self::getValue($htmlOptions, 'href'), $label, $htmlOptions);
         }
-        return self::tag($tag, $htmlOptions, $label);
+        return self::tag('button', $htmlOptions, $label);
+    }
+
+    public static function link($url, $title, $htmlOptions = array())
+    {
+        self::addAttributes('href', $url, $htmlOptions);
+        if(self::getValue($htmlOptions, 'icon', '', false)) {
+            $title = self::icon(self::getValue($htmlOptions, 'icon')). ' ' .$label;
+        }
+        return self::tag('a', $htmlOptions, $title);
     }
 
     public static function code($text, $htmlOptions = array())
@@ -562,17 +646,17 @@ class Bootstrap
         self::addAttributes('class', $class, $htmlOptions);
     }
 
-   protected static function addCssId($id, array &$htmlOptions)
+    protected static function addCssId($id, array &$htmlOptions)
     {
         self::addAttributes('id', $id, $htmlOptions);
     }
 
     protected static function changeAttrBool(
-        $attr, 
-        $key, 
-        array &$htmlOptions, 
-        $ifTrue
-    ) {
+		$attr, 
+		$key, 
+		array &$htmlOptions, 
+		$ifTrue
+	) {
         if(isset($htmlOptions[$key]) && $htmlOptions[$key] == true) {
             self::addAttributes($attr, $ifTrue, $htmlOptions);
             if($attr !== $key) {
@@ -582,13 +666,13 @@ class Bootstrap
     }
 
     protected static function replaceValue(
-        $key, 
-        $value, 
-        $default, 
-        array &$htmlOptions, 
-        $preffix = '', 
-        $suffix = ''
-    ) {
+		$key, 
+		$value, 
+		$default, 
+		array &$htmlOptions, 
+		$preffix = '', 
+		$suffix = ''
+	) {
         if(!isset($htmlOptions[$value])) {
             $htmlOptions[$value] = $default;
         }
@@ -602,12 +686,12 @@ class Bootstrap
     }
 
     protected static function changeValue(
-        $key, 
-        $value, 
-        array &$htmlOptions, 
-        $preffix = '', 
-        $suffix = ''
-    ) {
+		$key, 
+		$value, 
+		array &$htmlOptions, 
+		$preffix = '', 
+		$suffix = ''
+	) {
         $val = self::getValue($htmlOptions, $value);
         if($val !== '') {
             self::addAttributes($key, $preffix . $val . $suffix, $htmlOptions);
@@ -626,6 +710,16 @@ class Bootstrap
     protected static function remove($string, array &$array)
     {
         unset($array[$string]);
+    }
+
+    protected static function getId()
+    {
+        return self::$ID;
+    }
+
+    protected static function setId()
+    {
+        self::$ID = self::$idName . self::$idNumber ++;
     }
 }
 
