@@ -29,6 +29,14 @@ class Bootstrap
     const BUTTON_TYPE_SUBMIT = 'submit';
     const BUTTON_TYPE_RESET = 'reset';
 
+    // LABEL
+    const LABEL_COLOR_DEFAULT = 'default';
+    const LABEL_COLOR_PRIMARY = 'primary';
+    const LABEL_COLOR_SUCCESS = 'success';
+    const LABEL_COLOR_INFO = 'info';
+    const LABEL_COLOR_WARNING = 'warning';
+    const LABEL_COLOR_DANGER = 'danger';
+
     // BUTTON GROUP
     const BUTTON_GROUP_SIZE_LARGE = 'lg';
     const BUTTON_GROUP_SIZE_SMALL = 'sm';
@@ -355,6 +363,48 @@ class Bootstrap
         return $html;
     }
 
+    public static function pager($options = array(), $htmlOptions = array())
+    {
+        self::addCssClass('pager', $htmlOptions);
+        return self::dropdown($options, $htmlOptions);
+    }
+
+    public static function pageHeader($header, $subheader = '', $htmlOptions = array())
+    {
+        self::addCssClass('page-header', $htmlOptions);
+        $html = self::openTag('div', $htmlOptions);
+        $html .= self::p($header . ' ' . self::p($subheader, array(), 'small'), array(), 'h1');
+        $html .= self::closeTag('div');
+        return $html;
+    }
+
+    public static function jumbotron($header, $desc = '', $htmlOptions = array())
+    {
+        self::addCssClass('jumbotron', $htmlOptions);
+        $html = self::openTag('div', $htmlOptions);
+        $html .= self::openTag('div', array('class' => 'container'));
+        $html .= self::p($header, array(), 'h1');
+        $html .= $desc;
+        $html .= self::closeTag('div');
+        $html .= self::closeTag('div');
+        return $html;
+    }
+
+    public static function badge($text, $htmlOptions = array())
+    {
+        self::addCssClass('badge', $htmlOptions);
+        self::changeValue('class', 'pull', $htmlOptions, 'pull-');
+        return self::tag('span', $htmlOptions, $text);
+    }
+
+    public static function labelTb($text, $htmlOptions = array())
+    {
+        self::addCssClass('label', $htmlOptions);
+        self::replaceValue('class', 'color', self::LABEL_COLOR_DEFAULT, $htmlOptions, 'label-');
+        self::changeValue('class', 'pull', $htmlOptions, 'pull-');
+        return self::tag('span', $htmlOptions, $text);
+    }
+
     public static function navbar($options = array())
     {
         self::setId();
@@ -439,10 +489,9 @@ class Bootstrap
                 self::addAttributes('data-toggle', 'dropdown', $linkoptions);
                 $html .= self::openTag('li', $myoptions);
                 $html .= self::tag('a', $linkoptions, $label . self::tag('span', array('class' => 'caret'), ''));
-                $html .= self::dropdown(self::getValue($row, 'items', array()));
+                $html .= self::dropDownMenu(self::getValue($row, 'items', array()));
                 $html .= self::closeTag('li');                
             } else {  
-
                 if(current_url() === self::getValue($linkoptions, 'href', '#', false)) {
                     self::addCssClass('active', $myoptions);
                 }
@@ -495,7 +544,7 @@ class Bootstrap
             $html .= self::button($label .' '. self::tag('span', array('class' => 'caret'), ''), $htmlOptions);
         }
 
-        $html .= self::dropdown($dropdown, $menuOption);
+        $html .= self::dropDownMenu($dropdown, $menuOption);
         if($noGroup === false) {
             $html .= self::closeTag('div');
         }
@@ -503,23 +552,29 @@ class Bootstrap
     }
 
 
-    public static function dropdown($dropdown = array(), $htmlOptions = array())
+    public static function dropDownMenu($dropdown = array(), $htmlOptions = array())
     {
         self::changeValue('class', 'pull', $htmlOptions, 'pull-');
         self::addCssClass('dropdown-menu', $htmlOptions);
         self::addAttributes('role', 'menu', $htmlOptions);
+        return self::dropdown($dropdown, $htmlOptions);
+    }
+
+    public static function dropdown($dropdown = array(), $htmlOptions = array())
+    {
         $html = self::openTag('ul', $htmlOptions);
         foreach ($dropdown as $row) {
             if($row == '-') {
                 $html .= self::openTag('li', array('class' => 'divider'));    
                 $html .= self::closeTag('li');
             } else {
-                $html .= self::openTag('li');    
                 $label = self::getValue($row, 'label');
                 $url = self::getValue($row, 'url', '#');
                 if(self::getValue($row, 'icon', '', false)) {
                     $label = self::icon(self::getValue($row, 'icon')). ' ' .$label;
                 }
+
+                $html .= self::openTag('li', $row);  
                 $html .= self::tag('a', array('href' => $url), $label);
                 $html .= self::closeTag('li');
             }
