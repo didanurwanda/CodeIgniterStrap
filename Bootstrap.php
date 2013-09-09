@@ -42,21 +42,24 @@ class Bootstrap
     const NAV_TABS = 'tabs';
     const NAV_PILLS = 'pills';
 
+    // NAVBAR
+    const NAVBAR_FIXED_TOP = 'fixed-top';
+    const NAVBAR_FIXED_BOTTOM = 'fixed-bottom';
+    const NAVBAR_STATIC_TOP = 'static-top';
+
     // TEXT ALIGN
     const TEXT_ALIGN_LEFT = 'left';
     const TEXT_ALIGN_CENTER = 'center';
     const TEXT_ALIGN_RIGHT = 'right';
 
-    // FORM
-    const INPUT_TYPE_PASSWORD = 'password';
-    const INPUT_TYPE_FILE = 'file';
-    const INPUT_TYPE_EMAIL = 'email';
-    const INPUT_TYPE_TEXT = 'text';
-
     // IMAGE
     const IMAGE_TYPE_ROUNDED = 'rounded';
     const IMAGE_TYPE_CIRCLE = 'circle';
     const IMAGE_TYPE_THUMBNAIL = 'thumbnail';
+
+    // FORM
+    const INPUT_GROUP_SIZE_LARGE = 'lg';
+    const INPUT_GROUP_SIZE_SMALL = 'sm';
 
     // ICON
     const ICON_ADJUST = 'glyphicon-adjust';
@@ -269,37 +272,87 @@ class Bootstrap
     {
         $this->CI = get_instance();
         $this->CI->load->helper('url');
+        $this->CI->load->helper('form');
     }
 
-    public static function passwordField($name, $value = '', $htmlOptions = array())
+    public static function formOpen($action = '', $htmlOptions = array())
     {
-        return self::inputField(self::INPUT_TYPE_PASSWORD, $name, $value, $htmlOptions);
+        return form_open($action, $htmlOptions);
+    }
+
+    public static function formClose()
+    {
+        return form_close();
+    }
+
+    public static function radio($name, $value, $htmlOptions = array())
+    {
+        self::addAttributes('type', 'radio', $htmlOptions);
+        return self::checkbox($name, $value, $htmlOptions);
+    }
+
+    public static function checkbox($name, $value, $htmlOptions = array())
+    {
+        self::addAttributes('name', $name, $htmlOptions);
+        self::addAttributes('value', $value, $htmlOptions);
+        return form_checkbox($htmlOptions);
+    }
+
+    public static function textArea($name, $value = '', $htmlOptions = array())
+    {
+        self::addCssClass('form-control', $htmlOptions);
+        self::addAttributes('name', $name, $htmlOptions);
+        self::addAttributes('value', $value, $htmlOptions);
+        return form_textarea($htmlOptions);
     }
 
     public static function fileField($name, $value = '', $htmlOptions = array())
     {
-        return self::inputField(self::INPUT_TYPE_FILE, $name, $value, $htmlOptions);
+        self::addAttributes('type', 'file', $htmlOptions);
+        return self::textField($name, $value, $htmlOptions);
     }
 
-    public static function emailField($name, $value = '', $htmlOptions = array())
+    public static function passwordField($name, $value = '', $htmlOptions = array())
     {
-        return self::inputField(self::INPUT_TYPE_EMAIL, $name, $value, $htmlOptions);
+        self::addAttributes('type', 'password', $htmlOptions);
+        return self::textField($name, $value, $htmlOptions);
     }
 
     public static function textField($name, $value = '', $htmlOptions = array())
     {
-        return self::inputField(self::INPUT_TYPE_TEXT, $name, $value, $htmlOptions);
-    }
-
-    public static function inputField($type, $name, $value, $htmlOptions = array())
-    {
-        if($type !== self::INPUT_TYPE_FILE) {
+        if(self::getValue($htmlOptions, 'file', false, false) === false) {
             self::addCssClass('form-control', $htmlOptions);
         }
-        self::addAttributes('type', $type, $htmlOptions);
         self::addAttributes('name', $name, $htmlOptions);
         self::addAttributes('value', $value, $htmlOptions);
-        return self::tag('input', $htmlOptions);
+        $inputGroup = self::getValue($htmlOptions, 'inputGroup', false);
+
+        $html = '';
+        if(is_array($inputGroup)) {
+            $addOn = array();
+            self::copyValue($inputGroup, 'size', $htmlOptions, 'class', '', 'input-');
+            self::moveValue($inputGroup, 'addOnButton', $addOn, 'addOnButton');
+            self::changeValue('class', 'size', $inputGroup, 'input-group-');
+            self::addCssClass('input-group', $inputGroup);
+            self::changeAttrBool('button', 'addOnButton', $addOn, 'input-group-btn');
+            self::replaceValue('class', 'button', 'input-group-addon', $addOn);
+
+            $prepend = self::getValue($inputGroup, 'prepend', '');
+            $append = self::getValue($inputGroup, 'append', '');
+            $html .= self::openTag('div', $inputGroup);
+
+            if($prepend !== '') {
+                $html .= self::tag('span', $addOn, $prepend);
+            }
+            $html .= form_input($htmlOptions);
+            if($append !== '') {
+                $html .= self::tag('span', $addOn, $append);
+            }
+            $html .= self::closeTag('div');
+        } else {
+            $html .= form_input($htmlOptions);
+        }
+        return $html;
     }
 
     public static function navbar($options = array())
@@ -309,6 +362,8 @@ class Bootstrap
         $brandUrl = self::getValue($options, 'brandUrl', '#');
         $brandLabel = self::getValue($options, 'brandLabel', '');
         $brandOptions = self::getValue($options, 'brandOptions', array());
+        self::changeAttrBool('class', 'inverse', $options, 'navbar-inverse');
+        self::changeValue('class', 'position', $options, 'navbar-');
         self::addCssClass('navbar-brand', $brandOptions);
         self::addCssClass('navbar navbar-default', $options);
         self::addAttributes('role', 'navigation', $options);
@@ -414,6 +469,7 @@ class Bootstrap
     {
         $openTagOptions = array();
         self::addCssClass('btn-group', $openTagOptions);
+        $noGroup = self::getValue($htmlOptions, 'noGroup', false);
         $menuOption = array();
 
         if(self::getValue($htmlOptions, 'menuOption', false, false)) {   
@@ -424,7 +480,10 @@ class Bootstrap
             self::addCssClass('dropup', $openTagOptions);
         }
 
-        $html = self::openTag('div', $openTagOptions);
+        $html = '';
+        if($noGroup === false) {
+            $html .= self::openTag('div', $openTagOptions);
+        }
         if(self::getValue($htmlOptions, 'split', false)) {
             $html .= self::button($label, $htmlOptions);
             self::addCssClass('dropdown-toggle', $htmlOptions);
@@ -437,7 +496,9 @@ class Bootstrap
         }
 
         $html .= self::dropdown($dropdown, $menuOption);
-        $html .= self::closeTag('div');
+        if($noGroup === false) {
+            $html .= self::closeTag('div');
+        }
         return $html;
     }
 
@@ -543,7 +604,7 @@ class Bootstrap
     {
         self::changeValue('class', 'pull', $htmlOptions, 'pull-');
         $text = self::p($text);
-        if(self::getValue($htmlOptions, 'small', false)) {
+        if(self::getValue($htmlOptions, 'small', false, false)) {
             $cite = self::getValue($htmlOptions, 'cite', ''); 
             $small = self::getValue($htmlOptions, 'small', ''); 
             $text .= self::tag('small', array(), $small . ' '. self::tag('cite', array(), $cite));
@@ -679,10 +740,20 @@ class Bootstrap
         self::changeValue($key, $value, $htmlOptions, $preffix, $suffix);
     }
 
-    protected static function moveValue(array &$before, $key1, array &$after, $key2, $ifNull = '')
+    protected static function moveValue(array &$before, $key1, array &$after, $key2, $ifNull = '', $preffix = '', $suffix = '')
     {
         $value = self::getValue($before, $key1, $ifNull);
-        self::addAttributes($key2, $value, $after);
+        if($value !== '') {
+            self::addAttributes($key2, $preffix . $value . $suffix, $after);
+        }
+    }
+
+    protected static function copyValue(array &$before, $key1, array &$after, $key2, $ifNull = '', $preffix = '', $suffix = '')
+    {
+        $value = self::getValue($before, $key1, $ifNull, false);
+        if($value !== '') {
+            self::addAttributes($key2, $preffix . $value . $suffix, $after);
+        }
     }
 
     protected static function changeValue(
