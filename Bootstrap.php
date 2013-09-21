@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * CodeIgniterStrap ( Twitter Bootstrap 3 library for CodeIgniter )
+ *
+ * @created     Dida Nurwanda
+ * @blog        http://didanurwanda.blogspot.com
+ * @email       didanurwanda@gmail.com
+ * @version     1.0
+ */
+
 class Bootstrap
 {
     // TEXT
@@ -118,6 +127,7 @@ class Bootstrap
 
     const FORM_TYPE_INLINE = 'inline';
     const FORM_TYPE_HORIZONTAL = 'horizontal';
+    const FORM_TYPE_VERTICAL = '';
 
     // WELL
     const WELL_SIZE_LARGE = 'lg';
@@ -327,7 +337,7 @@ class Bootstrap
 
     protected static $CI;
     protected static $ID;
-    protected static $idName = 'dida_nurwanda_';
+    protected static $idName = 'Tb_';
     protected static $idNumber = 0;
 
     public function __construct()
@@ -356,22 +366,103 @@ class Bootstrap
         return form_close();
     }
 
+    public static function dropDownList($name, $active = '', $list = array(), $htmlOptions = array())
+    {
+        if(self::getValue($htmlOptions, 'prompt', false, false)) {
+            $list = array_merge(array('' => self::getValue($htmlOptions, 'prompt')), $list);
+        }
+        self::addCssClass('form-control', $htmlOptions);
+        $parseAttributes = self::parseAttributes($htmlOptions);
+        $active = explode('|', $active);
+        return form_dropdown($name, $list, $active, $parseAttributes);
+    }
+
+    public static function multiDropDownList($name, $active = '', $list = array(), $htmlOptions = array())
+    {
+        self::addAttributes('multiple', 'multiple', $htmlOptions);
+        return self::dropDownList($name, $active, $list, $htmlOptions);
+    }
+
     public static function label($label, $for = '', $htmlOptions = array())
     {
         return form_label($label, $for, $htmlOptions);
     }
 
-    public static function radio($name, $value, $htmlOptions = array())
+    public static function radioButtonInlineList($name, $active, $list = array(), $htmlOptions = array())
     {
-        self::addAttributes('type', 'radio', $htmlOptions);
-        return self::checkbox($name, $value, $htmlOptions);
+        self::addAttributes('type', 'radioButtonInline', $htmlOptions);
+        return self::checkBoxList($name, $active, $list, $htmlOptions);
     }
 
-    public static function checkbox($name, $value, $htmlOptions = array())
+    public static function radioButtonList($name, $active, $list = array(), $htmlOptions = array())
     {
-        self::addAttributes('name', $name, $htmlOptions);
-        self::addAttributes('value', $value, $htmlOptions);
-        return form_checkbox($htmlOptions);
+        self::addAttributes('type', 'radioButton', $htmlOptions);
+        return self::checkBoxList($name, $active, $list, $htmlOptions);
+    }
+
+    public static function checkBoxInlineList($name, $active, $list = array(), $htmlOptions = array())
+    {
+        self::addAttributes('type', 'checkBoxInline', $htmlOptions);
+        return self::checkBoxList($name, $active, $list, $htmlOptions);
+    } 
+
+    public static function checkBoxList($name, $active, $list = array(), $htmlOptions = array()) 
+    {
+        $html = '';
+        $type = self::getValue($htmlOptions, 'type', 'checkBox');
+        foreach ($list as $key => $value) {
+            $options = array();
+            $e = explode('|', $active);
+            foreach ($e as $keyTwo => $valueTwo) {
+                if($key === trim($valueTwo)) {
+                    self::addAttributes('checked', true, $options);
+                }
+            }
+            $html .= self::$type($name, $value, $key, $options);
+        }
+        return $html;
+    }
+
+    public static function radioButtonInline($name, $label, $value = '', $options = array())
+    {
+        self::addAttributes('type', 'radio', $options);
+        return self::checkBoxInline($name, $label, $value, $options);
+    }
+
+    public static function checkBoxInline($name, $label, $value = '', $options = array())
+    {
+        self::addAttributes('inline', true, $options);
+        return self::checkBox($name, $label, $value, $options);
+    }
+
+    public static function radioButton($name, $label, $value = '', $options = array())
+    {
+        self::addAttributes('type', 'radio', $options);
+        return self::checkBox($name, $label, $value, $options);
+    }
+
+    public static function checkBox($name, $label, $value = '', $options = array())
+    {
+        $inline = self::getValue($options, 'inline', false);
+        $htmlDefault = self::getValue($options, 'htmlDefault', false);
+        $type = self::getValue($options, 'type', 'checkbox', false);
+        self::addAttributes('name', $name, $options);
+        self::addAttributes('value', $value, $options);
+        $field = form_checkbox($options) .' '. $label;
+        if($inline == true) {
+            $html = self::openTag('label', array('class' => $type . '-inline'));
+            $html .= $field;
+            $html .= self::closeTag('label');
+        } elseif($htmlDefault == true) {
+            $html = $field;
+        } else {
+            $html = self::openTag('div', array('class' => $type));
+            $html .= self::openTag('label');
+            $html .= $field;
+            $html .= self::closeTag('label');
+            $html .= self::closeTag('div');
+        }
+        return $html;
     }
 
     public static function textArea($name, $value = '', $htmlOptions = array())
@@ -467,12 +558,12 @@ class Bootstrap
                 self::getValue($row, 'image'), 
                 self::getValue($row, 'rel')
             );
-            $caption = self::getValue($row, 'caption');
+            $content = self::getValue($row, 'content');
             $label = self::getValue($row, 'label');
-            if($caption !== '' || $label !== '') {
+            if($content !== '' || $label !== '') {
                 $html .= self::openTag('div', array('class' => 'carousel-caption'));
                 $html .= $label !== '' ? self::tag('h3', array(), $label) : '';
-                $html .= $caption !== ''? self::tag('p', array(), $caption) : '';
+                $html .= $content !== ''? self::tag('p', array(), $content) : '';
                 $html .= self::closeTag('div');
             }
             $html .= self::closeTag('div');
@@ -492,7 +583,7 @@ class Bootstrap
         self::generateId();
         $collapseId = self::getId();
         $autoOpen = self::getValue($options, 'autoOpen', false);
-        $color = self::getValue($htmlOptions, 'color', '');
+        $color = self::getValue($htmlOptions, 'color', self::COLLAPSE_COLOR_DEFAULT);
         self::addCssClass('panel-group', $htmlOptions);
         self::addCssId($collapseId, $htmlOptions);
         $html = self::openTag('div', $htmlOptions);
@@ -889,7 +980,6 @@ class Bootstrap
         return $html;
     }
 
-
     protected static function tabNormalize($options = array(), array &$content)
     {
         $contentAndTabs = array();
@@ -1001,7 +1091,6 @@ class Bootstrap
         return $html;
     }
 
-
     public static function dropDownMenu($dropdown = array(), $htmlOptions = array())
     {
         self::changeValue('class', 'pull', $htmlOptions, 'pull-');
@@ -1017,6 +1106,12 @@ class Bootstrap
             if($row == '-') {
                 $html .= self::openTag('li', array('class' => 'divider'));    
                 $html .= self::closeTag('li');
+            } elseif(self::getValue($row, 'header', false, false)) { 
+                $label = self::getValue($row, 'label');
+                if(self::getValue($row, 'icon', '', false)) {
+                    $label = self::icon(self::getValue($row, 'icon')). ' ' .$label;
+                }
+                $html .= self::tag('li', array('class' => 'dropdown-header'), $label); 
             } else {
                 $label = self::getValue($row, 'label');
                 $url = self::getValue($row, 'url', '#');
@@ -1167,11 +1262,10 @@ class Bootstrap
     {
         $html = '<'. $tag . self::parseAttributes($htmlOptions);
         if($content === false) {
-            $html .= $closeTag ? ' />' : '>';
+            $html .= $closeTag ? ' />' : '> ';
         } else {
             $html .= $closeTag ? '>'. $content . self::closeTag($tag)  : '>'. $content;
         }
-        $html .= ' ';
         return $html;
     }
 
@@ -1182,7 +1276,7 @@ class Bootstrap
 
     protected static function closeTag($tag)
     {
-        return '</'. $tag .'>';
+        return '</'. $tag .'> ';
     }
 
     protected static function parseAttributes($htmlOptions = array())
@@ -1338,9 +1432,12 @@ class TbForm extends Bootstrap
     public function __construct($config = array())
     {
         $this->type = $this->getValue($config, 'type', '', false);
+        $this->left = $this->getValue($config, 'leftRow', 2);
+        $this->right = $this->getValue($config, 'rightRow', 10);
+        $action = $this->getValue($config, 'action', '');
         $this->changeValue('class', 'type', $config, 'form-');
         $this->addAttributes('role', 'form', $config);
-        echo $this->formOpen('', $config);
+        echo $this->formOpen($action, $config);
     }
 
     public function end()
@@ -1348,62 +1445,137 @@ class TbForm extends Bootstrap
         echo $this->formClose();
     }
 
-    public function textFieldControlGroup($name, $label = '', $htmlOptions = array())
+    public function textFieldRow($name, $label = '', $htmlOptions = array())
     {
         return $this->fieldControlGroup(self::FIELD_TYPE_TEXT, $name, $label, $htmlOptions);
     }
 
-    public function passwordFieldControlGroup($name, $label = '', $htmlOptions = array())
+    public function passwordFieldRow($name, $label = '', $htmlOptions = array())
     {
         return $this->fieldControlGroup(self::FIELD_TYPE_PASSWORD, $name, $label, $htmlOptions);
     }
 
-    public function emailFieldControlGroup($name, $label = '', $htmlOptions = array())
+    public function emailFieldRow($name, $label = '', $htmlOptions = array())
     {
         return $this->fieldControlGroup(self::FIELD_TYPE_EMAIL, $name, $label, $htmlOptions);
     }
 
-    public function fileFieldControlGroup($name, $label = '', $htmlOptions = array())
+    public function fileFieldRow($name, $label = '', $htmlOptions = array())
     {
         return $this->fieldControlGroup(self::FIELD_TYPE_FILE, $name, $label, $htmlOptions);
     }
 
-    public function textAreaControlGroup($name, $label = '', $htmlOptions = array())
+    public function textAreaRow($name, $label = '', $htmlOptions = array())
     {
         return $this->fieldControlGroup(self::FIELD_TYPE_TEXTAREA, $name, $label, $htmlOptions);
     }
 
-    // BUGS
-    public function checkBoxControlGroup($name, $label, $value = '', $htmlOptions = array())
+    public function radioButtonInlineListROw($labelOne, $name,  $active = '', $list = array(), $htmlOptions = array())
     {
-        $html = $this->openTag('div', array('class' => 'checkbox'));
-        $html .= $this->openTag('label');
-        $html .= $this->checkbox($name, $value, $htmlOptions);
-        $html .= ' ' . $label;
-        $html .= $this->closeTag('label');
-        $html .= $this->closeTag('div');  
-        return $html; 
+        $this->addAttributes('type', 'radioButtonInline', $htmlOptions);
+        return $this->checkBoxListRow($labelOne, $name, $active, $list, $htmlOptions);
     }
+
+    public function checkBoxInlineListRow($labelOne, $name,  $active = '', $list = array(), $htmlOptions = array())
+    {
+        $this->addAttributes('type', 'checkBoxInline', $htmlOptions);
+        return $this->checkBoxListRow($labelOne, $name, $active, $list, $htmlOptions);
+    }
+
+    public function radioButtonListRow($labelOne, $name,  $active = '', $list = array(), $htmlOptions = array())
+    {
+        $this->addAttributes('type', 'radioButton', $htmlOptions);
+        return $this->checkBoxListRow($labelOne, $name, $active, $list, $htmlOptions);
+    }
+
+    public function checkBoxListRow($labelOne, $name,  $active = '', $list = array(), $htmlOptions = array())
+    {
+        $help = $this->getHelpBlock($htmlOptions);
+        $left = $this->labelRow($labelOne, $name);
+        $right = $this->checkBoxList($name, $active, $list, $htmlOptions);
+        return $this->formControlGroup($left, $right . $help);
+    }
+
+    public function radioButtonRow($labelOne, $name, $labelTwo, $value = '', $htmlOptions = array())
+    {
+        $this->addAttributes('type', 'radio', $htmlOptions);
+        return $this->checkBoxRow($labelOne, $name, $labelTwo, $value, $htmlOptions);
+    }
+
+    public function checkBoxRow($labelOne, $name, $labelTwo, $value = '', $htmlOptions = array())
+    {
+        $help = $this->getHelpBlock($htmlOptions);
+        $left = $this->labelRow($labelOne, $name);
+        $right = $this->checkBox($name, $labelTwo, $value, $htmlOptions);
+        return $this->formControlGroup($left, $right . $help);
+    }
+
     protected function fieldControlGroup($type, $name, $label = '', $htmlOptions = array())
     {
-        $labelOptions = array();
-        if($this->type === self::FORM_TYPE_INLINE) {
-            $this->addCssClass('sr-only', $labelOptions);
-        } elseif($this->type === self::FORM_TYPE_HORIZONTAL) {
-            $this->addCssClass('control-label col-lg-' . $this->left, $labelOptions);
-        }
+        $help = $this->getHelpBlock($htmlOptions);
+        $formLabel = $this->labelRow($label, $name);
+        $formInput = $this->$type($name, '', $htmlOptions);
+        return $this->formControlGroup($formLabel, $formInput . $help);
+    }
 
+    public function submitButton($label, $htmlOptions = array())
+    {
+        $help = $this->getHelpBlock($htmlOptions);
+        $this->addAttributes('type', self::BUTTON_TYPE_SUBMIT, $htmlOptions);
+        return $this->formControlGroup('', $this->button($label, $htmlOptions) . $help);
+    }
+
+    public function dropDownListRow($label, $name, $active = '', $list = array(), $htmlOptions = array())
+    {
+        $help = $this->getHelpBlock($htmlOptions);
+        $left = $this->labelRow($label, $name);
+        $right = $this->dropDownList($name, $active, $list, $htmlOptions);
+        return $this->formControlGroup($left, $right . $help);
+    }
+
+    public function multiDropDownListRow($label, $name, $active = '', $list = array(), $htmlOptions = array())
+    {
+        $this->addAttributes('multiple', 'multiple', $htmlOptions);
+        return $this->dropDownListRow($label, $name, $active, $list, $htmlOptions);
+    }
+
+    public function labelRow($text, $for = '', $htmlOptions = array())
+    {
+        if($this->type === self::FORM_TYPE_INLINE) {
+            $this->addCssClass('sr-only', $htmlOptions);
+        } elseif ($this->type === self::FORM_TYPE_HORIZONTAL) {
+            $this->addCssClass('control-label pull-right', $htmlOptions);            
+        }
+        return $text == '' || $text == false ? '' : $this->label($text, $for, $htmlOptions);
+    }
+
+    protected function getHelpBlock(array &$htmlOptions)
+    {
+        $help = '';
+        if($this->getValue($htmlOptions, 'help', false, false)) {
+            $help = $this->helpBlock($this->getValue($htmlOptions, 'help'));
+        }
+        return $help;
+    }
+
+    public function helpBlock($text, $htmlOptions = array())
+    {
+        $this->addCssClass('help-block', $htmlOptions);
+        $text = $this->tag('p', $htmlOptions, $text);
+        return $text;
+    }
+
+    public function formControlGroup($left = '', $right = '')
+    {
         $html = $this->openTag('div', array('class' => 'form-group'));
-        $html .= $this->label($label, $name, $labelOptions);
         if($this->type === self::FORM_TYPE_HORIZONTAL) {
-            $html .= $this->openTag('div', array('class' => 'col-lg-' . $this->right));
+            $html .= $this->tag('div', array('class' => 'col-lg-'. $this->left), $left);
+            $html .= $this->tag('div', array('class' => 'col-lg-'. $this->right), $right);
+        } else {
+            $html .= $left . $right;
         }
-        $html .= $this->$type($name, '', $htmlOptions);
-        if($this->type === self::FORM_TYPE_HORIZONTAL) {
-            $html .= $this->closeTag('div');
-        }
-        $html .= $this->closeTag('div');  
-        return $html; 
+        $html .= $this->closeTag('div');
+        return $html;
     }
 }
 
