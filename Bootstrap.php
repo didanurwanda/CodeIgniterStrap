@@ -1415,6 +1415,11 @@ class Bootstrap
         }
         return self::$CI;
     }
+
+    public static function getVersion() 
+    {
+        return '1.0';
+    }
 }
 
 class TbForm extends Bootstrap
