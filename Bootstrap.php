@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * CodeIgniterStrap ( Twitter Bootstrap 3 library for CodeIgniter )
+ *
+ * @created     Dida Nurwanda
+ * @blog        http://didanurwanda.blogspot.com
+ * @email       didanurwanda@gmail.com
+ * @version     1.0
+ */
+
 class Bootstrap
 {
     // TEXT
@@ -37,6 +46,37 @@ class Bootstrap
     const LABEL_COLOR_WARNING = 'warning';
     const LABEL_COLOR_DANGER = 'danger';
 
+    // ALERT    
+    const ALERT_COLOR_SUCCESS = 'success';
+    const ALERT_COLOR_INFO = 'info';
+    const ALERT_COLOR_WARNING = 'warning';
+    const ALERT_COLOR_DANGER = 'danger';
+
+    // PROGRESS    
+    const PROGRESS_COLOR_PRIMARY = 'primary';
+    const PROGRESS_COLOR_SUCCESS = 'success';
+    const PROGRESS_COLOR_INFO = 'info';
+    const PROGRESS_COLOR_WARNING = 'warning';
+    const PROGRESS_COLOR_DANGER = 'danger';
+
+    // PANEL
+    const PANEL_COLOR_DEFAULT = 'default';
+    const PANEL_COLOR_PRIMARY = 'primary';
+    const PANEL_COLOR_SUCCESS = 'success';
+    const PANEL_COLOR_INFO = 'info';
+    const PANEL_COLOR_WARNING = 'warning';
+    const PANEL_COLOR_DANGER = 'danger';
+    const PANEL_COLOR_LINK = 'link';
+
+    // COLLAPSE
+    const COLLAPSE_COLOR_DEFAULT = 'default';
+    const COLLAPSE_COLOR_PRIMARY = 'primary';
+    const COLLAPSE_COLOR_SUCCESS = 'success';
+    const COLLAPSE_COLOR_INFO = 'info';
+    const COLLAPSE_COLOR_WARNING = 'warning';
+    const COLLAPSE_COLOR_DANGER = 'danger';
+    const COLLAPSE_COLOR_LINK = 'link';
+
     // BUTTON GROUP
     const BUTTON_GROUP_SIZE_LARGE = 'lg';
     const BUTTON_GROUP_SIZE_SMALL = 'sm';
@@ -55,6 +95,22 @@ class Bootstrap
     const NAVBAR_FIXED_BOTTOM = 'fixed-bottom';
     const NAVBAR_STATIC_TOP = 'static-top';
 
+    // PAGINATION
+    const PAGINATION_SIZE_LARGE = 'lg';
+    const PAGINATION_SIZE_SMALL = 'sm';
+
+    // TOOLTIP
+    const TOOLTIP_PLACEMENT_TOP = 'top';
+    const TOOLTIP_PLACEMENT_BOTTOM = 'bottom';
+    const TOOLTIP_PLACEMENT_LEFT = 'left';
+    const TOOLTIP_PLACEMENT_RIGHT = 'right';
+
+    // POPOVER
+    const POPOVER_PLACEMENT_TOP = 'top';
+    const POPOVER_PLACEMENT_BOTTOM = 'bottom';
+    const POPOVER_PLACEMENT_LEFT = 'left';
+    const POPOVER_PLACEMENT_RIGHT = 'right';
+
     // TEXT ALIGN
     const TEXT_ALIGN_LEFT = 'left';
     const TEXT_ALIGN_CENTER = 'center';
@@ -68,6 +124,14 @@ class Bootstrap
     // FORM
     const INPUT_GROUP_SIZE_LARGE = 'lg';
     const INPUT_GROUP_SIZE_SMALL = 'sm';
+
+    const FORM_TYPE_INLINE = 'inline';
+    const FORM_TYPE_HORIZONTAL = 'horizontal';
+    const FORM_TYPE_VERTICAL = '';
+
+    // WELL
+    const WELL_SIZE_LARGE = 'lg';
+    const WELL_SIZE_SMALL = 'sm';
 
     // ICON
     const ICON_ADJUST = 'glyphicon-adjust';
@@ -278,9 +342,18 @@ class Bootstrap
 
     public function __construct()
     {
-        $this->CI = get_instance();
-        $this->CI->load->helper('url');
-        $this->CI->load->helper('form');
+        self::getInstance()->load->helper('url');
+        self::getInstance()->load->helper('form');
+        if(self::getInstance()->config->item('encryption_key') == '') {
+           self::getInstance()->load->library('session', array('encryption_key' => md5(__CLASS__)));
+        } else {
+            self::getInstance()->load->library('session');
+        }
+    }
+
+    public static function form($htmlOptions = array())
+    {
+        return new TbForm($htmlOptions);
     }
 
     public static function formOpen($action = '', $htmlOptions = array())
@@ -293,17 +366,103 @@ class Bootstrap
         return form_close();
     }
 
-    public static function radio($name, $value, $htmlOptions = array())
+    public static function dropDownList($name, $active = '', $list = array(), $htmlOptions = array())
     {
-        self::addAttributes('type', 'radio', $htmlOptions);
-        return self::checkbox($name, $value, $htmlOptions);
+        if(self::getValue($htmlOptions, 'prompt', false, false)) {
+            $list = array_merge(array('' => self::getValue($htmlOptions, 'prompt')), $list);
+        }
+        self::addCssClass('form-control', $htmlOptions);
+        $parseAttributes = self::parseAttributes($htmlOptions);
+        $active = explode('|', $active);
+        return form_dropdown($name, $list, $active, $parseAttributes);
     }
 
-    public static function checkbox($name, $value, $htmlOptions = array())
+    public static function multiDropDownList($name, $active = '', $list = array(), $htmlOptions = array())
     {
-        self::addAttributes('name', $name, $htmlOptions);
-        self::addAttributes('value', $value, $htmlOptions);
-        return form_checkbox($htmlOptions);
+        self::addAttributes('multiple', 'multiple', $htmlOptions);
+        return self::dropDownList($name, $active, $list, $htmlOptions);
+    }
+
+    public static function label($label, $for = '', $htmlOptions = array())
+    {
+        return form_label($label, $for, $htmlOptions);
+    }
+
+    public static function radioButtonInlineList($name, $active, $list = array(), $htmlOptions = array())
+    {
+        self::addAttributes('type', 'radioButtonInline', $htmlOptions);
+        return self::checkBoxList($name, $active, $list, $htmlOptions);
+    }
+
+    public static function radioButtonList($name, $active, $list = array(), $htmlOptions = array())
+    {
+        self::addAttributes('type', 'radioButton', $htmlOptions);
+        return self::checkBoxList($name, $active, $list, $htmlOptions);
+    }
+
+    public static function checkBoxInlineList($name, $active, $list = array(), $htmlOptions = array())
+    {
+        self::addAttributes('type', 'checkBoxInline', $htmlOptions);
+        return self::checkBoxList($name, $active, $list, $htmlOptions);
+    } 
+
+    public static function checkBoxList($name, $active, $list = array(), $htmlOptions = array()) 
+    {
+        $html = '';
+        $type = self::getValue($htmlOptions, 'type', 'checkBox');
+        foreach ($list as $key => $value) {
+            $options = array();
+            $e = explode('|', $active);
+            foreach ($e as $keyTwo => $valueTwo) {
+                if($key === trim($valueTwo)) {
+                    self::addAttributes('checked', true, $options);
+                }
+            }
+            $html .= self::$type($name, $value, $key, $options);
+        }
+        return $html;
+    }
+
+    public static function radioButtonInline($name, $label, $value = '', $options = array())
+    {
+        self::addAttributes('type', 'radio', $options);
+        return self::checkBoxInline($name, $label, $value, $options);
+    }
+
+    public static function checkBoxInline($name, $label, $value = '', $options = array())
+    {
+        self::addAttributes('inline', true, $options);
+        return self::checkBox($name, $label, $value, $options);
+    }
+
+    public static function radioButton($name, $label, $value = '', $options = array())
+    {
+        self::addAttributes('type', 'radio', $options);
+        return self::checkBox($name, $label, $value, $options);
+    }
+
+    public static function checkBox($name, $label, $value = '', $options = array())
+    {
+        $inline = self::getValue($options, 'inline', false);
+        $htmlDefault = self::getValue($options, 'htmlDefault', false);
+        $type = self::getValue($options, 'type', 'checkbox', false);
+        self::addAttributes('name', $name, $options);
+        self::addAttributes('value', $value, $options);
+        $field = form_checkbox($options) .' '. $label;
+        if($inline == true) {
+            $html = self::openTag('label', array('class' => $type . '-inline'));
+            $html .= $field;
+            $html .= self::closeTag('label');
+        } elseif($htmlDefault == true) {
+            $html = $field;
+        } else {
+            $html = self::openTag('div', array('class' => $type));
+            $html .= self::openTag('label');
+            $html .= $field;
+            $html .= self::closeTag('label');
+            $html .= self::closeTag('div');
+        }
+        return $html;
     }
 
     public static function textArea($name, $value = '', $htmlOptions = array())
@@ -326,11 +485,18 @@ class Bootstrap
         return self::textField($name, $value, $htmlOptions);
     }
 
+    public static function emailField($name, $value = '', $htmlOptions = array())
+    {
+        self::addAttributes('type', 'email', $htmlOptions);
+        return self::textField($name, $value, $htmlOptions);
+    }
+
     public static function textField($name, $value = '', $htmlOptions = array())
     {
-        if(self::getValue($htmlOptions, 'file', false, false) === false) {
+        if(self::getValue($htmlOptions, 'type', '', false) !== 'file') {
             self::addCssClass('form-control', $htmlOptions);
         }
+
         self::addAttributes('name', $name, $htmlOptions);
         self::addAttributes('value', $value, $htmlOptions);
         $inputGroup = self::getValue($htmlOptions, 'inputGroup', false);
@@ -363,10 +529,312 @@ class Bootstrap
         return $html;
     }
 
+    public static function carousel($options = array(), $htmlOptions = array())
+    {
+        self::generateId();
+        $carouselId = self::getId();
+        self::addCssId($carouselId, $htmlOptions);
+        self::addCssClass('carousel slide', $htmlOptions);
+        $html = self::openTag('div', $htmlOptions);
+        $html .= self::openTag('ol', array('class' => 'carousel-indicators'));
+        $slideTo = 0;
+        foreach ($options as $row) {
+            $liOptions = array();
+            self::addAttributes('data-target', '#' . $carouselId, $liOptions);
+            $liOptions['data-slide-to'] = $slideTo;
+            if($slideTo == 0) {
+                self::addCssClass('active', $liOptions);
+            }
+            $html .= self::tag('li', $liOptions, '');
+            $slideTo ++;
+        }
+        $html .= self::closeTag('ol');  
+        $html .= self::openTag('div', array('class' => 'carousel-inner'));
+        $slide = 0;
+        foreach ($options as $row) {
+            $active = $slide == 0 ? 'active' : '';
+            $html .= self::openTag('div', array('class' => 'item '. $active));
+            $html .= self::image(
+                self::getValue($row, 'image'), 
+                self::getValue($row, 'rel')
+            );
+            $content = self::getValue($row, 'content');
+            $label = self::getValue($row, 'label');
+            if($content !== '' || $label !== '') {
+                $html .= self::openTag('div', array('class' => 'carousel-caption'));
+                $html .= $label !== '' ? self::tag('h3', array(), $label) : '';
+                $html .= $content !== ''? self::tag('p', array(), $content) : '';
+                $html .= self::closeTag('div');
+            }
+            $html .= self::closeTag('div');
+            $slide ++;
+        }
+        $html .= self::closeTag('div');
+        $prev = self::tag('span', array('class' => 'icon-prev'), '');
+        $next = self::tag('span', array('class' => 'icon-next'), '');
+        $html .= self::link('#' . $carouselId, $prev, array('class' => 'left carousel-control', 'data-slide' => 'prev'));
+        $html .= self::link('#' . $carouselId, $next, array('class' => 'right carousel-control', 'data-slide' => 'next'));
+        $html .= self::closeTag('div');
+        return $html;
+    }
+
+    public static function collapse($options = array(), $htmlOptions = array())
+    {
+        self::generateId();
+        $collapseId = self::getId();
+        $autoOpen = self::getValue($options, 'autoOpen', false);
+        $color = self::getValue($htmlOptions, 'color', self::COLLAPSE_COLOR_DEFAULT);
+        self::addCssClass('panel-group', $htmlOptions);
+        self::addCssId($collapseId, $htmlOptions);
+        $html = self::openTag('div', $htmlOptions);
+        $no = 0;
+        foreach (self::getValue($options, 'items') as $key => $value) {
+            self::generateId();
+            $in = $autoOpen !== false && $no === 0 ? 'in' : '';
+            $content = self::openTag('div', array('class' => 'panel-collapse collapse ' . $in, 'id' => self::getId()));
+            $content .= self::tag('div', array('class' => 'panel-body'), $value);
+            $content .= self::closeTag('div');
+            $html .= self::panel(array(
+                'title' => self::link('#' . self::getId(), $key, array(
+                    'class' => 'accordion-toggle', 'data-toggle' => 'collapse',
+                    'data-parent' => '#' . $collapseId,
+                )),
+                'content' => $content,
+            ), array('color' => $color));
+            $no ++;
+        }
+        $html .= self::closeTag('div');
+        return $html;
+    }
+
+    public static function popover($text, $title, $popover, $htmlOptions = array())
+    {
+        self::addAttributes('data-content', $popover, $htmlOptions);
+        self::addAttributes('data-toggle', 'popover', $htmlOptions);
+        self::addAttributes('data-original-title', $title, $htmlOptions);
+        self::changeValue('data-placement', 'placement', $htmlOptions);
+        return self::link('#', $text, $htmlOptions);
+    }
+    
+    public static function tooltip($text, $url, $tooltip, $htmlOptions = array())
+    {
+        self::addAttributes('data-toggle', 'tooltip', $htmlOptions);
+        self::addAttributes('data-original-title', $tooltip, $htmlOptions);
+        self::changeValue('data-placement', 'placement', $htmlOptions);
+        return self::link($url, $text, $htmlOptions);
+    }
+
+    public static function modal($options = array())
+    {
+        $id = self::getValue($options, 'id', '', false);
+        self::addCssClass('modal', $options);
+        self::addAttributes('tabindex', '-1', $options);
+        self::addAttributes('role', 'dialog', $options);
+        self::addAttributes('aria-labelledby', $id . 'Label', $options);
+        $header = self::getValue($options, 'header', false);
+        $body = self::getValue($options, 'body', false);
+        $footer = self::getValue($options, 'footer', false);
+        if(isset($options['hidden']) && $options['hidden'] == false) {
+            self::remove($options, 'hidden');
+            self::addAttributes('aria-hidden', 'false', $options);
+        } else {
+            self::remove($options, 'hidden');
+            self::addAttributes('aria-hidden', 'true', $options);
+        }
+        $html = self::openTag('div', $options);
+        $html .= self::openTag('div', array('class' => 'modal-dialog'));
+        $html .= self::openTag('div', array('class' => 'modal-content'));
+        if($header !== false) {
+            $html .= self::openTag('div', array('class' => 'modal-header'));
+            $html .= self::tag('button', array('class' => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true', 'type' => 'button'), '&times;');
+            $html .= self::tag('h4', array('class' => 'modal-title'), $header);
+            $html .= self::closeTag('div');
+        }
+        if($body !== false) {
+            $html .= self::openTag('div', array('class' => 'modal-body'));
+            $html .= $body;
+            $html .= self::closeTag('div');
+        }
+        if($footer !== false) {
+            $html .= self::openTag('div', array('class' => 'modal-footer'));
+            if(is_array($footer)) {
+                foreach ($footer as $row) {
+                    $html .= $row;
+                }
+            } else {
+                $html .= $footer;
+            }
+            $html .= self::closeTag('div');
+        }
+        $html .= self::closeTag('div');
+        $html .= self::closeTag('div');
+        $html .= self::closeTag('div');
+        return $html;
+    }
+
+    public static function well($text, $htmlOptions = array())
+    {
+        self::changeValue('class', 'size', $htmlOptions, 'well-');
+        self::addCssClass('well', $htmlOptions);
+        return self::tag('div', $htmlOptions, $text);
+    }
+
+    public static function panel($options = array(), $htmlOptions = array())
+    {
+        self::replaceValue('class', 'color', self::PANEL_COLOR_DEFAULT, $htmlOptions, 'panel-');
+        self::addCssClass('panel', $htmlOptions);
+        $header = self::getValue($options, 'header', false);
+        $body = self::getValue($options, 'body', false);
+        $footer = self::getValue($options, 'footer', false);
+        $title = self::getValue($options, 'title', false);
+        $content = self::getValue($options, 'content', false);
+        $html = self::openTag('div', $htmlOptions);
+        if($title) {
+            $html .= self::tag('div', array('class' => 'panel-heading'), self::tag('h3', array('class' => 'panel-title'), $title));
+        } else {
+            $html .= $header ? self::tag('div', array('class' => 'panel-heading'), $header) : '';
+        }
+        $html .= $body ? self::tag('div', array('class' => 'panel-body'), $body) : '';
+        $html .= $content ? $content : '';
+        $html .= $footer ? self::tag('div', array('class' => 'panel-footer'), $footer) : '';
+        $html .= self::closeTag('div');
+        return $html;
+    }
+
+    public static function listGroup($list = array(), $htmlOptions = array())
+    {
+        $tagOpenOne = self::getValue($htmlOptions, 'static', false, false) ? 'ul' : 'div';
+        $tagOpenTwo = self::getValue($htmlOptions, 'static', false) ? 'li' : 'a';
+        self::addCssClass('list-group', $htmlOptions);
+        $html = self::openTag($tagOpenOne, $htmlOptions);
+        foreach ($list as $row) {
+            self::addCssClass('list-group-item', $row);
+            self::changeAttrBool('class', 'active', $row, 'active');
+            self::changeValue('href', 'url', $row);
+            $label = self::getValue($row, 'label', false);
+            $badge = self::getValue($row, 'badge', false);
+            if($label == false) {
+                $heading = self::tag('h4', array('class' => 'list-group-item-heading'), self::getValue($row, 'heading'));
+                $text = self::tag('p', array('class' => 'list-group-item-text'), self::getValue($row, 'text'));
+                $label = $heading . $text;
+            }
+            if($badge) {
+                $label = self::badge($badge) . $label;
+            }
+            $html .= self::openTag($tagOpenTwo, $row);
+            $html .= $label;
+            $html .= self::closeTag($tagOpenTwo);
+
+        }
+        $html .= self::closeTag($tagOpenOne);
+        return $html;
+    }
+
+    public static function progressBar($value = 0, $htmlOptions = array())
+    {
+        $options = array();
+        self::changeAttrBool('pstriped', 'striped', $htmlOptions, 'progress-striped');
+        self::changeAttrBool('panimated', 'animated', $htmlOptions, 'progress-striped active');
+        self::addCssClass(self::getValue($htmlOptions, 'pstriped'), $options);
+        self::addCssClass(self::getValue($htmlOptions, 'panimated'), $options);
+        self::addCssClass('progress', $options);
+        $html = self::openTag('div', $options);
+        if(is_array($value)) {
+            foreach($value as $row) {
+                $value = self::getValue($row, 'value');
+                $html .= self::progress($value, $row);
+            }
+        } else {
+            $html .= self::progress($value, $htmlOptions);
+        }
+        $html .= self::closeTag('div');
+        return $html;
+    }
+
+    protected static function progress($value = 0, $htmlOptions = array())
+    {
+        self::changeValue('class', 'color', $htmlOptions, 'progress-bar-');
+        self::addCssClass('progress-bar', $htmlOptions);
+        self::addAttributes('role', 'progressbar', $htmlOptions);
+        self::replaceValue('aria-valuemin', 'valuemin', 0, $htmlOptions);
+        self::replaceValue('aria-valuemax', 'valuemax', 100, $htmlOptions);
+        self::addAttributes('aria-valuenow', $value, $htmlOptions);
+        self::addAttributes('style', 'width:'. $value .'%', $htmlOptions);
+        $label = self::getValue($htmlOptions, 'label', false);
+        $html = self::openTag('div', $htmlOptions);
+        if($label) {
+            $html .= self::tag('span', array(), $label);
+        }
+        $html .= self::closeTag('div');
+        return $html;
+    }
+
+    public static function flashAlert($name, $htmlOptions = array())
+    {
+       if(self::getInstance()->session->flashdata($name) != '') {
+            self::addAttributes('dismissable', true, $htmlOptions);
+            return self::alert(self::getInstance()->session->flashdata($name), $htmlOptions);
+        }
+    }
+
+    public static function alert($text, $htmlOptions = array())
+    {
+        self::changeValue('class', 'color', $htmlOptions, 'alert-');
+        self::addCssClass('alert', $htmlOptions);
+        $closeLabel = self::getValue($htmlOptions, 'closeLabel', '&times;');
+        if(self::getValue($htmlOptions, 'dismissable', false, false)) {
+            $text = self::tag('botton', array('class' => 'close', 'data-dismiss' => 'alert', 'aria-hidden' => 'true'), $closeLabel) . "\n" . $text;
+        }
+        self::changeAttrBool('class', 'dismissable', $htmlOptions, 'alert-');
+        return self::tag('div', $htmlOptions, $text);
+    }
+
+    public static function thumbnail($options = array())
+    {
+        $url = self::getValue($options, 'url', false);
+        $rel = self::getValue($options, 'rel');
+        $img = self::getValue($options, 'image');
+        $cpt = self::getValue($options, 'caption', false);
+
+        $tag = $url ? 'a' : 'div';
+        self::addCssClass('thumbnail', $options);
+        self::addAttributes('href', $url, $options);
+        $html = self::openTag($tag, $options);
+        $html .= self::image($img, $rel);
+
+        if($cpt) {
+            $html .= self::tag('div', array('class' => 'caption'), $cpt);
+        }
+
+        $html .= self::closeTag($tag);
+        return $html;
+    }
+
     public static function pager($options = array(), $htmlOptions = array())
     {
         self::addCssClass('pager', $htmlOptions);
         return self::dropdown($options, $htmlOptions);
+    }
+
+    public static function pagination($config = array(), $htmlOptions = array())
+    {
+        self::changeValue('class', 'size', $htmlOptions, 'pagination-');
+        self::addCssClass('pagination', $htmlOptions);
+        self::addAttributes('full_tag_open', self::openTag('ul', $htmlOptions), $config);   
+        self::addAttributes('full_tag_close', self::closeTag('ul'), $config);   
+        self::addAttributes('cur_tag_open', self::openTag('li', array('class' =>'active')) . self::openTag('a', array('href' => '#')),$config);
+        self::addAttributes('cur_tag_close', self::closeTag('a') . self::closeTag('li'), $config);
+        self::addAttributes('first_tag_open', self::openTag('li'), $config);
+        self::addAttributes('first_tag_close', self::closeTag('li'), $config);
+        self::addAttributes('last_tag_open', self::openTag('li'), $config);
+        self::addAttributes('last_tag_close', self::closeTag('li'), $config);
+        self::addAttributes('next_tag_open', self::openTag('li'), $config);
+        self::addAttributes('next_tag_close', self::closeTag('li'), $config);
+        self::addAttributes('prev_tag_open', self::openTag('li'), $config);
+        self::addAttributes('prev_tag_close', self::closeTag('li'), $config);
+        self::addAttributes('num_tag_open', self::openTag('li'), $config);
+        self::addAttributes('num_tag_close', self::closeTag('li'), $config);
+        return $config;
     }
 
     public static function pageHeader($header, $subheader = '', $htmlOptions = array())
@@ -407,7 +875,7 @@ class Bootstrap
 
     public static function navbar($options = array())
     {
-        self::setId();
+        self::generateId();
         $items = self::getValue($options, 'items', array());
         $brandUrl = self::getValue($options, 'brandUrl', '#');
         $brandLabel = self::getValue($options, 'brandLabel', '');
@@ -418,6 +886,7 @@ class Bootstrap
         self::addCssClass('navbar navbar-default', $options);
         self::addAttributes('role', 'navigation', $options);
         $html = self::openTag('nav', $options);
+        $html .= self::openTag('div', array('class' => 'container'));
         
         $html .= self::openTag('div', array('class' => 'navbar-header'));
         $html .= self::openTag('button', array('type' => 'button', 'class' => 'navbar-toggle', 'data-toggle' => 'collapse', 'data-target' => '#'.self::getId()));
@@ -437,6 +906,8 @@ class Bootstrap
                 $html .= $row;
             }
         }
+        $html .= self::closeTag('div');
+
         $html .= self::closeTag('div');
         $html .= self::closeTag('nav');
         return $html;
@@ -460,6 +931,75 @@ class Bootstrap
         return $html;
     }
 
+    public static function tabs($options = array())
+    {
+        $contentAndTabs = array('tabs' => array());
+        $htmlOptions = self::getValue($options, 'htmlOptions', array());
+        self::addAttributes('type', self::getValue($options, 'type'), $contentAndTabs['tabs']);
+        self::replaceValue('class', 'type', self::NAV_TABS, $contentAndTabs['tabs'], 'nav-');
+
+        $tabs = 0;
+        foreach (self::getValue($options, 'tabs') as $row) {
+            self::generateId();
+
+            // tabs
+            if($tabs === 0) {
+                $contentAndTabs['tabs']['items'][$tabs]['active'] = true;
+            }
+            if(self::getValue($row, 'icon', false, false)) {
+                $contentAndTabs['tabs']['items'][$tabs]['icon'] = self::getValue($row, 'icon');                
+            }
+            if(self::getValue($row, 'label', false, false)) {
+                $contentAndTabs['tabs']['items'][$tabs]['label'] = self::getValue($row, 'label');                
+            }
+            $contentAndTabs['tabs']['items'][$tabs]['url'] = '#' . self::getId();
+
+            // contant and dropdown
+            if(self::getValue($row, 'items', false, false)) {
+                $dropdown = self::tabNormalize(self::getValue($row, 'items'), $contentAndTabs['content']);
+                $contentAndTabs['tabs']['items'][$tabs]['items'] = $dropdown['tabs'];
+            } else {
+                $contentAndTabs['tabs']['items'][$tabs]['linkOptions'] = array('data-toggle' => 'tab');
+                $contentAndTabs['content'][self::getId()] = self::getValue($row, 'content');                
+            }
+            $tabs ++;
+        }
+        
+        $html = self::navs($contentAndTabs['tabs']);
+        self::addCssClass('tab-content', $htmlOptions);
+        $html .= self::openTag('div', $htmlOptions);
+        $conn = 0;
+        foreach ($contentAndTabs['content'] as $key => $value) {
+            $active = $conn == 0 ? 'active' : '';
+            $html .= self::openTag('div', array('class' => 'tab-pane fade in '. $active, 'id' => $key));
+            $html .= $value;
+            $html .= self::closeTag('div');
+            $conn ++;
+        }
+        $html .= self::closeTag('div');
+        return $html;
+    }
+
+    protected static function tabNormalize($options = array(), array &$content)
+    {
+        $contentAndTabs = array();
+        $no = 0;
+        foreach ($options as $row) {
+            self::generateId();
+            if(self::getValue($row, 'icon', false, false)) {
+                 $contentAndTabs['tabs'][$no]['icon'] = self::getValue($row, 'icon');                
+            }
+            if(self::getValue($row, 'label', false, false)) {
+                 $contentAndTabs['tabs'][$no]['label'] = self::getValue($row, 'label');                
+            }
+            $contentAndTabs['tabs'][$no]['linkOptions'] = array('data-toggle' => 'tab');
+            $contentAndTabs['tabs'][$no]['url'] = '#' . self::getId();
+            $content[self::getId()] = self::getValue($row, 'content');
+            $no ++;
+        }
+        return $contentAndTabs;
+    }
+
     public static function navs($options = array())
     {
         self::addCssClass('nav', $options);
@@ -471,10 +1011,10 @@ class Bootstrap
         $html = self::openTag('ul', $options);
         foreach ($menu as $row) {
             $myoptions = array();
-            $linkoptions = array();
+            $linkOptions = self::getValue($row, 'linkOptions', array());
             self::changeAttrBool('navactive', 'active', $row, 'active');
             self::changeAttrBool('navdisabled', 'disabled', $row, 'disabled');
-            self::moveValue($row, 'url', $linkoptions, 'href', '#');
+            self::moveValue($row, 'url', $linkOptions, 'href', '#');
             self::moveValue($row, 'navactive', $myoptions, 'class', '');
             self::moveValue($row, 'navdisabled', $myoptions, 'class', '');
 
@@ -485,19 +1025,19 @@ class Bootstrap
 
             if(self::getValue($row, 'items', false, false)) {
                 self::addCssClass('dropdown', $myoptions);
-                self::addCssClass('dropdown-toggle', $linkoptions);
-                self::addAttributes('data-toggle', 'dropdown', $linkoptions);
+                self::addCssClass('dropdown-toggle', $linkOptions);
+                self::addAttributes('data-toggle', 'dropdown', $linkOptions);
                 $html .= self::openTag('li', $myoptions);
-                $html .= self::tag('a', $linkoptions, $label . self::tag('span', array('class' => 'caret'), ''));
+                $html .= self::tag('a', $linkOptions, $label . self::tag('span', array('class' => 'caret'), ''));
                 $html .= self::dropDownMenu(self::getValue($row, 'items', array()));
                 $html .= self::closeTag('li');                
             } else {  
-                if(current_url() === self::getValue($linkoptions, 'href', '#', false)) {
+                if(current_url() === self::getValue($linkOptions, 'href', '#', false)) {
                     self::addCssClass('active', $myoptions);
                 }
 
                 $html .= self::openTag('li', $myoptions);
-                $html .= self::tag('a', $linkoptions, $label);
+                $html .= self::tag('a', $linkOptions, $label);
                 $html .= self::closeTag('li');
             }
 
@@ -551,7 +1091,6 @@ class Bootstrap
         return $html;
     }
 
-
     public static function dropDownMenu($dropdown = array(), $htmlOptions = array())
     {
         self::changeValue('class', 'pull', $htmlOptions, 'pull-');
@@ -567,15 +1106,23 @@ class Bootstrap
             if($row == '-') {
                 $html .= self::openTag('li', array('class' => 'divider'));    
                 $html .= self::closeTag('li');
+            } elseif(self::getValue($row, 'header', false, false)) { 
+                $label = self::getValue($row, 'label');
+                if(self::getValue($row, 'icon', '', false)) {
+                    $label = self::icon(self::getValue($row, 'icon')). ' ' .$label;
+                }
+                $html .= self::tag('li', array('class' => 'dropdown-header'), $label); 
             } else {
                 $label = self::getValue($row, 'label');
                 $url = self::getValue($row, 'url', '#');
                 if(self::getValue($row, 'icon', '', false)) {
                     $label = self::icon(self::getValue($row, 'icon')). ' ' .$label;
                 }
+                $linkOptions = self::getValue($row, 'linkOptions', array());
+                self::addAttributes('href', $url, $linkOptions);
 
                 $html .= self::openTag('li', $row);  
-                $html .= self::tag('a', array('href' => $url), $label);
+                $html .= self::tag('a', $linkOptions, $label);
                 $html .= self::closeTag('li');
             }
         }
@@ -638,7 +1185,7 @@ class Bootstrap
 
     public static function link($url, $title, $htmlOptions = array())
     {
-        self::addAttributes('href', $url, $htmlOptions);
+        self::addAttributes('href', $url == '' ? '#' : $url, $htmlOptions);
         if(self::getValue($htmlOptions, 'icon', '', false)) {
             $title = self::icon(self::getValue($htmlOptions, 'icon')). ' ' .$label;
         }
@@ -715,11 +1262,10 @@ class Bootstrap
     {
         $html = '<'. $tag . self::parseAttributes($htmlOptions);
         if($content === false) {
-            $html .= $closeTag ? ' />' : '>';
+            $html .= $closeTag ? ' />' : '> ';
         } else {
             $html .= $closeTag ? '>'. $content . self::closeTag($tag)  : '>'. $content;
         }
-        $html .= ' ';
         return $html;
     }
 
@@ -730,7 +1276,7 @@ class Bootstrap
 
     protected static function closeTag($tag)
     {
-        return '</'. $tag .'>';
+        return '</'. $tag .'> ';
     }
 
     protected static function parseAttributes($htmlOptions = array())
@@ -776,7 +1322,7 @@ class Bootstrap
         if(isset($htmlOptions[$key]) && $htmlOptions[$key] == true) {
             self::addAttributes($attr, $ifTrue, $htmlOptions);
             if($attr !== $key) {
-                self::remove($key, $htmlOptions);
+                self::remove($htmlOptions, $key);
             }
         }
     }
@@ -795,16 +1341,30 @@ class Bootstrap
         self::changeValue($key, $value, $htmlOptions, $preffix, $suffix);
     }
 
-    protected static function moveValue(array &$before, $key1, array &$after, $key2, $ifNull = '', $preffix = '', $suffix = '')
-    {
+    protected static function moveValue(
+        array &$before, 
+        $key1, 
+        array &$after, 
+        $key2, 
+        $ifNull = '', 
+        $preffix = '', 
+        $suffix = ''
+    ) {
         $value = self::getValue($before, $key1, $ifNull);
         if($value !== '') {
             self::addAttributes($key2, $preffix . $value . $suffix, $after);
         }
     }
 
-    protected static function copyValue(array &$before, $key1, array &$after, $key2, $ifNull = '', $preffix = '', $suffix = '')
-    {
+    protected static function copyValue(
+        array &$before, 
+        $key1, 
+        array &$after, 
+        $key2, 
+        $ifNull = '', 
+        $preffix = '', 
+        $suffix = ''
+    ) {
         $value = self::getValue($before, $key1, $ifNull, false);
         if($value !== '') {
             self::addAttributes($key2, $preffix . $value . $suffix, $after);
@@ -828,12 +1388,12 @@ class Bootstrap
     {
         $val = isset($array[$attr]) ? $array[$attr] : $ifNull;
         if($unset === true) {
-            self::remove($attr, $array);
+            self::remove($array, $attr);
         }
         return $val;
     }
 
-    protected static function remove($string, array &$array)
+    protected static function remove(array &$array, $string)
     {
         unset($array[$string]);
     }
@@ -843,9 +1403,179 @@ class Bootstrap
         return self::$ID;
     }
 
-    protected static function setId()
+    protected static function generateId()
     {
         self::$ID = self::$idName . self::$idNumber ++;
+    }
+
+    protected static function getInstance()
+    {
+        if(self::$CI === null) {
+            self::$CI = get_instance();
+        }
+        return self::$CI;
+    }
+}
+
+class TbForm extends Bootstrap
+{
+    const FIELD_TYPE_TEXT = 'textField';
+    const FIELD_TYPE_EMAIL = 'emailField';
+    const FIELD_TYPE_PASSWORD = 'passwordField';
+    const FIELD_TYPE_FILE = 'fileField';
+    const FIELD_TYPE_TEXTAREA = 'textArea';
+
+    protected $type = '';
+    protected $left = 2;
+    protected $right = 10;
+
+    public function __construct($config = array())
+    {
+        $this->type = $this->getValue($config, 'type', '', false);
+        $this->left = $this->getValue($config, 'leftRow', 2);
+        $this->right = $this->getValue($config, 'rightRow', 10);
+        $action = $this->getValue($config, 'action', '');
+        $this->changeValue('class', 'type', $config, 'form-');
+        $this->addAttributes('role', 'form', $config);
+        echo $this->formOpen($action, $config);
+    }
+
+    public function end()
+    {
+        echo $this->formClose();
+    }
+
+    public function textFieldRow($name, $label = '', $htmlOptions = array())
+    {
+        return $this->fieldControlGroup(self::FIELD_TYPE_TEXT, $name, $label, $htmlOptions);
+    }
+
+    public function passwordFieldRow($name, $label = '', $htmlOptions = array())
+    {
+        return $this->fieldControlGroup(self::FIELD_TYPE_PASSWORD, $name, $label, $htmlOptions);
+    }
+
+    public function emailFieldRow($name, $label = '', $htmlOptions = array())
+    {
+        return $this->fieldControlGroup(self::FIELD_TYPE_EMAIL, $name, $label, $htmlOptions);
+    }
+
+    public function fileFieldRow($name, $label = '', $htmlOptions = array())
+    {
+        return $this->fieldControlGroup(self::FIELD_TYPE_FILE, $name, $label, $htmlOptions);
+    }
+
+    public function textAreaRow($name, $label = '', $htmlOptions = array())
+    {
+        return $this->fieldControlGroup(self::FIELD_TYPE_TEXTAREA, $name, $label, $htmlOptions);
+    }
+
+    public function radioButtonInlineListROw($labelOne, $name,  $active = '', $list = array(), $htmlOptions = array())
+    {
+        $this->addAttributes('type', 'radioButtonInline', $htmlOptions);
+        return $this->checkBoxListRow($labelOne, $name, $active, $list, $htmlOptions);
+    }
+
+    public function checkBoxInlineListRow($labelOne, $name,  $active = '', $list = array(), $htmlOptions = array())
+    {
+        $this->addAttributes('type', 'checkBoxInline', $htmlOptions);
+        return $this->checkBoxListRow($labelOne, $name, $active, $list, $htmlOptions);
+    }
+
+    public function radioButtonListRow($labelOne, $name,  $active = '', $list = array(), $htmlOptions = array())
+    {
+        $this->addAttributes('type', 'radioButton', $htmlOptions);
+        return $this->checkBoxListRow($labelOne, $name, $active, $list, $htmlOptions);
+    }
+
+    public function checkBoxListRow($labelOne, $name,  $active = '', $list = array(), $htmlOptions = array())
+    {
+        $help = $this->getHelpBlock($htmlOptions);
+        $left = $this->labelRow($labelOne, $name);
+        $right = $this->checkBoxList($name, $active, $list, $htmlOptions);
+        return $this->formControlGroup($left, $right . $help);
+    }
+
+    public function radioButtonRow($labelOne, $name, $labelTwo, $value = '', $htmlOptions = array())
+    {
+        $this->addAttributes('type', 'radio', $htmlOptions);
+        return $this->checkBoxRow($labelOne, $name, $labelTwo, $value, $htmlOptions);
+    }
+
+    public function checkBoxRow($labelOne, $name, $labelTwo, $value = '', $htmlOptions = array())
+    {
+        $help = $this->getHelpBlock($htmlOptions);
+        $left = $this->labelRow($labelOne, $name);
+        $right = $this->checkBox($name, $labelTwo, $value, $htmlOptions);
+        return $this->formControlGroup($left, $right . $help);
+    }
+
+    protected function fieldControlGroup($type, $name, $label = '', $htmlOptions = array())
+    {
+        $help = $this->getHelpBlock($htmlOptions);
+        $formLabel = $this->labelRow($label, $name);
+        $formInput = $this->$type($name, '', $htmlOptions);
+        return $this->formControlGroup($formLabel, $formInput . $help);
+    }
+
+    public function submitButton($label, $htmlOptions = array())
+    {
+        $help = $this->getHelpBlock($htmlOptions);
+        $this->addAttributes('type', self::BUTTON_TYPE_SUBMIT, $htmlOptions);
+        return $this->formControlGroup('', $this->button($label, $htmlOptions) . $help);
+    }
+
+    public function dropDownListRow($label, $name, $active = '', $list = array(), $htmlOptions = array())
+    {
+        $help = $this->getHelpBlock($htmlOptions);
+        $left = $this->labelRow($label, $name);
+        $right = $this->dropDownList($name, $active, $list, $htmlOptions);
+        return $this->formControlGroup($left, $right . $help);
+    }
+
+    public function multiDropDownListRow($label, $name, $active = '', $list = array(), $htmlOptions = array())
+    {
+        $this->addAttributes('multiple', 'multiple', $htmlOptions);
+        return $this->dropDownListRow($label, $name, $active, $list, $htmlOptions);
+    }
+
+    public function labelRow($text, $for = '', $htmlOptions = array())
+    {
+        if($this->type === self::FORM_TYPE_INLINE) {
+            $this->addCssClass('sr-only', $htmlOptions);
+        } elseif ($this->type === self::FORM_TYPE_HORIZONTAL) {
+            $this->addCssClass('control-label pull-right', $htmlOptions);            
+        }
+        return $text == '' || $text == false ? '' : $this->label($text, $for, $htmlOptions);
+    }
+
+    protected function getHelpBlock(array &$htmlOptions)
+    {
+        $help = '';
+        if($this->getValue($htmlOptions, 'help', false, false)) {
+            $help = $this->helpBlock($this->getValue($htmlOptions, 'help'));
+        }
+        return $help;
+    }
+
+    public function helpBlock($text, $htmlOptions = array())
+    {
+        $this->addCssClass('help-block', $htmlOptions);
+        $text = $this->tag('p', $htmlOptions, $text);
+        return $text;
+    }
+
+    public function formControlGroup($left = '', $right = '')
+    {
+        $html = $this->openTag('div', array('class' => 'form-group'));
+        if($this->type === self::FORM_TYPE_HORIZONTAL) {
+            $html .= $this->tag('div', array('class' => 'col-lg-'. $this->left), $left);
+            $html .= $this->tag('div', array('class' => 'col-lg-'. $this->right), $right);
+        } else {
+            $html .= $left . $right;
+        }
+        $html .= $this->closeTag('div');
+        return $html;
     }
 }
 
