@@ -3,4 +3,4 @@ CodeIgniterStrap
 
 CodeIgniter library to easy the use of twitter bootstrap 3
 
-## Alpha version
+## Version 1.0
