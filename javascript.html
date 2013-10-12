@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Javascript - CodeIgniterStrap</title>
+
+<!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.css" rel="stylesheet">
+
+<!-- Documentation extras -->
+<link href="assets/css/docs.css" rel="stylesheet">
+<link href="assets/css/pygments-manni.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/CIStrap/assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/CIStrap/assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/CIStrap/assets/ico/apple-touch-icon-72-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" href="/CIStrap/assets/ico/apple-touch-icon-57-precomposed.png">
+                               <link rel="shortcut icon" href="/CIStrap/assets/ico/favicon.png">
+
+    <!-- Place anything custom after this. -->
+  </head>
+  <body>
+
+<nav class="bs-docs-nav navbar-fixed-top navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tb_0"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="index.html">CodeIgniterStrap</a> </div> <div class="collapse navbar-collapse" id="Tb_0"> <ul class="navbar-nav nav"> <li> <a href="started.html">Getting started</a> </li> <li> <a href="basics.html">Basics</a> </li> <li> <a href="components.html">Components</a> </li> <li class="active"> <a href="javascript.html">JavaScript</a> </li> </ul> </div> </div> </nav> 
+    <div class="container bs-docs-container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="bs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-sidenav">
+            
+<li><a href="#modals">Modal</a></li>
+<li><a href="#tabs">Tab</a></li>
+<li><a href="#tooltips">Tooltip</a></li>
+<li><a href="#popovers">Popover</a></li>
+<li><a href="#collapse">Collapse</a></li>
+<li><a href="#carousel">Carousel</a></li>
+              
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9" role="main">
+ 
+
+  <!-- Modal
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="modals">Modals <small>modal.js</small></h1>
+    </div>
+
+    <h2 id="modals-examples">Examples</h2>
+    <!-- sample modal content -->
+<div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button class="close" data-dismiss="modal" aria-hidden="true" type="button">&times;</button> <h4 class="modal-title">Modal Heading</h4> </div> <div class="modal-body"> <p>One fine body...</p></div> <div class="modal-footer"> <button data-dismiss="modal" class="btn btn-primary">Save Changes</button> <button data-dismiss="modal" class="btn btn-default">Close</button> </div> </div> </div> </div> <!-- /.modal -->
+
+    <div class="bs-example" style="padding-bottom: 24px;">
+<a data-toggle="modal" class="btn btn-default" href="#myModal">Launch demo modal</a>     </div><!-- /example -->
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::modal<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'id' <span class="nt">=&gt;</span> 'myModal',
+    'header' <span class="nt">=&gt;</span> 'Modal Heading',
+    'body' <span class="nt">=&gt;</span> '&lt;p&gt;One fine body...&lt;/p&gt;',
+    'footer' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">Tb</span>::button<span class="na">(</span>'Save Changes', <span class="na">array</span><span class="na">(</span>'data-dismiss' <span class="nt">=&gt;</span> 'modal', 'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY<span class="na">)</span><span class="na">)</span>,
+        <span class="na">Tb</span>::button<span class="na">(</span>'Close', <span class="na">array</span><span class="na">(</span>'data-dismiss' <span class="nt">=&gt;</span> 'modal'<span class="na">)</span><span class="na">)</span>,
+     <span class="na">)</span>,
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Launch demo modal', 
+    <span class="na">array</span><span class="na">(</span>'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_LINK, 'url' <span class="nt">=&gt;</span> '#myModal', 'data-toggle' <span class="nt">=&gt;</span> 'modal'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+  </div>
+
+  <!-- Tabs
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="tabs">Togglable tabs <small>tab.js</small></h1>
+    </div>
+
+    <h2 id="tabs-examples">Example tabs</h2>
+    <div class="bs-example bs-example-tabs">
+
+<ul class="nav-tabs nav"> <li class="active"> <a data-toggle="tab" href="#Tb_1">Home</a> </li> <li> <a data-toggle="tab" href="#Tb_2">Profile</a> </li> <li class="dropdown"> <a href="#Tb_3" class="dropdown-toggle" data-toggle="dropdown">Messages<span class="caret"></span> </a> <ul class="dropdown-menu" role="menu"> <li> <a data-toggle="tab" href="#Tb_4">@fat</a> </li> <li> <a data-toggle="tab" href="#Tb_5">@mdo</a> </li> </ul> </li> </ul> <div class="tab-content"> <div class="tab-pane fade in active" id="Tb_1"> home content</div> <div class="tab-pane fade in " id="Tb_2"> profile content</div> <div class="tab-pane fade in " id="Tb_4"> fat content</div> <div class="tab-pane fade in " id="Tb_5"> mbo content</div> </div> 
+    </div><!-- /example -->
+<div class="highlight">
+
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::tabs<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'tabs' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Home', 'content' <span class="nt">=&gt;</span> 'home content', 'active' <span class="nt">=&gt;</span> true<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Profile', 'content' <span class="nt">=&gt;</span> 'profile content'<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Messages', 'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+            <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> '@fat', 'content' <span class="nt">=&gt;</span> 'fat content'<span class="na">)</span>,
+            <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> '@mdo', 'content' <span class="nt">=&gt;</span> 'mbo content'<span class="na">)</span>,
+        <span class="na">)</span><span class="na">)</span>,
+    <span class="na">)</span>,
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+
+</div>
+
+  </div>
+
+
+
+  <!-- Tooltips
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="tooltips">Tooltips <small>tooltip.js</small></h1>
+    </div>
+
+    <h2 id="tooltips-examples">Examples</h2>
+    <h3>Basic</h3>
+    <div class="bs-example tooltip-demo">
+<p>Tight pants next level keffiyeh <a data-toggle="tooltip" data-original-title="Default tooltip" href="#">you probably</a>  haven\'t heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney\'s fixie sustainable quinoa 8-bit american apparel <a data-toggle="tooltip" data-original-title="Another tooltip" href="#">have a</a>  richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney\'s cleanse vegan chambray. A really ironic artisan <a data-toggle="tooltip" data-original-title="Another one here too" href="#">whatever keytar</a> , scenester farm-to-table banksy Austin twitter handle freegan cred raw denim single-origin coffee viral.</p>
+    </div><!-- /example -->
+
+<div class="highlight">
+<pre><code class="html">&lt;p&gt;Tight pants next level keffiyeh <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::tooltip<span class="na">(</span>'you probably', '#', 'Default tooltip'<span class="na">)</span>; <span class="nt">?&gt;</span> haven\'t heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney\'s fixie sustainable quinoa 8-bit american apparel <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::tooltip<span class="na">(</span>'have a', '#', 'Another tooltip'<span class="na">)</span>; <span class="nt">?&gt;</span> richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney\'s cleanse vegan chambray. A really ironic artisan <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::tooltip<span class="na">(</span>'whatever keytar', '#', 'Another one here too'<span class="na">)</span>; <span class="nt">?&gt;</span>, scenester farm-to-table banksy Austin twitter handle freegan cred raw denim single-origin coffee viral.&lt;/p&gt; </code></pre>
+</div>
+
+
+    <h3>Four directions</h3>
+    <div class="bs-example tooltip-demo">
+     
+
+    <a class="btn btn-default" data-toggle="tooltip" data-original-title="Tooltip on left" data-placement="left" href="#">Tooltip on left</a>     <a class="btn btn-default" data-toggle="tooltip" data-original-title="Tooltip on top" href="#">Tooltip on top</a>     <a class="btn btn-default" data-toggle="tooltip" data-original-title="Tooltip on bottom" data-placement="bottom" href="#">Tooltip on bottom</a>     <a class="btn btn-default" data-toggle="tooltip" data-original-title="Tooltip on right" data-placement="right" href="#">Tooltip on right</a> 
+    </div><!-- /example -->
+
+    <div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::tooltip<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'placement' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TOOLTIP_PLACEMENT_LEFT, 'class' <span class="nt">=&gt;</span> 'btn btn-default'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::tooltip<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'class' <span class="nt">=&gt;</span> 'btn btn-default'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::tooltip<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'placement' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TOOLTIP_PLACEMENT_BOTTOM, 'class' <span class="nt">=&gt;</span> 'btn btn-default'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::tooltip<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'placement' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TOOLTIP_PLACEMENT_RIGHT, 'class' <span class="nt">=&gt;</span> 'btn btn-default'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+
+</div>
+
+    <div class="bs-callout bs-callout-info">Add this script at the bottom of page
+<code>jQuery('[data-toggle=tooltip]').tooltip();</code>
+    </div>
+
+  </div>
+
+  <!-- Popovers
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="popovers">Popovers <small>popover.js</small></h1>
+    </div>
+
+    <h2 id="popovers-examples">Examples</h2>
+    <h3>Live demo</h3>
+    <div class="bs-example" style="padding-bottom: 24px;">
+
+<a class="btn btn-danger btn-lg" data-content="And here's some amazing content. It's very engaging. right?" data-toggle="popover" data-original-title="A title" href="#">Click to toggle popover</a> 
+    </div>
+    <div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::popover<span class="na">(</span>'Click to toggle popover', 'A title', '...', <span class="na">array</span><span class="na">(</span>'class' <span class="nt">=&gt;</span> 'btn btn-danger btn-lg'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+
+</div>
+
+    <h3>Four directions</h3>
+    <div class="bs-example tooltip-demo">
+
+<a class="btn btn-default" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-toggle="popover" data-placement="left" href="#">Popover on left</a> <a class="btn btn-default" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-toggle="popover" data-placement="top" href="#">Popover on top</a> <a class="btn btn-default" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-toggle="popover" data-placement="bottom" href="#">Popover on bottom</a> <a class="btn btn-default" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-toggle="popover" data-placement="right" href="#">Popover on right</a> 
+
+
+    </div><!-- /example -->
+    <div class="highlight">
+
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::popover<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'class' <span class="nt">=&gt;</span> 'btn btn-default', 'placement' <span class="nt">=&gt;</span> <span class="na">Tb</span>::POPOVER_PLACEMENT_LEFT<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::popover<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'class' <span class="nt">=&gt;</span> 'btn btn-default', 'placement' <span class="nt">=&gt;</span> <span class="na">Tb</span>::POPOVER_PLACEMENT_TOP<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::popover<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'class' <span class="nt">=&gt;</span> 'btn btn-default', 'placement' <span class="nt">=&gt;</span> <span class="na">Tb</span>::POPOVER_PLACEMENT_BOTTOM<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::popover<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'class' <span class="nt">=&gt;</span> 'btn btn-default'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+
+</div>
+
+    <div class="bs-callout bs-callout-info">Add this script at the bottom of page
+<code>jQuery('[data-toggle=popover]').popover();</code>
+    </div>
+  </div>
+
+  <!-- Collapse
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="collapse">Collapse <small>collapse.js</small></h1>
+    </div>
+    <h2 id="collapse-examples">Example accordion</h2>
+
+    <div class="bs-example">
+
+<div class="panel-group" id="Tb_6"> <div class="panel-default panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_6" href="#Tb_7">Collapsible Group Item #1</a> </h3> </div> <div class="panel-collapse collapse in" id="Tb_7"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-default panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_6" href="#Tb_8">Collapsible Group Item #2</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_8"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-default panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_6" href="#Tb_9">Collapsible Group Item #3</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_9"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> </div> 
+    </div><!-- /example -->
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::collapse<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'autoOpen' <span class="nt">=&gt;</span> true,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        'Collapsible Group Item #1' <span class="nt">=&gt;</span> '...',
+        'Collapsible Group Item #2' <span class="nt">=&gt;</span> '...',
+        'Collapsible Group Item #3' <span class="nt">=&gt;</span> '...',
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+    
+    <h3>Options</h3>
+    <div class="bs-example">
+<div class="panel-group" id="Tb_10"> <div class="panel-primary panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_10" href="#Tb_11">Collapsible Group Item #1</a> </h3> </div> <div class="panel-collapse collapse in" id="Tb_11"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-primary panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_10" href="#Tb_12">Collapsible Group Item #2</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_12"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-primary panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_10" href="#Tb_13">Collapsible Group Item #3</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_13"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> </div> 
+<br />
+<br />
+
+<div class="panel-group" id="Tb_14"> <div class="panel-success panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_14" href="#Tb_15">Collapsible Group Item #1</a> </h3> </div> <div class="panel-collapse collapse in" id="Tb_15"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-success panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_14" href="#Tb_16">Collapsible Group Item #2</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_16"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-success panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_14" href="#Tb_17">Collapsible Group Item #3</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_17"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> </div> <br />
+<br />
+<div class="panel-group" id="Tb_18"> <div class="panel-info panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_18" href="#Tb_19">Collapsible Group Item #1</a> </h3> </div> <div class="panel-collapse collapse in" id="Tb_19"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-info panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_18" href="#Tb_20">Collapsible Group Item #2</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_20"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-info panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_18" href="#Tb_21">Collapsible Group Item #3</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_21"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> </div> <br />
+<br />
+<div class="panel-group" id="Tb_22"> <div class="panel-warning panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_22" href="#Tb_23">Collapsible Group Item #1</a> </h3> </div> <div class="panel-collapse collapse in" id="Tb_23"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-warning panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_22" href="#Tb_24">Collapsible Group Item #2</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_24"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-warning panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_22" href="#Tb_25">Collapsible Group Item #3</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_25"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> </div> <br />
+<br />
+<div class="panel-group" id="Tb_26"> <div class="panel-danger panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_26" href="#Tb_27">Collapsible Group Item #1</a> </h3> </div> <div class="panel-collapse collapse in" id="Tb_27"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-danger panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_26" href="#Tb_28">Collapsible Group Item #2</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_28"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> <div class="panel-danger panel"> <div class="panel-heading"><h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#Tb_26" href="#Tb_29">Collapsible Group Item #3</a> </h3> </div> <div class="panel-collapse collapse " id="Tb_29"> <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div> </div> </div> </div> </div>
+    <div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::collapse<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    '...'
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::<span class="na">Tb</span>::COLLAPSE_COLOR_PRIMARY<span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::collapse<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    '...'
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::<span class="na">Tb</span>::COLLAPSE_COLOR_SUCCESS<span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::collapse<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    '...'
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::<span class="na">Tb</span>::COLLAPSE_COLOR_INFO<span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::collapse<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    '...'
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::<span class="na">Tb</span>::COLLAPSE_COLOR_WARNING<span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::collapse<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    '...'
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::<span class="na">Tb</span>::COLLAPSE_COLOR_DANGER<span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+
+</div>
+  </div>
+
+
+
+  <!-- Carousel
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="carousel">Carousel <small>carousel.js</small></h1>
+    </div>
+
+    <h2 id="carousel-examples">Examples</h2>
+    <div class="bs-example">
+
+<div id="Tb_30" class="carousel slide"> <ol class="carousel-indicators"> <li data-target="#Tb_30" data-slide-to="0" class="active"></li> <li data-target="#Tb_30" data-slide-to="1"></li> <li data-target="#Tb_30" data-slide-to="2"></li> </ol> <div class="carousel-inner"> <div class="item active"> <img src="holder.js/900x500/auto/#777:#555" /></div> <div class="item "> <img src="holder.js/900x500/auto/#777:#444" /></div> <div class="item "> <img src="holder.js/900x500/auto/#777:#555" /></div> </div> <a class="left carousel-control" data-slide="prev" href="#Tb_30"><span class="icon-prev"></span> </a> <a class="right carousel-control" data-slide="next" href="#Tb_30"><span class="icon-next"></span> </a> </div> 
+    </div><!-- /example -->
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::carousel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'image' <span class="nt">=&gt;</span> 'path/to/image', 'First slide'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'image' <span class="nt">=&gt;</span> 'path/to/image', 'Second slide'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'image' <span class="nt">=&gt;</span> 'path/to/image', 'Third slide'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+    <h3>Optional captions</h3>
+    <div class="bs-example">
+<div id="Tb_31" class="carousel slide"> <ol class="carousel-indicators"> <li data-target="#Tb_31" data-slide-to="0" class="active"></li> <li data-target="#Tb_31" data-slide-to="1"></li> <li data-target="#Tb_31" data-slide-to="2"></li> </ol> <div class="carousel-inner"> <div class="item active"> <img src="holder.js/900x500/auto/#777:#555" /><div class="carousel-caption"> <h3>First slide label</h3> <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> </div> </div> <div class="item "> <img src="holder.js/900x500/auto/#777:#444" /><div class="carousel-caption"> <h3>Second slide label</h3> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> </div> </div> <div class="item "> <img src="holder.js/900x500/auto/#777:#555" /><div class="carousel-caption"> <h3>Third slide label</h3> <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> </div> </div> </div> <a class="left carousel-control" data-slide="prev" href="#Tb_31"><span class="icon-prev"></span> </a> <a class="right carousel-control" data-slide="next" href="#Tb_31"><span class="icon-next"></span> </a> </div> 
+    </div><!-- /example -->
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::carousel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'image' <span class="nt">=&gt;</span> 'path/to/image', 'First slide', 'label' <span class="nt">=&gt;</span> 'First slide label', 'content' <span class="nt">=&gt;</span> '...'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'image' <span class="nt">=&gt;</span> 'path/to/image', 'Second slide', 'label' <span class="nt">=&gt;</span> 'Second slide label', 'content' <span class="nt">=&gt;</span> '...'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'image' <span class="nt">=&gt;</span> 'path/to/image', 'Third slide', 'label' <span class="nt">=&gt;</span> 'Third slide label', 'content' <span class="nt">=&gt;</span> '...'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+  </div>
+
+
+
+        </div>
+      </div>
+
+    </div>
+    <!-- Footer
+    ================================================== -->
+    <footer class="bs-footer" role="contentinfo">
+      <div class="container">
+        <div class="bs-social">
+  <ul class="bs-social-buttons">
+    
+    <li class="follow-btn">
+      <a href="https://twitter.com/cistrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @cistrap</a>
+    </li>
+    <li class="tweet-btn">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://didanurwanda.github.io/CodeIgniterStrap/" data-count="horizontal" data-via="cistrap" data-related="mdo:Creator of CodeIgniterStrap">Tweet</a>
+    </li>
+  </ul>
+</div>
+
+
+
+    <p class="credits">
+      Developed by <a href="http://www.facebook.com/didanurwanda" target="_blank">Dida Nurwanda</a>.
+    </p>
+    <p class="license">
+      Code licensed under <a href="http://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+    </p>
+      </div>
+    </footer>
+
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/dist/js/bootstrap.js"></script>
+<script src="assets/js/holder.js"></script>
+<script src="assets/js/application.js"></script>
+<script type="text/JavaScript">
+!function ($) {
+  jQuery('[data-toggle=tooltip]').tooltip();
+  jQuery('[data-toggle=popover]').popover();
+}(window.jQuery)
+</script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Basics - CodeIgniterStrap</title>
+
+<!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.css" rel="stylesheet">
+
+<!-- Documentation extras -->
+<link href="assets/css/docs.css" rel="stylesheet">
+<link href="assets/css/pygments-manni.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/CIStrap/assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/CIStrap/assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/CIStrap/assets/ico/apple-touch-icon-72-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" href="/CIStrap/assets/ico/apple-touch-icon-57-precomposed.png">
+                               <link rel="shortcut icon" href="/CIStrap/assets/ico/favicon.png">
+
+    <!-- Place anything custom after this. -->
+  </head>
+  <body>
+
+<nav class="bs-docs-nav navbar-fixed-top navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tb_0"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="index.html">CodeIgniterStrap</a> </div> <div class="collapse navbar-collapse" id="Tb_0"> <ul class="navbar-nav nav"> <li> <a href="started.html">Getting started</a> </li> <li class="active"> <a href="basics.html">Basics</a> </li> <li> <a href="components.html">Components</a> </li> <li> <a href="javascript.html">JavaScript</a> </li> </ul> </div> </div> </nav> 
+
+    <div class="container bs-docs-container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="bs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-sidenav">
+              
+<li>
+  <a href="#type">Typography</a>
+  <ul class="nav">
+    <li><a href="#type-lead">Lead</a></li>
+    <li><a href="#type-emphasis">Emphasis</a></li>
+    <li><a href="#type-abbreviations">Abbreviations</a></li>
+    <li><a href="#type-blockquotes">Blockquotes</a></li>
+  </ul>
+</li>
+<li><a href="#code">Code</a></li>
+<li>
+  <a href="#forms">Forms</a>
+  <ul class="nav">
+    <li><a href="#forms-example">Basic example</a></li>
+    <li><a href="#forms-inline">Inline form</a></li>
+    <li><a href="#forms-horizontal">Horizontal form</a></li>
+    <li><a href="#forms-controls">Supported controls</a></li>
+    <li><a href="#forms-form-states">Form states</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#buttons">Buttons</a>
+  <ul class="nav">
+    <li><a href="#buttons-options">Options</a></li>
+    <li><a href="#buttons-sizes">Sizes</a></li>
+    <li><a href="#buttons-block">Block</a></li>
+    <li><a href="#buttons-disabled">Disabled state</a></li>
+    <li><a href="#buttons-tags">Button tags</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#images">Images</a>
+</li>
+
+              
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9" role="main">
+		
+
+
+  <!-- Typography
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="type">Typography</h1>
+    </div>
+
+    <!-- Lead -->
+    <h2 id="type-lead">Lead</h2>
+
+    <div class="bs-example bs-example-type">
+
+<p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p> 	
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::lead<span class="na">(</span>'...'<span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <!-- Emphasis -->
+    <h2 id="type-emphasis">Emphasis</h2>
+
+    <h3>Small text</h3>
+    <div class="bs-example">
+
+<small>This line of text is meant to be treated as fine print.</small> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::small<span class="na">(</span>'...'<span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h3>Bold</h3>
+    <div class="bs-example">
+
+The following snippet of text is <strong>rendered as bold text</strong> .
+	
+    </div>
+<div class="highlight">
+<pre><code class="html">The following snippet of text is <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::b<span class="na">(</span>'rendered as bold text'<span class="na">)</span>; <span class="nt">?&gt;</span>. </code></pre>
+</div>
+
+    <h3>Italics</h3>
+    <div class="bs-example">
+      <p>The following snippet of text is <em>rendered as italicized text</em> .</p>
+    </div>
+<div class="highlight">
+<pre><code class="html">&lt;p&gt;The following snippet of text is <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::i<span class="na">(</span>'rendered as italicized text'<span class="na">)</span>; <span class="nt">?&gt;</span>.&lt;/p&gt; </code></pre>
+</div>
+
+    <h3>Alignment classes</h3>
+    <div class="bs-example">
+	
+<p class="text-left">Left aligned text.</p> <p class="text-center">Center aligned text.</p> <p class="text-right">Right aligned text.</p>  
+	
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::p<span class="na">(</span>'Left aligned text.', <span class="na">array</span><span class="na">(</span>'align' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TEXT_ALIGN_LEFT<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::p<span class="na">(</span>'Center aligned text.', <span class="na">array</span><span class="na">(</span>'align' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TEXT_ALIGN_CENTER<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::p<span class="na">(</span>'Right aligned text.', <span class="na">array</span><span class="na">(</span>'align' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TEXT_ALIGN_RIGHT<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>  </code></pre>
+</div>
+
+    <h3>Emphasis classes</h3>
+    <div class="bs-example">
+
+<p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p> <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p> <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p> <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p> <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p> <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::em<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TEXT_COLOR_MUTED<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::em<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TEXT_COLOR_PRIMARY<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::em<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TEXT_COLOR_SUCCESS<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::em<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TEXT_COLOR_INFO<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::em<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TEXT_COLOR_WARNING<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::em<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::TEXT_COLOR_DANGER<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <!-- Abbreviations -->
+    <h2 id="type-abbreviations">Abbreviations</h2>
+    <h3>Basic abbreviation</h3>
+    <div class="bs-example">
+      <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr> .</p>
+    </div>
+<div class="highlight">
+<pre><code class="html">&lt;p&gt;An abbreviation of the word attribute is <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::abbr<span class="na">(</span>'attr', 'attribute'<span class="na">)</span>; <span class="nt">?&gt;</span>.&lt;/p&gt; </code></pre>
+</div>
+
+    <h3>Initialism</h3>
+    <div class="bs-example">
+      <p><abbr class="initialism" title="HyperText Markup Language">HTML</abbr>  is the best thing since sliced bread.</p>
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::abbr<span class="na">(</span>'HTML', 'HyperText Markup Language', <span class="na">array</span><span class="na">(</span>'class' <span class="nt">=&gt;</span> 'initialism'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span></code></pre>
+</div>
+
+
+    <!-- Blockquotes -->
+    <h2 id="type-blockquotes">Blockquotes</h2>
+    <h3>Default blockquote</h3>
+    <div class="bs-example">
+
+<blockquote><p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p> </blockquote> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::quote<span class="na">(</span>'...'<span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3>Blockquote options</h3>
+    <h4>Naming a source</h4>
+    <div class="bs-example">
+
+<blockquote><p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p> <small>Someone famous in <cite>Source Title</cite> </small> </blockquote> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::quote<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>
+    'small' <span class="nt">=&gt;</span> 'Someone famous in',
+    'cite' <span class="nt">=&gt;</span> 'Source Title'
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+    <h4>Alternate displays</h4>
+    <div class="bs-example" style="overflow: hidden;">
+
+<blockquote class="pull-right"><p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p> <small>Someone famous in <cite>Source Title</cite> </small> </blockquote> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::quote<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>
+    'small' <span class="nt">=&gt;</span> 'Someone famous in',
+    'cite' <span class="nt">=&gt;</span> 'Source Title',
+    'pull' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PULL_RIGHT
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+
+  </div>
+
+
+  <!-- Code
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="code">Code</h1>
+    </div>
+
+    <h2>Inline</h2>
+<div class="bs-example">
+For example, <code>&lt;section&gt;</code>  should be wrapped as inline.
+</div>
+<div class="highlight">
+<pre><code class="html">For example, <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::code<span class="na">(</span>'&lt;section&gt;'<span class="na">)</span>; <span class="nt">?&gt;</span> should be wrapped as inline. </code></pre>
+</div>
+
+    <h2>Basic block</h2>
+    <div class="bs-example">
+<pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre> </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::codeBlock<span class="na">(</span>'&lt;p&gt;Sample text here...&lt;/p&gt;'<span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+  </div>
+
+
+  <!-- Forms
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="forms">Forms</h1>
+    </div>
+
+    <h2 id="forms-example">Basic example</h2>
+
+<form action="basics.html" method="post" accept-charset="utf-8" class="bs-example" role="form"><div class="form-group"> <label for="fieldname">Email address</label><input type="email" name="fieldname" value="" placeholder="Enter email" class="form-control"  /></div> <div class="form-group"> <label for="fieldname">Password</label><input type="password" name="fieldname" value="" placeholder="Password" class="form-control"  /></div> <div class="form-group"> <label for="fieldname">File input</label><input type="file" name="fieldname" value=""  /><p class="help-block">Example block-level help text here.</p> </div> <div class="form-group"> <div class="checkbox"> <label> <input type="checkbox" name="fieldname" value="valuefield"  /> Check me out</label> </div> </div> <div class="form-group"> <button class="btn btn-default">Submit</button> </div> </form>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;?php</span> 
+    $form = <span class="na">Tb</span>::form<span class="na">(</span><span class="na">array</span><span class="na">(</span>'class' <span class="nt">=&gt;</span> 'bs-example'<span class="na">)</span><span class="na">)</span>;
+    <span class="s">echo</span> $form-&gt;emailFieldRow<span class="na">(</span>'fieldname', 'Email address', <span class="na">array</span><span class="na">(</span>'placeholder' <span class="nt">=&gt;</span> 'Enter email'<span class="na">)</span><span class="na">)</span>; 
+    <span class="s">echo</span> $form-&gt;passwordFieldRow<span class="na">(</span>'fieldname', 'Password', <span class="na">array</span><span class="na">(</span>'placeholder' <span class="nt">=&gt;</span> 'Password'<span class="na">)</span><span class="na">)</span>;
+    <span class="s">echo</span> $form-&gt;fileFieldRow<span class="na">(</span>'fieldname', 'File input', <span class="na">array</span><span class="na">(</span>
+        'help' <span class="nt">=&gt;</span> 'Example block-level help text here.'
+    <span class="na">)</span><span class="na">)</span>; 
+    <span class="s">echo</span> $form-&gt;checkBoxRow<span class="na">(</span>'', 'fieldname', 'Check me out', 'valuefield'<span class="na">)</span>;
+    <span class="s">echo</span> $form-&gt;submitButton<span class="na">(</span>'Submit'<span class="na">)</span>;
+    $form-&gt;end<span class="na">(</span><span class="na">)</span>; 
+<span class="nt">?&gt;</span> </code></pre></div>
+
+
+    <h2 id="forms-inline">Inline form</h2>
+
+<form action="basics.html" method="post" accept-charset="utf-8" class="bs-example form-inline" role="form"><div class="form-group"> <label for="fieldname" class="sr-only">Email address</label><input type="email" name="fieldname" value="" placeholder="Enter email" class="form-control"  /></div> <div class="form-group"> <label for="fieldname" class="sr-only">Password</label><input type="password" name="fieldname" value="" placeholder="Password" class="form-control"  /></div> <div class="form-group"> <div class="checkbox"> <label> <input type="checkbox" name="fieldname" value="valuefield"  /> Remember me</label> </div> </div> <div class="form-group"> <button class="btn btn-default">Sign In</button> </div> </form>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> 
+    $form = <span class="na">Tb</span>::form<span class="na">(</span><span class="na">array</span><span class="na">(</span>'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::FORM_TYPE_INLINE<span class="na">)</span><span class="na">)</span>;
+    <span class="s">echo</span> $form-&gt;emailFieldRow<span class="na">(</span>'fieldname', 'Email address', <span class="na">array</span><span class="na">(</span>'placeholder' <span class="nt">=&gt;</span> 'Enter email'<span class="na">)</span><span class="na">)</span>; 
+    <span class="s">echo</span> $form-&gt;passwordFieldRow<span class="na">(</span>'fieldname', 'Password', <span class="na">array</span><span class="na">(</span>'placeholder' <span class="nt">=&gt;</span> 'Password'<span class="na">)</span><span class="na">)</span>;
+    <span class="s">echo</span> $form-&gt;checkBoxRow<span class="na">(</span>'', 'fieldname', 'Remember me', 'valuefield'<span class="na">)</span>;
+    <span class="s">echo</span> $form-&gt;submitButton<span class="na">(</span>'Sign In'<span class="na">)</span>;
+    $form-&gt;end<span class="na">(</span><span class="na">)</span>; 
+<span class="nt">?&gt;</span> </code></pre></div>
+
+
+    <h2 id="forms-horizontal">Horizontal form</h2>
+<form action="basics.html" method="post" accept-charset="utf-8" class="bs-example form-horizontal" role="form"><div class="form-group"> <div class="col-lg-2"><label for="fieldname" class="control-label pull-right">Email address</label></div> <div class="col-lg-10"><input type="email" name="fieldname" value="" placeholder="Enter email" class="form-control"  /></div> </div> <div class="form-group"> <div class="col-lg-2"><label for="fieldname" class="control-label pull-right">Password</label></div> <div class="col-lg-10"><input type="password" name="fieldname" value="" placeholder="Password" class="form-control"  /></div> </div> <div class="form-group"> <div class="col-lg-2"></div> <div class="col-lg-10"><div class="checkbox"> <label> <input type="checkbox" name="fieldname" value="valuefield"  /> Remember me</label> </div> </div> </div> <div class="form-group"> <div class="col-lg-2"></div> <div class="col-lg-10"><button class="btn btn-default">Sign In</button> </div> </div> </form>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> 
+    $form = <span class="na">Tb</span>::form<span class="na">(</span><span class="na">array</span><span class="na">(</span>'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::FORM_TYPE_HORIZONTAL<span class="na">)</span><span class="na">)</span>; 
+    <span class="s">echo</span> $form-&gt;emailFieldRow<span class="na">(</span>'fieldname', 'Email address', <span class="na">array</span><span class="na">(</span>'placeholder' <span class="nt">=&gt;</span> 'Enter email'<span class="na">)</span><span class="na">)</span>; 
+    <span class="s">echo</span> $form-&gt;passwordFieldRow<span class="na">(</span>'fieldname', 'Password', <span class="na">array</span><span class="na">(</span>'placeholder' <span class="nt">=&gt;</span> 'Password'<span class="na">)</span><span class="na">)</span>;
+    <span class="s">echo</span> $form-&gt;checkBoxRow<span class="na">(</span>'', 'fieldname', 'Remember me', 'valuefield'<span class="na">)</span>;
+    <span class="s">echo</span> $form-&gt;submitButton<span class="na">(</span>'Sign In'<span class="na">)</span>;
+    $form-&gt;end<span class="na">(</span><span class="na">)</span>; 
+<span class="nt">?&gt;</span> </code></pre></div>
+
+
+    <h2 id="forms-controls">Supported controls</h2>
+    <h3>Inputs</h3>
+    <form class="bs-example">
+<input type="text" name="fieldname" value="" placeholder="Text input" class="form-control"  />    </form>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>'placeholder' <span class="nt">=&gt;</span> 'Text input'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3>Textarea</h3>
+    <form class="bs-example">
+<textarea name="fieldname" cols="40" rows="3" class="form-control" ></textarea>    </form>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textArea<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>'rows' <span class="nt">=&gt;</span> 3<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3>Checkboxes and radios</h3>
+    <h4>Default (stacked)</h4>
+    <form class="bs-example">
+
+<div class="checkbox"> <label> <input type="checkbox" name="name" value="value"  /> Option one is this and that&mdash;be sure to include why it's great</label> </div> 
+      <br>
+
+<div class="radio"> <label> <input type="radio" name="name" value="option1" checked="checked"  /> Option one is this and that&mdash;be sure to include why it's great</label> </div> <div class="radio"> <label> <input type="radio" name="name" value="option2"  /> Option two can be something else and selecting it will deselect option one</label> </div> 
+    </form>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::checkBox<span class="na">(</span>'name', '...', 'value'<span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::radioButton<span class="na">(</span>'name', '...', 'option1', <span class="na">array</span><span class="na">(</span>'checked' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::radioButton<span class="na">(</span>'name', '...', 'option2'<span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h4>Inline</h4>
+    <form class="bs-example">
+
+<label class="checkbox-inline"> <input type="checkbox" name="name" value="option1"  /> 1</label> <label class="checkbox-inline"> <input type="checkbox" name="name" value="option2"  /> 2</label> <label class="checkbox-inline"> <input type="checkbox" name="name" value="option3"  /> 3</label> 
+<br />
+
+<label class="radio-inline"> <input type="radio" name="name" value="option1"  /> 1</label> <label class="radio-inline"> <input type="radio" name="name" value="option2"  /> 2</label> <label class="radio-inline"> <input type="radio" name="name" value="option3"  /> 3</label> 
+    </form>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::checkBoxInlineList<span class="na">(</span>'name', '', <span class="na">array</span><span class="na">(</span>
+    'option1' <span class="nt">=&gt;</span> 1,
+    'option2' <span class="nt">=&gt;</span> 2,
+    'option3' <span class="nt">=&gt;</span> 3
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::radioButtonInlineList<span class="na">(</span>'name', '', <span class="na">array</span><span class="na">(</span>
+    'option1' <span class="nt">=&gt;</span> 1,
+    'option2' <span class="nt">=&gt;</span> 2,
+    'option3' <span class="nt">=&gt;</span> 3
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+    <h3>Selects</h3>
+    <form class="bs-example">
+<select name="name"  class="form-control">
+<option value="option1">1</option>
+<option value="option2">2</option>
+<option value="option3">3</option>
+<option value="option4">4</option>
+<option value="option5">5</option>
+</select>
+      <br>
+
+<select name="name"  multiple="multiple" class="form-control">
+<option value="option1">1</option>
+<option value="option2">2</option>
+<option value="option3">3</option>
+<option value="option4">4</option>
+<option value="option5">5</option>
+</select>
+    </form>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::dropDownList<span class="na">(</span>'name', '', <span class="na">array</span><span class="na">(</span>
+    'option1' <span class="nt">=&gt;</span> 1,
+    'option2' <span class="nt">=&gt;</span> 2,
+    'option3' <span class="nt">=&gt;</span> 3,
+    'option4' <span class="nt">=&gt;</span> 4,
+    'option5' <span class="nt">=&gt;</span> 5
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::multiDropDownList<span class="na">(</span>'name', '', <span class="na">array</span><span class="na">(</span>
+    'option1' <span class="nt">=&gt;</span> 1,
+    'option2' <span class="nt">=&gt;</span> 2,
+    'option3' <span class="nt">=&gt;</span> 3,
+    'option4' <span class="nt">=&gt;</span> 4,
+    'option5' <span class="nt">=&gt;</span> 5
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="forms-form-states">Form states</h2>
+
+    <h3 id="forms-input-focus">Input focus</h3>
+    <form class="bs-example">
+
+<input type="text" name="name" value="This is focused..." id="focusedInput" class="form-control"  />
+    </form>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'name', 'This is focused...', <span class="na">array</span><span class="na">(</span>'id' <span class="nt">=&gt;</span> 'focusedInput'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="forms-disabled-inputs">Disabled inputs</h3>
+    <form class="bs-example">
+
+<input type="text" name="name" value="" placeholder="Disabled input here..." disabled="1" class="form-control"  />
+    </form>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'name', '', <span class="na">array</span><span class="na">(</span>'placeholder' <span class="nt">=&gt;</span> 'Disabled input here...', 'disabled' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
+
+<form action="basics.html" method="post" accept-charset="utf-8" class="bs-example" role="form">    <fieldset disabled>
+    <div class="form-group"> <label for="fieldname">Disabled input</label><input type="text" name="fieldname" value="" placeholder="Disabled input" class="form-control"  /></div> <div class="form-group"> <label for="fieldname">Disabled select menu</label><select name="fieldname"  class="form-control">
+<option value="" selected="selected">Disabled select</option>
+</select></div> <div class="form-group"> <div class="checkbox"> <label> <input type="checkbox" name="fieldname" value="valuefield"  /> Can't check this</label> </div> </div> <div class="form-group"> <button class="btn btn-primary">Submit</button> </div>     </fieldset>
+</form>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> $form = <span class="na">Tb</span>::form<span class="na">(</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+    &lt;fieldset disabled&gt;
+    <span class="nt">&lt;?php</span>
+    <span class="s">echo</span> $form-&gt;textFieldRow<span class="na">(</span>'fieldname', 'Disabled input', <span class="na">array</span><span class="na">(</span>'placeholder' <span class="nt">=&gt;</span> 'Disabled input'<span class="na">)</span><span class="na">)</span>; 
+    <span class="s">echo</span> $form-&gt;dropDownListRow<span class="na">(</span>'Disabled select menu', 'fieldname', '', <span class="na">array</span><span class="na">(</span><span class="na">)</span>, 
+        <span class="na">array</span><span class="na">(</span>'prompt' <span class="nt">=&gt;</span> 'Disabled select'<span class="na">)</span><span class="na">)</span>;
+    <span class="s">echo</span> $form-&gt;checkBoxRow<span class="na">(</span>'', 'fieldname', 'Can\'t check this', 'valuefield'<span class="na">)</span>;
+    <span class="s">echo</span> $form-&gt;submitButton<span class="na">(</span>'Submit', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY<span class="na">)</span><span class="na">)</span>;
+    <span class="nt">?&gt;</span>
+    &lt;/fieldset&gt;
+<span class="nt">&lt;?php</span> $form-&gt;end<span class="na">(</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+  </div>
+
+
+
+  <!-- Buttons
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="buttons">Buttons</h1>
+    </div>
+
+    <h2 id="buttons-options">Options</h2>
+    <div class="bs-example">
+
+<button class="btn btn-default">Default</button> <button class="btn btn-primary">Primary</button> <button class="btn btn-success">Success</button> <button class="btn btn-info">Info</button> <button class="btn btn-warning">Warning</button> <button class="btn btn-danger">Danger</button> <button class="btn btn-link">Link</button> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Default'<span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Primary', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Success', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_SUCCESS<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Info', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_INFO<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Warning', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_WARNING<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Danger', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_DANGER<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Link', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_LINK<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h2 id="buttons-sizes">Sizes</h2>
+    <div class="bs-example">
+      <p>
+
+<button class="btn btn-default btn-lg">Large button</button> <button class="btn btn-primary btn-lg">Large button</button> 
+      </p>
+      <p>
+
+<button class="btn btn-default">Default button</button> <button class="btn btn-primary">Default button</button> 
+      </p>
+      <p>
+
+<button class="btn btn-default btn-sm">Small button</button> <button class="btn btn-primary btn-sm">Small button</button> 
+      </p>
+      <p>
+
+<button class="btn btn-default btn-xs">Extra small button</button> <button class="btn btn-primary btn-xs">Extra small button</button> 
+      </p>
+    </div>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Large button', <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_LARGE<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Large button', 
+    <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY, 'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_LARGE<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Default button'<span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Default button', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Small button', <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_SMALL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Small button', 
+    <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY, 'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_SMALL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Extra small button', <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_EXTRA_SMALL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Extra small button', 
+    <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY, 'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_EXTRA_SMALL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h2 id="buttons-block">Block button</h2>
+    <div class="bs-example">
+      <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+
+<button class="btn btn-primary btn-lg btn-block">Block level button</button> <button class="btn btn-default btn-lg btn-block">Block level button</button> 
+      </div>
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Block level button', 
+      <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY, 'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_LARGE, 'block' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Block level button', <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_LARGE, 'block' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="buttons-disabled">Disabled state</h2>
+    <h3>Button element</h3>
+    <p class="bs-example">
+
+<button disabled="1 disabled" class="btn btn-primary">Primary button</button> <button disabled="1 disabled" class="btn btn-default">Button</button> 
+    </p>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Primary button', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY, 'disabled' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Button', <span class="na">array</span><span class="na">(</span>'disabled' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3>Anchor element</h3>
+    <p class="bs-example">
+<a disabled="1 disabled" class="btn btn-primary btn-lg" href="#">Primary link</a> <a disabled="1 disabled" class="btn btn-default btn-lg" href="#">Link</a>     </p>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Primary link', <span class="na">array</span><span class="na">(</span>
+    'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_LINK, 'url' <span class="nt">=&gt;</span> '#', 
+    'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY, 'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_LARGE, 
+    'disabled' <span class="nt">=&gt;</span> true
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Link', 
+    <span class="na">array</span><span class="na">(</span>'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_LINK, 'url' <span class="nt">=&gt;</span> '#', 'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_LARGE, 'disabled' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="buttons-tags">Button tags</h2>
+    <form class="bs-example">
+
+<a class="btn btn-default" href="#">Link</a> <button class="btn btn-default">Submit</button> <button class="btn btn-default">Button</button> <button class="btn btn-default">Reset</button> 
+    </form>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Link', <span class="na">array</span><span class="na">(</span>'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_LINK, 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Submit', <span class="na">array</span><span class="na">(</span>'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_SUBMIT<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Button'<span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Reset', <span class="na">array</span><span class="na">(</span>'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_RESET<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+  </div>
+
+
+
+  <!-- Images
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="images">Images</h1>
+    </div>
+
+    <div class="bs-example bs-example-images">
+
+<img class="img-rounded" src="holder.js/140x140" /><img class="img-circle" src="holder.js/140x140" /><img class="img-thumbnail" src="holder.js/140x140" />   
+
+    </div>
+<div class="highlight">
+  <pre><code class="html"><span class="c">&lt;?php echo Tb::image('/path/to/image', 'rel'); ?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::image<span class="na">(</span>'holder.js/140x140', '', <span class="na">array</span><span class="na">(</span>'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::IMAGE_TYPE_ROUNDED<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::image<span class="na">(</span>'holder.js/140x140', '', <span class="na">array</span><span class="na">(</span>'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::IMAGE_TYPE_CIRCLE<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::image<span class="na">(</span>'holder.js/140x140', '', <span class="na">array</span><span class="na">(</span>'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::IMAGE_TYPE_THUMBNAIL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>    </code></pre>
+</div>
+
+  </div>
+
+
+
+
+  </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- Footer
+    ================================================== -->
+    <footer class="bs-footer" role="contentinfo">
+      <div class="container">
+        <div class="bs-social">
+  <ul class="bs-social-buttons">
+    
+    <li class="follow-btn">
+      <a href="https://twitter.com/cistrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @cistrap</a>
+    </li>
+    <li class="tweet-btn">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://didanurwanda.github.io/CodeIgniterStrap/" data-count="horizontal" data-via="cistrap" data-related="mdo:Creator of CodeIgniterStrap">Tweet</a>
+    </li>
+  </ul>
+</div>
+
+
+
+    <p class="credits">
+      Developed by <a href="http://www.facebook.com/didanurwanda" target="_blank">Dida Nurwanda</a>.
+    </p>
+    <p class="license">
+      Code licensed under <a href="http://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+    </p>
+      </div>
+    </footer>
+
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/dist/js/bootstrap.js"></script>
+<script src="assets/js/holder.js"></script>
+<script src="assets/js/application.js"></script>
+<script type="text/JavaScript">
+!function ($) {
+  jQuery('[data-toggle=tooltip]').tooltip();
+  jQuery('[data-toggle=popover]').popover();
+}(window.jQuery)
+</script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Components - CodeIgniterStrap</title>
+
+<!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.css" rel="stylesheet">
+
+<!-- Documentation extras -->
+<link href="assets/css/docs.css" rel="stylesheet">
+<link href="assets/css/pygments-manni.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/CIStrap/assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/CIStrap/assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/CIStrap/assets/ico/apple-touch-icon-72-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" href="/CIStrap/assets/ico/apple-touch-icon-57-precomposed.png">
+                               <link rel="shortcut icon" href="/CIStrap/assets/ico/favicon.png">
+
+    <!-- Place anything custom after this. -->
+  </head>
+  <body>
+
+<nav class="bs-docs-nav navbar-fixed-top navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tb_0"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="index.html">CodeIgniterStrap</a> </div> <div class="collapse navbar-collapse" id="Tb_0"> <ul class="navbar-nav nav"> <li> <a href="started.html">Getting started</a> </li> <li> <a href="basics.html">Basics</a> </li> <li class="active"> <a href="components.html">Components</a> </li> <li> <a href="javascript.html">JavaScript</a> </li> </ul> </div> </div> </nav> 
+
+
+    <div class="container bs-docs-container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="bs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-sidenav">
+              
+                <li>
+  <a href="#glyphicons">Glyphicons</a>
+  <ul class="nav">
+    <li><a href="#glyphicons-glyphs">Available glyphs</a></li>
+    <li><a href="#glyphicons-how-to-use">How to use</a></li>
+    <li><a href="#glyphicons-examples">Examples</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#btn-groups">Button groups</a>
+  <ul class="nav">
+    <li><a href="#btn-groups-single">Basic example</a></li>
+    <li><a href="#btn-groups-toolbar">Button toolbar</a></li>
+    <li><a href="#btn-groups-sizing">Sizing</a></li>
+    <li><a href="#btn-groups-nested">Nesting</a></li>
+    <li><a href="#btn-groups-vertical">Vertical variation</a></li>
+    <li><a href="#btn-groups-justified">Justified link variation</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#btn-dropdowns">Button dropdowns</a>
+  <ul class="nav">
+    <li><a href="#btn-dropdowns-single">Single button dropdowns</a></li>
+    <li><a href="#btn-dropdowns-split">Split button dropdowns</a></li>
+    <li><a href="#btn-dropdowns-sizing">Sizing</a></li>
+    <li><a href="#btn-dropdowns-dropup">Dropup variation</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#input-groups">Input groups</a>
+  <ul class="nav">
+    <li><a href="#input-groups-basic">Basic example</a></li>
+    <li><a href="#input-groups-sizing">Sizing</a></li>
+    <li><a href="#input-groups-checkboxes-radios">Checkbox and radios addons</a></li>
+    <li><a href="#input-groups-buttons">Button addons</a></li>
+    <li><a href="#input-groups-buttons-dropdowns">Buttons with dropdowns</a></li>
+    <li><a href="#input-groups-buttons-segmented">Segmented buttons</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#nav">Navs</a>
+  <ul class="nav">
+    <li><a href="#nav-tabs">Tabs</a></li>
+    <li><a href="#nav-pills">Pills</a></li>
+    <li><a href="#nav-stackable">Stackable</a></li>
+    <li><a href="#nav-justified">Justified nav</a></li>
+    <li><a href="#nav-disabled-links">Disabled links</a></li>
+    <li><a href="#nav-dropdowns">Using dropdowns</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#navbar">Navbar</a>
+  <ul class="nav">
+    <li><a href="#navbar-default">Default navbar</a></li>
+    <li><a href="#navbar-buttons">Buttons</a></li>
+    <li><a href="#navbar-text">Text</a></li>
+    <li><a href="#navbar-links">Non-nav links</a></li>
+    <li><a href="#navbar-component-alignment">Component alignment</a></li>
+    <li><a href="#navbar-fixed-top">Fixed to top</a></li>
+    <li><a href="#navbar-fixed-bottom">Fixed to bottom</a></li>
+    <li><a href="#navbar-static-top">Static top</a></li>
+    <li><a href="#navbar-inverted">Inverted navbar</a></li>
+  </ul>
+</li>
+<li><a href="#breadcrumbs">Breadcrumbs</a></li>
+<li>
+  <a href="#pagination">Pagination</a>
+  <ul class="nav">
+    <li><a href="#pagination-default">Default pagination</a></li>
+    <li><a href="#pagination-pager">Pager</a></li>
+  </ul>
+</li>
+<li><a href="#labels">Labels</a></li>
+<li><a href="#badges">Badges</a></li>
+<li><a href="#jumbotron">Jumbotron</a></li>
+<li><a href="#page-header">Page header</a></li>
+<li>
+  <a href="#thumbnails">Thumbnails</a>
+  <ul class="nav">
+    <li><a href="#thumbnails-default">Default example</a></li>
+    <li><a href="#thumbnails-custom-content">Custom content</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#alerts">Alerts</a>
+  <ul class="nav">
+    <li><a href="#alerts-examples">Examples</a></li>
+    <li><a href="#alerts-dismissable">Dismissable alerts</a></li>
+    <li><a href="#alerts-links">Links in alerts</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#flash-alerts">Flash Alerts</a>
+</li>
+<li>
+  <a href="#progress">Progress bars</a>
+  <ul class="nav">
+    <li><a href="#progress-basic">Basic example</a></li>
+    <li><a href="#progress-alternatives">Contextual alternatives</a></li>
+    <li><a href="#progress-striped">Striped</a></li>
+    <li><a href="#progress-animated">Animated</a></li>
+    <li><a href="#progress-stacked">Stacked</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#media">Media object</a>
+  <ul class="nav">
+    <li><a href="#media-default">Default media</a></li>
+    <li><a href="#media-list">Media list</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#list-group">List group</a>
+  <ul class="nav">
+    <li><a href="#list-group-basic">Basic example</a></li>
+    <li><a href="#list-group-badges">Badges</a></li>
+    <li><a href="#list-group-linked">Linked items</a></li>
+    <li><a href="#list-group-custom-content">Custom content</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#panels">Panels</a>
+  <ul class="nav">
+    <li><a href="#panels-basic">Basic example</a></li>
+    <li><a href="#panels-heading">Panel with heading</a></li>
+    <li><a href="#panels-alternatives">Contextual alternatives</a></li>
+    <li><a href="#panels-tables">With tables</a>
+    <li><a href="#panels-list-group">With list groups</a>
+  </ul>
+</li>
+<li><a href="#wells">Wells</a></li>
+
+              
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <!-- Glyphicons
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="glyphicons">Glyphicons</h1>
+    </div>
+
+   <h2 id="glyphicons-glyphs">Available glyphs</h2>
+    <ul class="bs-glyphicons">
+      <li><span class="glyphicon glyphicon-adjust"></span>  ICON_ADJUST </li>
+        <li><span class="glyphicon glyphicon-align-center"></span>  ICON_ALIGN_CENTER </li>
+        <li><span class="glyphicon glyphicon-align-justify"></span>  ICON_ALIGN_JUSTIFY </li>
+        <li><span class="glyphicon glyphicon-align-left"></span>  ICON_ALIGN_LEFT </li>
+        <li><span class="glyphicon glyphicon-align-right"></span>  ICON_ALIGN_RIGHT </li>
+        <li><span class="glyphicon glyphicon-arrow-down"></span>  ICON_ARROW_DOWN </li>
+        <li><span class="glyphicon glyphicon-arrow-left"></span>  ICON_ARROW_LEFT </li>
+        <li><span class="glyphicon glyphicon-arrow-right"></span>  ICON_ARROW_RIGHT </li>
+        <li><span class="glyphicon glyphicon-arrow-up"></span>  ICON_ARROW_UP </li>
+        <li><span class="glyphicon glyphicon-asterisk"></span>  ICON_ASTERISK </li>
+        <li><span class="glyphicon glyphicon-backward"></span>  ICON_BACKWARD </li>
+        <li><span class="glyphicon glyphicon-ban-circle"></span>  ICON_BAN_CIRCLE </li>
+        <li><span class="glyphicon glyphicon-barcode"></span>  ICON_BARCODE </li>
+        <li><span class="glyphicon glyphicon-bell"></span>  ICON_BELL </li>
+        <li><span class="glyphicon glyphicon-bold"></span>  ICON_BOLD </li>
+        <li><span class="glyphicon glyphicon-book"></span>  ICON_BOOK </li>
+        <li><span class="glyphicon glyphicon-bookmark"></span>  ICON_BOOKMARK </li>
+        <li><span class="glyphicon glyphicon-briefcase"></span>  ICON_BRIEFCASE </li>
+        <li><span class="glyphicon glyphicon-bullhorn"></span>  ICON_BULLHORN </li>
+        <li><span class="glyphicon glyphicon-calendar"></span>  ICON_CALENDAR </li>
+        <li><span class="glyphicon glyphicon-camera"></span>  ICON_CAMERA </li>
+        <li><span class="glyphicon glyphicon-certificate"></span>  ICON_CERTIFICATE </li>
+        <li><span class="glyphicon glyphicon-check"></span>  ICON_CHECK </li>
+        <li><span class="glyphicon glyphicon-chevron-down"></span>  ICON_CHEVRON_DOWN </li>
+        <li><span class="glyphicon glyphicon-chevron-left"></span>  ICON_CHEVRON_LEFT </li>
+        <li><span class="glyphicon glyphicon-chevron-right"></span>  ICON_CHEVRON_RIGHT </li>
+        <li><span class="glyphicon glyphicon-chevron-up"></span>  ICON_CHEVRON_UP </li>
+        <li><span class="glyphicon glyphicon-circle-arrow-down"></span>  ICON_CIRCLE_ARROW_DOWN </li>
+        <li><span class="glyphicon glyphicon-circle-arrow-left"></span>  ICON_CIRCLE_ARROW_LEFT </li>
+        <li><span class="glyphicon glyphicon-circle-arrow-right"></span>  ICON_CIRCLE_ARROW_RIGHT </li>
+        <li><span class="glyphicon glyphicon-circle-arrow-up"></span>  ICON_CIRCLE_ARROW_UP </li>
+        <li><span class="glyphicon glyphicon-cloud"></span>  ICON_CLOUD </li>
+        <li><span class="glyphicon glyphicon-cloud-download"></span>  ICON_CLOUD_DOWNLOAD </li>
+        <li><span class="glyphicon glyphicon-cloud-upload"></span>  ICON_CLOUD_UPLOAD </li>
+        <li><span class="glyphicon glyphicon-cog"></span>  ICON_COG </li>
+        <li><span class="glyphicon glyphicon-collapse-down"></span>  ICON_COLLAPSE_DOWN </li>
+        <li><span class="glyphicon glyphicon-collapse-up"></span>  ICON_COLLAPSE_UP </li>
+        <li><span class="glyphicon glyphicon-comment"></span>  ICON_COMMENT </li>
+        <li><span class="glyphicon glyphicon-compressed"></span>  ICON_COMPRESSED </li>
+        <li><span class="glyphicon glyphicon-copyright-mark"></span>  ICON_COPYRIGHT_MARK </li>
+        <li><span class="glyphicon glyphicon-credit-card"></span>  ICON_CREDIT_CARD </li>
+        <li><span class="glyphicon glyphicon-cutlery"></span>  ICON_CUTLERY </li>
+        <li><span class="glyphicon glyphicon-dashboard"></span>  ICON_DASHBOARD </li>
+        <li><span class="glyphicon glyphicon-download"></span>  ICON_DOWNLOAD </li>
+        <li><span class="glyphicon glyphicon-download-alt"></span>  ICON_DOWNLOAD_ALT </li>
+        <li><span class="glyphicon glyphicon-earphone"></span>  ICON_EARPHONE </li>
+        <li><span class="glyphicon glyphicon-edit"></span>  ICON_EDIT </li>
+        <li><span class="glyphicon glyphicon-eject"></span>  ICON_EJECT </li>
+        <li><span class="glyphicon glyphicon-envelope"></span>  ICON_ENVELOPE </li>
+        <li><span class="glyphicon glyphicon-euro"></span>  ICON_EURO </li>
+        <li><span class="glyphicon glyphicon-exclamation-sign"></span>  ICON_EXCLAMATION_SIGN </li>
+        <li><span class="glyphicon glyphicon-expand"></span>  ICON_EXPAND </li>
+        <li><span class="glyphicon glyphicon-export"></span>  ICON_EXPORT </li>
+        <li><span class="glyphicon glyphicon-eye-close"></span>  ICON_EYE_CLOSE </li>
+        <li><span class="glyphicon glyphicon-eye-open"></span>  ICON_EYE_OPEN </li>
+        <li><span class="glyphicon glyphicon-facetime-video"></span>  ICON_FACETIME_VIDEO </li>
+        <li><span class="glyphicon glyphicon-fast-backward"></span>  ICON_FAST_BACKWARD </li>
+        <li><span class="glyphicon glyphicon-fast-forward"></span>  ICON_FAST_FORWARD </li>
+        <li><span class="glyphicon glyphicon-file"></span>  ICON_FILE </li>
+        <li><span class="glyphicon glyphicon-film"></span>  ICON_FILM </li>
+        <li><span class="glyphicon glyphicon-filter"></span>  ICON_FILTER </li>
+        <li><span class="glyphicon glyphicon-fire"></span>  ICON_FIRE </li>
+        <li><span class="glyphicon glyphicon-flag"></span>  ICON_FLAG </li>
+        <li><span class="glyphicon glyphicon-flash"></span>  ICON_FLASH </li>
+        <li><span class="glyphicon glyphicon-floppy-disk"></span>  ICON_FLOPPY_DISK </li>
+        <li><span class="glyphicon glyphicon-floppy-open"></span>  ICON_FLOPPY_OPEN </li>
+        <li><span class="glyphicon glyphicon-floppy-remove"></span>  ICON_FLOPPY_REMOVE </li>
+        <li><span class="glyphicon glyphicon-floppy-save"></span>  ICON_FLOPPY_SAVE </li>
+        <li><span class="glyphicon glyphicon-floppy-saved"></span>  ICON_FLOPPY_SAVED </li>
+        <li><span class="glyphicon glyphicon-folder-close"></span>  ICON_FOLDER_CLOSE </li>
+        <li><span class="glyphicon glyphicon-folder-open"></span>  ICON_FOLDER_OPEN </li>
+        <li><span class="glyphicon glyphicon-font"></span>  ICON_FONT </li>
+        <li><span class="glyphicon glyphicon-forward"></span>  ICON_FORWARD </li>
+        <li><span class="glyphicon glyphicon-fullscreen"></span>  ICON_FULLSCREEN </li>
+        <li><span class="glyphicon glyphicon-gbp"></span>  ICON_GBP </li>
+        <li><span class="glyphicon glyphicon-gift"></span>  ICON_GIFT </li>
+        <li><span class="glyphicon glyphicon-glass"></span>  ICON_GLASS </li>
+        <li><span class="glyphicon glyphicon-globe"></span>  ICON_GLOBE </li>
+        <li><span class="glyphicon glyphicon-hand-down"></span>  ICON_HAND_DOWN </li>
+        <li><span class="glyphicon glyphicon-hand-left"></span>  ICON_HAND_LEFT </li>
+        <li><span class="glyphicon glyphicon-hand-right"></span>  ICON_HAND_RIGHT </li>
+        <li><span class="glyphicon glyphicon-hand-up"></span>  ICON_HAND_UP </li>
+        <li><span class="glyphicon glyphicon-hd-video"></span>  ICON_HD_VIDEO </li>
+        <li><span class="glyphicon glyphicon-hdd"></span>  ICON_HDD </li>
+        <li><span class="glyphicon glyphicon-header"></span>  ICON_HEADER </li>
+        <li><span class="glyphicon glyphicon-headphones"></span>  ICON_HEADPHONES </li>
+        <li><span class="glyphicon glyphicon-heart"></span>  ICON_HEART </li>
+        <li><span class="glyphicon glyphicon-heart-empty"></span>  ICON_HEART_EMPTY </li>
+        <li><span class="glyphicon glyphicon-home"></span>  ICON_HOME </li>
+        <li><span class="glyphicon glyphicon-import"></span>  ICON_IMPORT </li>
+        <li><span class="glyphicon glyphicon-inbox"></span>  ICON_INBOX </li>
+        <li><span class="glyphicon glyphicon-indent-left"></span>  ICON_INDENT_LEFT </li>
+        <li><span class="glyphicon glyphicon-indent-right"></span>  ICON_INDENT_RIGHT </li>
+        <li><span class="glyphicon glyphicon-info-sign"></span>  ICON_INFO_SIGN </li>
+        <li><span class="glyphicon glyphicon-italic"></span>  ICON_ITALIC </li>
+        <li><span class="glyphicon glyphicon-leaf"></span>  ICON_LEAF </li>
+        <li><span class="glyphicon glyphicon-link"></span>  ICON_LINK </li>
+        <li><span class="glyphicon glyphicon-list"></span>  ICON_LIST </li>
+        <li><span class="glyphicon glyphicon-list-alt"></span>  ICON_LIST_ALT </li>
+        <li><span class="glyphicon glyphicon-lock"></span>  ICON_LOCK </li>
+        <li><span class="glyphicon glyphicon-log-in"></span>  ICON_LOG_IN </li>
+        <li><span class="glyphicon glyphicon-log-out"></span>  ICON_LOG_OUT </li>
+        <li><span class="glyphicon glyphicon-magnet"></span>  ICON_MAGNET </li>
+        <li><span class="glyphicon glyphicon-map-marker"></span>  ICON_MAP_MARKER </li>
+        <li><span class="glyphicon glyphicon-minus"></span>  ICON_MINUS </li>
+        <li><span class="glyphicon glyphicon-minus-sign"></span>  ICON_MINUS_SIGN </li>
+        <li><span class="glyphicon glyphicon-move"></span>  ICON_MOVE </li>
+        <li><span class="glyphicon glyphicon-music"></span>  ICON_MUSIC </li>
+        <li><span class="glyphicon glyphicon-new-window"></span>  ICON_NEW_WINDOW </li>
+        <li><span class="glyphicon glyphicon-off"></span>  ICON_OFF </li>
+        <li><span class="glyphicon glyphicon-ok"></span>  ICON_OK </li>
+        <li><span class="glyphicon glyphicon-ok-circle"></span>  ICON_OK_CIRCLE </li>
+        <li><span class="glyphicon glyphicon-ok-sign"></span>  ICON_OK_SIGN </li>
+        <li><span class="glyphicon glyphicon-open"></span>  ICON_OPEN </li>
+        <li><span class="glyphicon glyphicon-paperclip"></span>  ICON_PAPERCLIP </li>
+        <li><span class="glyphicon glyphicon-pause"></span>  ICON_PAUSE </li>
+        <li><span class="glyphicon glyphicon-pencil"></span>  ICON_PENCIL </li>
+        <li><span class="glyphicon glyphicon-phone"></span>  ICON_PHONE </li>
+        <li><span class="glyphicon glyphicon-phone-alt"></span>  ICON_PHONE_ALT </li>
+        <li><span class="glyphicon glyphicon-picture"></span>  ICON_PICTURE </li>
+        <li><span class="glyphicon glyphicon-plane"></span>  ICON_PLANE </li>
+        <li><span class="glyphicon glyphicon-play"></span>  ICON_PLAY </li>
+        <li><span class="glyphicon glyphicon-play-circle"></span>  ICON_PLAY_CIRCLE </li>
+        <li><span class="glyphicon glyphicon-plus"></span>  ICON_PLUS </li>
+        <li><span class="glyphicon glyphicon-plus-sign"></span>  ICON_PLUS_SIGN </li>
+        <li><span class="glyphicon glyphicon-print"></span>  ICON_PRINT </li>
+        <li><span class="glyphicon glyphicon-pushpin"></span>  ICON_PUSHPIN </li>
+        <li><span class="glyphicon glyphicon-qrcode"></span>  ICON_QRCODE </li>
+        <li><span class="glyphicon glyphicon-question-sign"></span>  ICON_QUESTION_SIGN </li>
+        <li><span class="glyphicon glyphicon-random"></span>  ICON_RANDOM </li>
+        <li><span class="glyphicon glyphicon-record"></span>  ICON_RECORD </li>
+        <li><span class="glyphicon glyphicon-refresh"></span>  ICON_REFRESH </li>
+        <li><span class="glyphicon glyphicon-registration-mark"></span>  ICON_REGISTRATION_MARK </li>
+        <li><span class="glyphicon glyphicon-remove"></span>  ICON_REMOVE </li>
+        <li><span class="glyphicon glyphicon-remove-circle"></span>  ICON_REMOVE_CIRCLE </li>
+        <li><span class="glyphicon glyphicon-remove-sign"></span>  ICON_REMOVE_SIGN </li>
+        <li><span class="glyphicon glyphicon-repeat"></span>  ICON_REPEAT </li>
+        <li><span class="glyphicon glyphicon-resize-full"></span>  ICON_RESIZE_FULL </li>
+        <li><span class="glyphicon glyphicon-resize-horizontal"></span>  ICON_RESIZE_HORIZONTAL </li>
+        <li><span class="glyphicon glyphicon-resize-small"></span>  ICON_RESIZE_SMALL </li>
+        <li><span class="glyphicon glyphicon-resize-vertical"></span>  ICON_RESIZE_VERTICAL </li>
+        <li><span class="glyphicon glyphicon-retweet"></span>  ICON_RETWEET </li>
+        <li><span class="glyphicon glyphicon-road"></span>  ICON_ROAD </li>
+        <li><span class="glyphicon glyphicon-save"></span>  ICON_SAVE </li>
+        <li><span class="glyphicon glyphicon-saved"></span>  ICON_SAVED </li>
+        <li><span class="glyphicon glyphicon-screenshot"></span>  ICON_SCREENSHOT </li>
+        <li><span class="glyphicon glyphicon-sd-video"></span>  ICON_SD_VIDEO </li>
+        <li><span class="glyphicon glyphicon-search"></span>  ICON_SEARCH </li>
+        <li><span class="glyphicon glyphicon-send"></span>  ICON_SEND </li>
+        <li><span class="glyphicon glyphicon-share"></span>  ICON_SHARE </li>
+        <li><span class="glyphicon glyphicon-share-alt"></span>  ICON_SHARE_ALT </li>
+        <li><span class="glyphicon glyphicon-shopping-cart"></span>  ICON_SHOPPING_CART </li>
+        <li><span class="glyphicon glyphicon-signal"></span>  ICON_SIGNAL </li>
+        <li><span class="glyphicon glyphicon-sort"></span>  ICON_SORT </li>
+        <li><span class="glyphicon glyphicon-sort-by-alphabet"></span>  ICON_SORT_BY_ALPHABET </li>
+        <li><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span>  ICON_SORT_BY_ALPHABET_ALT </li>
+        <li><span class="glyphicon glyphicon-sort-by-attributes"></span>  ICON_SORT_BY_ATTRIBUTES </li>
+        <li><span class="glyphicon glyphicon-sort-by-attributes-alt"></span>  ICON_SORT_BY_ATTRIBUTES_ALT </li>
+        <li><span class="glyphicon glyphicon-sort-by-order"></span>  ICON_SORT_BY_ORDER </li>
+        <li><span class="glyphicon glyphicon-sort-by-order-alt"></span>  ICON_SORT_BY_ORDER_ALT </li>
+        <li><span class="glyphicon glyphicon-sound-5-1"></span>  ICON_SOUND_5_1 </li>
+        <li><span class="glyphicon glyphicon-sound-6-1"></span>  ICON_SOUND_6_1 </li>
+        <li><span class="glyphicon glyphicon-sound-7-1"></span>  ICON_SOUND_7_1 </li>
+        <li><span class="glyphicon glyphicon-sound-dolby"></span>  ICON_SOUND_DOLBY </li>
+        <li><span class="glyphicon glyphicon-sound-stereo"></span>  ICON_SOUND_STEREO </li>
+        <li><span class="glyphicon glyphicon-star"></span>  ICON_STAR </li>
+        <li><span class="glyphicon glyphicon-star-empty"></span>  ICON_STAR_EMPTY </li>
+        <li><span class="glyphicon glyphicon-stats"></span>  ICON_STATS </li>
+        <li><span class="glyphicon glyphicon-step-backward"></span>  ICON_STEP_BACKWARD </li>
+        <li><span class="glyphicon glyphicon-step-forward"></span>  ICON_STEP_FORWARD </li>
+        <li><span class="glyphicon glyphicon-stop"></span>  ICON_STOP </li>
+        <li><span class="glyphicon glyphicon-subtitles"></span>  ICON_SUBTITLES </li>
+        <li><span class="glyphicon glyphicon-tag"></span>  ICON_TAG </li>
+        <li><span class="glyphicon glyphicon-tags"></span>  ICON_TAGS </li>
+        <li><span class="glyphicon glyphicon-tasks"></span>  ICON_TASKS </li>
+        <li><span class="glyphicon glyphicon-text-height"></span>  ICON_TEXT_HEIGHT </li>
+        <li><span class="glyphicon glyphicon-text-width"></span>  ICON_TEXT_WIDTH </li>
+        <li><span class="glyphicon glyphicon-th"></span>  ICON_TH </li>
+        <li><span class="glyphicon glyphicon-th-large"></span>  ICON_TH_LARGE </li>
+        <li><span class="glyphicon glyphicon-th-list"></span>  ICON_TH_LIST </li>
+        <li><span class="glyphicon glyphicon-thumbs-down"></span>  ICON_THUMBS_DOWN </li>
+        <li><span class="glyphicon glyphicon-thumbs-up"></span>  ICON_THUMBS_UP </li>
+        <li><span class="glyphicon glyphicon-time"></span>  ICON_TIME </li>
+        <li><span class="glyphicon glyphicon-tint"></span>  ICON_TINT </li>
+        <li><span class="glyphicon glyphicon-tower"></span>  ICON_TOWER </li>
+        <li><span class="glyphicon glyphicon-transfer"></span>  ICON_TRANSFER </li>
+        <li><span class="glyphicon glyphicon-trash"></span>  ICON_TRASH </li>
+        <li><span class="glyphicon glyphicon-tree-conifer"></span>  ICON_TREE_CONIFER </li>
+        <li><span class="glyphicon glyphicon-tree-deciduous"></span>  ICON_TREE_DECIDUOUS </li>
+        <li><span class="glyphicon glyphicon-unchecked"></span>  ICON_UNCHECKED </li>
+        <li><span class="glyphicon glyphicon-upload"></span>  ICON_UPLOAD </li>
+        <li><span class="glyphicon glyphicon-usd"></span>  ICON_USD </li>
+        <li><span class="glyphicon glyphicon-user"></span>  ICON_USER </li>
+        <li><span class="glyphicon glyphicon-volume-down"></span>  ICON_VOLUME_DOWN </li>
+        <li><span class="glyphicon glyphicon-volume-off"></span>  ICON_VOLUME_OFF </li>
+        <li><span class="glyphicon glyphicon-volume-up"></span>  ICON_VOLUME_UP </li>
+        <li><span class="glyphicon glyphicon-warning-sign"></span>  ICON_WARNING_SIGN </li>
+        <li><span class="glyphicon glyphicon-wrench"></span>  ICON_WRENCH </li>
+        <li><span class="glyphicon glyphicon-zoom-in"></span>  ICON_ZOOM_IN </li>
+        <li><span class="glyphicon glyphicon-zoom-out"></span>  ICON_ZOOM_OUT</li>     
+    </ul>
+
+
+    <h2 id="glyphicons-how-to-use">How to use</h2>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::icon<span class="na">(</span><span class="na">Tb</span>::ICON_ZOOM_OUT<span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+
+</div>
+
+
+
+    <h2 id="glyphicons-examples">Examples</h2>
+    <div class="bs-example">
+
+      <div class="btn-toolbar">
+
+<div class="btn-group"> <button class="btn btn-default"><span class="glyphicon glyphicon-align-left"></span>  </button> <button class="btn btn-default"><span class="glyphicon glyphicon-align-center"></span>  </button> <button class="btn btn-default"><span class="glyphicon glyphicon-align-right"></span>  </button> <button class="btn btn-default"><span class="glyphicon glyphicon-align-justify"></span>  </button> </div> 
+      </div>
+      <div class="btn-toolbar">
+
+<button class="btn btn-default btn-lg"><span class="glyphicon glyphicon-star"></span>  Star</button> <button class="btn btn-default"><span class="glyphicon glyphicon-star"></span>  Star</button> <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star"></span>  Star</button> <button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-star"></span>  Star</button> 
+      </div>
+
+    </div>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'icon' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ICON_ALIGN_LEFT<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'icon' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ICON_ALIGN_CENTER<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'icon' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ICON_ALIGN_RIGHT<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'icon' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ICON_ALIGN_JUSTIFY<span class="na">)</span>,
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Star', <span class="na">array</span><span class="na">(</span>'icon' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ICON_STAR, 'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_LARGE<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Star', <span class="na">array</span><span class="na">(</span>'icon' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ICON_STAR<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Star', <span class="na">array</span><span class="na">(</span>'icon' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ICON_STAR, 'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_SMALL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::button<span class="na">(</span>'Star', <span class="na">array</span><span class="na">(</span>'icon' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ICON_STAR, 'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_SIZE_EXTRA_SMALL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+
+</div>
+
+  </div>
+
+  <!-- Button Groups
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="btn-groups">Button groups</h1>
+    </div>
+
+    <h3 id="btn-groups-single">Basic example</h3>
+    <div class="bs-example">
+      
+<div class="btn-group"> <button class="btn btn-default">Left</button> <button class="btn btn-default">Middle</button> <button class="btn btn-default">Right</button> </div>  
+
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Left'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Middle'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Right'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="btn-groups-toolbar">Button toolbar</h3>
+    <div class="bs-example">
+
+<div class="btn-toolbar"> <div class="btn-group"> <button class="btn btn-default">1</button> <button class="btn btn-default">2</button> <button class="btn btn-default">3</button> <button class="btn btn-default">4</button> </div> <div class="btn-group"> <button class="btn btn-default">5</button> <button class="btn btn-default">6</button> <button class="btn btn-default">7</button> </div> <div class="btn-group"> <button class="btn btn-default">8</button> </div> </div>  
+
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonToolbar<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 1<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 2<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 3<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 4<span class="na">)</span>
+    <span class="na">)</span><span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 5<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 6<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 7<span class="na">)</span>
+    <span class="na">)</span><span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 8<span class="na">)</span>
+    <span class="na">)</span><span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+    <h3 id="btn-groups-sizing">Sizing</h3>
+    <div class="bs-example">
+
+<div class="btn-group btn-group-lg"> <button class="btn btn-default">Left</button> <button class="btn btn-default">Middle</button> <button class="btn btn-default">Right</button> </div> 
+<br />
+
+<div class="btn-group"> <button class="btn btn-default">Left</button> <button class="btn btn-default">Middle</button> <button class="btn btn-default">Right</button> </div> 
+<br />
+
+<div class="btn-group btn-group-sm"> <button class="btn btn-default">Left</button> <button class="btn btn-default">Middle</button> <button class="btn btn-default">Right</button> </div> 
+<br />
+
+<div class="btn-group btn-group-xs"> <button class="btn btn-default">Left</button> <button class="btn btn-default">Middle</button> <button class="btn btn-default">Right</button> </div> 
+    </div>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'...'<span class="na">)</span>,
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_GROUP_SIZE_LARGE<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'...'<span class="na">)</span>,
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'...'<span class="na">)</span>,
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_GROUP_SIZE_SMALL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'...'<span class="na">)</span>,
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_GROUP_SIZE_EXTRA_SMALL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="btn-groups-nested">Nesting</h3>
+    <div class="bs-example">
+
+
+<div class="btn-group"> <button class="btn btn-default">1</button> <button class="btn btn-default">2</button> <button class="btn btn-default">3</button> <div class="btn-group"> <button class="dropdown-toggle btn btn-default" data-toggle="dropdown">Dropdown <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li type="link"> <a href="#">Dropdown link</a> </li> <li type="link"> <a href="#">Dropdown link</a> </li> </ul> </div> </div> 
+    </div>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> '1'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> '2'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> '3'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Dropdown', 'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Dropdown link', 
+            'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_LINK, 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Dropdown link', 
+            'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_LINK, 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>
+    <span class="na">)</span><span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="btn-groups-vertical">Vertical variation</h3>
+    <div class="bs-example">
+
+<div class="btn-group-vertical"> <button class="btn btn-default">1</button> <button class="btn btn-default">2</button> <button class="btn btn-default">3</button> <div class="btn-group"> <button class="dropdown-toggle btn btn-default" data-toggle="dropdown">Dropdown <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li type="link"> <a href="#">Dropdown link</a> </li> <li type="link"> <a href="#">Dropdown link</a> </li> </ul> </div> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    ...
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'vertical' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="btn-groups-justified">Justified link variation</h3>
+    <div class="bs-example">
+
+<div class="btn-group btn-group-justified"> <a class="btn btn-default" href="http://www.google.com">Google</a> <a class="btn btn-default" href="http://www.facebook.com">Facebook</a> <a class="btn btn-default" href="http://www.twitter.com">Twiiter</a> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Google', 'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_LINK, 'url' <span class="nt">=&gt;</span> 'http://www.google.com'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Facebook', 'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_LINK,  'url' <span class="nt">=&gt;</span> 'http://www.facebook.com'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Twiiter', 'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_LINK,  'url' <span class="nt">=&gt;</span> 'http://www.twitter.com'<span class="na">)</span>
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'justified' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+  </div>
+
+
+
+  <!-- Split button dropdowns
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="btn-dropdowns">Button dropdowns</h1>
+    </div>
+
+    <h3 id="btn-dropdowns-single">Single button dropdowns</h3>
+    <div class="bs-example">
+
+
+<div class="btn-group"> <button class="dropdown-toggle btn btn-default" data-toggle="dropdown">Action <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li class="dropdown-header">Ini Header</li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<div class="btn-group"> <button class="dropdown-toggle btn btn-primary" data-toggle="dropdown">Primary <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<div class="btn-group"> <button class="dropdown-toggle btn btn-success" data-toggle="dropdown">Success <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<div class="btn-group"> <button class="dropdown-toggle btn btn-info" data-toggle="dropdown">Info <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<div class="btn-group"> <button class="dropdown-toggle btn btn-warning" data-toggle="dropdown">Warning <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<div class="btn-group"> <button class="dropdown-toggle btn btn-danger" data-toggle="dropdown">Danger <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonDropdown<span class="na">(</span>'Primary', <span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    '-',
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="btn-dropdowns-split">Split button dropdowns</h3>
+    <div class="bs-example">
+
+
+
+<div class="btn-group"> <button class="btn btn-default">Action</button> <button class="dropdown-toggle btn btn-default" data-toggle="dropdown"><span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<div class="btn-group"> <a class="btn btn-primary" href="#">Primary</a> <a class="dropdown-toggle btn btn-primary" data-toggle="dropdown" href="#"><span class="caret"></span> </a> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<div class="btn-group"> <button class="btn btn-success">Success</button> <button class="dropdown-toggle btn btn-success" data-toggle="dropdown"><span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<div class="btn-group"> <button class="btn btn-info">Info</button> <button class="dropdown-toggle btn btn-info" data-toggle="dropdown"><span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<div class="btn-group"> <button class="btn btn-warning">Warning</button> <button class="dropdown-toggle btn btn-warning" data-toggle="dropdown"><span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<div class="btn-group"> <button class="btn btn-danger">Danger</button> <button class="dropdown-toggle btn btn-danger" data-toggle="dropdown"><span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonDropdown<span class="na">(</span>'Primary', <span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    '-',
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY, 'split' <span class="nt">=&gt;</span> true, 
+    'url' <span class="nt">=&gt;</span> '#', 'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_TYPE_LINK
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+    <h3 id="btn-dropdowns-sizing">Sizing</h3>
+    <div class="bs-example">
+
+
+<div class="btn-group"> <button class="dropdown-toggle btn btn-default btn-lg" data-toggle="dropdown">Large button <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<br />
+
+<div class="btn-group"> <button class="dropdown-toggle btn btn-default btn-sm" data-toggle="dropdown">Small button <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<br />
+
+<div class="btn-group"> <button class="dropdown-toggle btn btn-default btn-xs" data-toggle="dropdown">Extra small button <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+    </div><!-- /example -->
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonDropdown<span class="na">(</span>'Extra small button', <span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'...'<span class="na">)</span>,
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_GROUP_SIZE_LARGE<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonDropdown<span class="na">(</span>'Extra small button', <span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'...'<span class="na">)</span>,
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_GROUP_SIZE_SMALL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonDropdown<span class="na">(</span>'Extra small button', <span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'...'<span class="na">)</span>,
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_GROUP_SIZE_EXTRA_SMALL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="btn-dropdowns-dropup">Dropup variation</h3>
+    <div class="bs-example">
+     
+
+<div class="btn-group dropup"> <button class="btn btn-default">Dropup</button> <button class="dropdown-toggle btn btn-default" data-toggle="dropdown"><span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+<div class="btn-group dropup"> <button class="btn btn-primary">Right dropup</button> <button class="dropdown-toggle btn btn-primary" data-toggle="dropdown"><span class="caret"></span> </button> <ul class="pull-right dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </div> 
+
+    </div><!-- /example -->
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonDropdown<span class="na">(</span>'Dropup', <span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    '-',
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'dropup' <span class="nt">=&gt;</span> true, 'split' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::buttonDropdown<span class="na">(</span>'Right dropup', <span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    '-',
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::BUTTON_COLOR_PRIMARY, 'dropup' <span class="nt">=&gt;</span> true, 'split' <span class="nt">=&gt;</span> true, 
+    'menuOption' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'pull' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PULL_RIGHT<span class="na">)</span><span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+  </div>
+
+
+
+
+  <!-- Input groups
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="input-groups">Input groups</h1>
+    </div>
+    <h2 id="input-groups-basic">Basic example</h2>
+    <form class="bs-example bs-example-form" role="form">
+
+
+<div class="input-group"> <span class="input-group-addon">@</span> <input type="text" name="fieldname" value="" class="form-control"  /></div> <br />
+<div class="input-group"> <input type="text" name="fieldname" value="" class="form-control"  /><span class="input-group-addon">.00</span> </div> <br />
+<div class="input-group"> <span class="input-group-addon">@</span> <input type="text" name="fieldname" value="" class="form-control"  /><span class="input-group-addon">.00</span> </div> 
+    </form>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'prepend' <span class="nt">=&gt;</span> '@'<span class="na">)</span><span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'append' <span class="nt">=&gt;</span> '.00'<span class="na">)</span><span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'prepend' <span class="nt">=&gt;</span> '@', 'append' <span class="nt">=&gt;</span> '.00'<span class="na">)</span><span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+
+</div>
+
+
+    <h2 id="input-groups-sizing">Sizing</h2>
+    <form class="bs-example bs-example-form" role="form">
+
+<div class="input-group-lg input-group"> <span class="input-group-addon">@</span> <input type="text" name="fieldname" value="" placeholder="Username" class="form-control input-lg"  /></div>       <br>
+<div class="input-group"> <span class="input-group-addon">@</span> <input type="text" name="fieldname" value="" placeholder="Username" class="form-control"  /></div>       <br>
+<div class="input-group-sm input-group"> <span class="input-group-addon">@</span> <input type="text" name="fieldname" value="" placeholder="Username" class="form-control input-sm"  /></div>     </form>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>
+    'placeholder' <span class="nt">=&gt;</span> 'Username', 
+    'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'prepend' <span class="nt">=&gt;</span> '@', 'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::INPUT_GROUP_SIZE_LARGE<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>
+    'placeholder' <span class="nt">=&gt;</span> 'Username', 
+    'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'prepend' <span class="nt">=&gt;</span> '@'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>
+    'placeholder' <span class="nt">=&gt;</span> 'Username', 
+    'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'prepend' <span class="nt">=&gt;</span> '@', 'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::INPUT_GROUP_SIZE_SMALL<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="input-groups-checkboxes-radios">Checkboxes and radio addons</h2>
+    <form class="bs-example bs-example-form">
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="input-group"> <span class="input-group-addon"><input type="checkbox" name="check" value="value"  /> </span> <input type="text" name="fieldname" value="" class="form-control"  /></div>     </div><!-- /.col-lg-6 -->
+    <div class="col-lg-6">
+        <div class="input-group"> <span class="input-group-addon"><input type="radio" name="check" value="value"  /> </span> <input type="text" name="fieldname" value="" class="form-control"  /></div>     </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+    </form>
+<div class="highlight">
+<pre><code class="html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+        <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>
+            'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'prepend' <span class="nt">=&gt;</span> <span class="na">Tb</span>::checkbox<span class="na">(</span>'check', 'value'<span class="na">)</span><span class="na">)</span>,
+        <span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+        <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>
+            'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'prepend' <span class="nt">=&gt;</span> <span class="na">Tb</span>::radio<span class="na">(</span>'check', 'value'<span class="na">)</span><span class="na">)</span>,
+        <span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+    &lt;/div&gt;
+&lt;/div&gt; </code></pre>
+</div>
+
+
+    <h2 id="input-groups-buttons">Button addons</h2>
+    <form class="bs-example bs-example-form">
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="input-group"> <span class="input-group-btn"><button class="btn btn-default">Go!</button> </span> <input type="text" name="fieldname" value="" class="form-control"  /></div>     </div><!-- /.col-lg-6 -->
+    <div class="col-lg-6">
+        <div class="input-group"> <input type="text" name="fieldname" value="" class="form-control"  /><span class="input-group-btn"><button class="btn btn-default">Go!</button> </span> </div>     </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+
+    </form>
+<div class="highlight">
+<pre><code class="html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+        <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>
+            'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'prepend' <span class="nt">=&gt;</span> <span class="na">Tb</span>::button<span class="na">(</span>'Go!'<span class="na">)</span>, 'addOnButton' <span class="nt">=&gt;</span> true<span class="na">)</span>,
+        <span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+        <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>
+            'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'append' <span class="nt">=&gt;</span> <span class="na">Tb</span>::button<span class="na">(</span>'Go!'<span class="na">)</span>, 'addOnButton' <span class="nt">=&gt;</span> true<span class="na">)</span>,
+        <span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+    &lt;/div&gt;
+&lt;/div&gt; </code></pre>
+</div>
+
+    <h2 id="input-groups-buttons-dropdowns">Buttons with dropdowns</h2>
+    <form class="bs-example bs-example-form" role="form">
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="input-group"> <span class="input-group-btn"><button class="dropdown-toggle btn btn-default" data-toggle="dropdown">Action <span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </span> <input type="text" name="fieldname" value="" class="form-control"  /></div>     </div><!-- /.col-lg-6 -->
+    <div class="col-lg-6">
+        <div class="input-group"> <input type="text" name="fieldname" value="" class="form-control"  /><span class="input-group-btn"><button class="dropdown-toggle btn btn-default" data-toggle="dropdown">Action <span class="caret"></span> </button> <ul class="pull-right dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </span> </div>     </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+    </form>
+<div class="highlight">
+<pre><code class="html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+        <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>
+            'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'addOnButton' <span class="nt">=&gt;</span> true, 
+                'prepend' <span class="nt">=&gt;</span> <span class="na">Tb</span>::buttonDropdown<span class="na">(</span>'Action', <span class="na">array</span><span class="na">(</span>
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    '-',
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                <span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'noGroup' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>
+            <span class="na">)</span>,
+        <span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+        <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>
+            'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'addOnButton' <span class="nt">=&gt;</span> true, 
+                'append' <span class="nt">=&gt;</span> <span class="na">Tb</span>::buttonDropdown<span class="na">(</span>'Action', <span class="na">array</span><span class="na">(</span>
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    '-',
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                <span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'noGroup' <span class="nt">=&gt;</span> true, 'menuOption' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'pull' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PULL_RIGHT<span class="na">)</span><span class="na">)</span><span class="na">)</span>
+            <span class="na">)</span>,
+        <span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+    &lt;/div&gt;
+&lt;/div&gt; </code></pre>
+</div>
+
+    <h2 id="input-groups-buttons-segmented">Segmented buttons</h2>
+    <form class="bs-example bs-example-form" role="form">
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="input-group"> <span class="input-group-btn"><button class="btn btn-default">Action</button> <button class="dropdown-toggle btn btn-default" data-toggle="dropdown"><span class="caret"></span> </button> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </span> <input type="text" name="fieldname" value="" class="form-control"  /></div>     </div><!-- /.col-lg-6 -->
+    <div class="col-lg-6">
+        <div class="input-group"> <input type="text" name="fieldname" value="" class="form-control"  /><span class="input-group-btn"><button class="btn btn-default">Action</button> <button class="dropdown-toggle btn btn-default" data-toggle="dropdown"><span class="caret"></span> </button> <ul class="pull-right dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </span> </div>     </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+    </form>
+<div class="highlight">
+<pre><code class="html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+        <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>
+            'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'addOnButton' <span class="nt">=&gt;</span> true, 
+                'prepend' <span class="nt">=&gt;</span> <span class="na">Tb</span>::buttonDropdown<span class="na">(</span>'Action', <span class="na">array</span><span class="na">(</span>
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    '-',
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                <span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'noGroup' <span class="nt">=&gt;</span> true, 'split' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>
+            <span class="na">)</span>,
+        <span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+        <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::textField<span class="na">(</span>'fieldname', '', <span class="na">array</span><span class="na">(</span>
+            'inputGroup' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'addOnButton' <span class="nt">=&gt;</span> true, 
+                'append' <span class="nt">=&gt;</span> <span class="na">Tb</span>::buttonDropdown<span class="na">(</span>'Action', <span class="na">array</span><span class="na">(</span>
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    '-',
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                <span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'noGroup' <span class="nt">=&gt;</span> true, 'split' <span class="nt">=&gt;</span> true, 'menuOption' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'pull' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PULL_RIGHT<span class="na">)</span><span class="na">)</span><span class="na">)</span>
+            <span class="na">)</span>,
+        <span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+    &lt;/div&gt;
+&lt;/div&gt; </code></pre>
+</div>
+
+</div>
+
+
+
+  <!-- Navs
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="nav">Navs</h1>
+    </div>
+    <h2 id="nav-tabs">Tabs</h2>
+    <div class="bs-example">
+
+<ul class="nav nav-tabs"> <li class="active"> <a href="#">Home</a> </li> <li> <a href="#">Profile</a> </li> <li> <a href="#">Messages</a> </li> </ul> 
+
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navs<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::NAV_TABS,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Home', 'url' <span class="nt">=&gt;</span> '#', 'active' <span class="nt">=&gt;</span> true<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Profile'<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Messages'<span class="na">)</span>
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h2 id="nav-pills">Pills</h2>
+    <div class="bs-example">
+
+
+<ul class="nav nav-pills"> <li class="active"> <a href="#">Home</a> </li> <li> <a href="#">Profile</a> </li> <li> <a href="#">Messages</a> </li> </ul> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navs<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::NAV_PILLS,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Home', 'url' <span class="nt">=&gt;</span> '#', 'active' <span class="nt">=&gt;</span> true<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Profile'<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Messages'<span class="na">)</span>
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h2 id="nav-stackable">Stackable</h2>
+    <div class="bs-example">
+<ul class="nav nav-stacked nav-pills"> <li class="active"> <a href="#">Home</a> </li> <li> <a href="#">Profile</a> </li> <li> <a href="#">Messages</a> </li> </ul>  
+
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navs<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'stacked' <span class="nt">=&gt;</span> true,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Home', 'url' <span class="nt">=&gt;</span> '#', 'active' <span class="nt">=&gt;</span> true<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Profile'<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Messages'<span class="na">)</span>
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="nav-justified">Justified</h2>
+    <div class="bs-example">
+
+<ul class="nav nav-tabs nav-justified"> <li class="active"> <a href="#">Home</a> </li> <li> <a href="#">Profile</a> </li> <li> <a href="#">Messages</a> </li> </ul> <br />
+<ul class="nav nav-tabs nav-justified"> <li> <a href="#">Home</a> </li> <li> <a href="#">Profile</a> </li> <li class="active"> <a href="#">Messages</a> </li> </ul> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navs<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'justified' <span class="nt">=&gt;</span> true,
+    'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::NAV_TABS,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>...<span class="na">)</span>,
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navs<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'justified' <span class="nt">=&gt;</span> true,
+    'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::NAV_TABS,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>...<span class="na">)</span>,
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="nav-disabled-links">Disabled links</h2>
+
+    <div class="bs-example">
+<ul class="nav nav-pills"> <li class="active"> <a href="#">Home</a> </li> <li> <a href="#">Profile</a> </li> <li class="disabled"> <a href="#">Messages</a> </li> </ul> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navs<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::NAV_PILLS,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Home', 'url' <span class="nt">=&gt;</span> '#', 'active' <span class="nt">=&gt;</span> true<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Profile'<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Messages', 'disabled' <span class="nt">=&gt;</span> true<span class="na">)</span>
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="nav-dropdowns">Using dropdowns</h2>
+    <h3>Tabs with dropdowns</h3>
+    <div class="bs-example">
+
+<ul class="nav nav-tabs"> <li class="active"> <a href="#">Home</a> </li> <li> <a href="#">Help</a> </li> <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<span class="caret"></span> </a> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </li> </ul> 
+    </div>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navs<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::NAV_TABS,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Home', 'url' <span class="nt">=&gt;</span> '#', 'active' <span class="nt">=&gt;</span> true<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Help'<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Dropdown', 'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+            <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+            <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+            <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+            '-',
+            <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+        <span class="na">)</span><span class="na">)</span>
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3>Pills with dropdowns</h3>
+    <div class="bs-example">
+
+
+<ul class="nav nav-pills"> <li class="active"> <a href="#">Home</a> </li> <li> <a href="#">Help</a> </li> <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<span class="caret"></span> </a> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </li> </ul>     </div><!-- /example -->
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navs<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::NAV_PILLS,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Home', 'url' <span class="nt">=&gt;</span> '#', 'active' <span class="nt">=&gt;</span> true<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Help'<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Dropdown', 'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+            <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+            <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+            <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+            '-',
+            <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+        <span class="na">)</span><span class="na">)</span>
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+  </div>
+
+
+
+  <!-- Navbar
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="navbar">Navbar</h1>
+    </div>
+
+    <h2 id="navbar-default">Default navbar</h2>
+    <div class="bs-example">
+
+
+<nav class="navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tb_1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#">Brand</a> </div> <div class="collapse navbar-collapse" id="Tb_1"> <ul class="navbar-nav nav"> <li class="active"> <a href="#">Link</a> </li> <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<span class="caret"></span> </a> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </li> </ul> <ul class="navbar-nav nav navbar-right"> <li> <a href="#">Link</a> </li> <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<span class="caret"></span> </a> <ul class="dropdown-menu" role="menu"> <li> <a href="#">Action</a> </li> <li> <a href="#">Another action</a> </li> <li> <a href="#">Something else here</a> </li> <li class="divider"> </li> <li> <a href="#">Separate link</a> </li> </ul> </li> </ul> </div> </div> </nav> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navbar<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'brandLabel' <span class="nt">=&gt;</span> 'Brand',
+    'brandUrl' <span class="nt">=&gt;</span> '#',
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>
+            'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+                <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Dropdown', 'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    '-',
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                <span class="na">)</span><span class="na">)</span>
+            <span class="na">)</span>
+        <span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>
+            'pull' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PULL_RIGHT,
+            'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+                <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Dropdown', 'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Another action', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Something else here', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                    '-',
+                    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Separate link', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+                <span class="na">)</span><span class="na">)</span>
+            <span class="na">)</span>
+        <span class="na">)</span>
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="navbar-buttons">Buttons</h2>
+    <div class="bs-example">
+
+<nav class="navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tb_2"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#">Brand</a> </div> <div class="collapse navbar-collapse" id="Tb_2"> <button class="navbar-btn btn btn-default">Sign In</button> </div> </div> </nav> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navbar<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'brandLabel' <span class="nt">=&gt;</span> 'Brand',
+    'brandUrl' <span class="nt">=&gt;</span> '#',
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">Tb</span>::Button<span class="na">(</span>'Sign In', <span class="na">array</span><span class="na">(</span>'class' <span class="nt">=&gt;</span> 'navbar-btn'<span class="na">)</span><span class="na">)</span>,
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="navbar-text">Text</h2>
+    <div class="bs-example">
+
+<nav class="navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tb_3"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#">Brand</a> </div> <div class="collapse navbar-collapse" id="Tb_3"> <p class="navbar-text text-left">Signed in as Mark Otto</p> </div> </div> </nav> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navbar<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'brandLabel' <span class="nt">=&gt;</span> 'Brand',
+    'brandUrl' <span class="nt">=&gt;</span> '#',
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">Tb</span>::p<span class="na">(</span>'Signed in as Mark Otto', <span class="na">array</span><span class="na">(</span>'class' <span class="nt">=&gt;</span> 'navbar-text'<span class="na">)</span><span class="na">)</span>,
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="navbar-links">Non-nav links</h2>
+    <div class="bs-example">
+
+<nav class="navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tb_4"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#">Brand</a> </div> <div class="collapse navbar-collapse" id="Tb_4"> <a class="navbar-text navbar-link pull-right" href="#">Signed in as Mark Otto</a> </div> </div> </nav> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navbar<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'brandLabel' <span class="nt">=&gt;</span> 'Brand',
+    'brandUrl' <span class="nt">=&gt;</span> '#',
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">Tb</span>::link<span class="na">(</span>'#', 'Signed in as Mark Otto', <span class="na">array</span><span class="na">(</span>'class' <span class="nt">=&gt;</span> 'navbar-text navbar-link pull-right'<span class="na">)</span><span class="na">)</span> 
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="navbar-component-alignment">Component alignment</h2>
+    <h2 id="navbar-fixed-top">Fixed to top</h2>
+    <div class="bs-example bs-navbar-top-example">
+
+<nav class="navbar-fixed-top navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tb_5"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#">Brand</a> </div> <div class="collapse navbar-collapse" id="Tb_5"> <ul class="navbar-nav nav"> <li class="active"> <a href="#">Home</a> </li> <li> <a href="#">Profile</a> </li> </ul> </div> </div> </nav> 
+    </div><!-- /example -->
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navbar<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'brandLabel' <span class="nt">=&gt;</span> 'Brand',
+    'brandUrl' <span class="nt">=&gt;</span> '#',
+    'position' <span class="nt">=&gt;</span> <span class="na">Tb</span>::NAVBAR_FIXED_TOP,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'...'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h2 id="navbar-fixed-bottom">Fixed to bottom</h2>
+    <div class="bs-example bs-navbar-bottom-example">
+
+<nav class="navbar-fixed-bottom navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tb_6"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#">Brand</a> </div> <div class="collapse navbar-collapse" id="Tb_6"> <ul class="navbar-nav nav"> <li class="active"> <a href="#">Home</a> </li> <li> <a href="#">Profile</a> </li> </ul> </div> </div> </nav> 
+    </div><!-- /example -->
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navbar<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'brandLabel' <span class="nt">=&gt;</span> 'Brand',
+    'brandUrl' <span class="nt">=&gt;</span> '#',
+    'position' <span class="nt">=&gt;</span> <span class="na">Tb</span>::NAVBAR_FIXED_BOTTOM,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'...'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h2 id="navbar-static-top">Static top</h2>
+    <div class="bs-example bs-navbar-top-example">
+<nav class="navbar-static-top navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tb_7"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#">Brand</a> </div> <div class="collapse navbar-collapse" id="Tb_7"> <ul class="navbar-nav nav"> <li class="active"> <a href="#">Home</a> </li> <li> <a href="#">Profile</a> </li> </ul> </div> </div> </nav>     </div><!-- /example -->
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navbar<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'brandLabel' <span class="nt">=&gt;</span> 'Brand',
+    'brandUrl' <span class="nt">=&gt;</span> '#',
+    'position' <span class="nt">=&gt;</span> <span class="na">Tb</span>::NAVBAR_STATIC_TOP,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'...'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+
+    <h2 id="navbar-inverted">Inverted navbar</h2>
+    <div class="bs-example">
+
+<nav class="navbar-inverse navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tb_8"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#">Brand</a> </div> <div class="collapse navbar-collapse" id="Tb_8"> <ul class="navbar-nav nav"> <li class="active"> <a href="#">Home</a> </li> <li> <a href="#">Profile</a> </li> </ul> </div> </div> </nav> 
+    </div><!-- /example -->
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navbar<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'brandLabel' <span class="nt">=&gt;</span> 'Brand',
+    'brandUrl' <span class="nt">=&gt;</span> '#',
+    'inverse' <span class="nt">=&gt;</span> true,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>'...'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+  </div>
+
+
+
+  <!-- Breadcrumbs
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="breadcrumbs">Breadcrumbs <small></small></h1>
+    </div>
+    <div class="bs-example">
+<ol class="breadcrumb"> <li> <a href="#">Home</a> </li> <li> <a href="#">Library</a> </li> <li class="active">Data</li> </ol>  
+
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::breadcrumbs<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'links' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        'Home' <span class="nt">=&gt;</span> '#',
+        'Library' <span class="nt">=&gt;</span> '#',
+        'Data'
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+  </div>
+
+
+
+  <!-- Pagination
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="pagination">Pagination</h1>
+    </div>
+    <h2 id="pagination-default">Default pagination</h2>
+    <div class="bs-example">
+     <ul class="pagination">
+        <li class="disabled"><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+     </ul>
+    </div>
+<div class="highlight">
+
+<pre><code class="html">$this-&gt;load-&gt;library<span class="na">(</span>'pagination'<span class="na">)</span>;
+
+$config['base_url'] = 'http://example.com/index.php/test/page/';
+$config['total_rows'] = 200;
+$config['per_page'] = 20;
+
+$this-&gt;pagination-&gt;initialize<span class="na">(</span><span class="na">Tb</span>::pagination<span class="na">(</span>$config<span class="na">)</span><span class="na">)</span>;
+
+<span class="s">echo</span> $this-&gt;pagination-&gt;create_links<span class="na">(</span><span class="na">)</span>; </code></pre>
+</div>
+
+
+    <h3>Sizing</h3>
+    <p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
+    <div class="bs-example">
+      <div>
+        <ul class="pagination pagination-lg">
+          <li class="disabled"><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="pagination">
+          <li class="disabled"><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="pagination pagination-sm">
+          <li class="disabled"><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+        </ul>
+      </div>
+    </div>
+<div class="highlight">
+<pre><code class="html">$this-&gt;pagination-&gt;initialize<span class="na">(</span><span class="na">Tb</span>::pagination<span class="na">(</span>$config, <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span>  <span class="na">Tb</span>::PAGINATION_SIZE_LARGE<span class="na">)</span><span class="na">)</span><span class="na">)</span>;
+$this-&gt;pagination-&gt;initialize<span class="na">(</span><span class="na">Tb</span>::pagination<span class="na">(</span>$config<span class="na">)</span><span class="na">)</span>;
+$this-&gt;pagination-&gt;initialize<span class="na">(</span><span class="na">Tb</span>::pagination<span class="na">(</span>$config, <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span>  <span class="na">Tb</span>::PAGINATION_SIZE_SMALL<span class="na">)</span><span class="na">)</span><span class="na">)</span>; </code></pre>
+</div>
+
+
+    <h2 id="pagination-pager">Pager</h2>
+    <h3>Default example</h3>
+    <div class="bs-example">
+
+<ul class="pager"> <li> <a href="#">Previous</a> </li> <li> <a href="#">Next</a> </li> </ul> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::pager<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Previous', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Next', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3>Aligned links</h3>
+    <div class="bs-example">
+
+<ul class="pager"> <li class="previous"> <a href="#">&larr; Older</a> </li> <li class="next"> <a href="#">Newer &rarr;</a> </li> </ul> 
+    </div>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::pager<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> '&amp;larr; Older', 'url' <span class="nt">=&gt;</span> '#', 'class' <span class="nt">=&gt;</span> 'previous'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Newer &amp;rarr;', 'url' <span class="nt">=&gt;</span> '#', 'class' <span class="nt">=&gt;</span> 'next'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+
+    <h3>Optional disabled state</h3>
+    <div class="bs-example">
+<ul class="pager"> <li class="previous disabled"> <a href="#">&larr; Older</a> </li> <li class="next"> <a href="#">Newer &rarr;</a> </li> </ul>  
+
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::pager<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> '&amp;larr; Older', 'url' <span class="nt">=&gt;</span> '#', 'class' <span class="nt">=&gt;</span> 'previous disabled'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Newer &amp;rarr;', 'url' <span class="nt">=&gt;</span> '#', 'class' <span class="nt">=&gt;</span> 'next'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+  </div>
+
+
+
+  <!-- Labels
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="labels">Labels</h1>
+    </div>
+    <p class="lead"></p>
+
+    <h3>Example</h3>
+    <div class="bs-example">
+
+      <h1>Example heading <span class="label label-default">New</span> </h1>
+      <h2>Example heading <span class="label label-default">New</span> </h2>
+      <h3>Example heading <span class="label label-default">New</span> </h3>
+      <h4>Example heading <span class="label label-default">New</span> </h4>
+      <h5>Example heading <span class="label label-default">New</span> </h5>
+      <h6>Example heading <span class="label label-default">New</span> </h6>
+
+    </div>
+<div class="highlight">
+<pre><code class="html">&lt;h3&gt;Example heading <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::label<span class="na">Tb</span><span class="na">(</span>'New'<span class="na">)</span>; <span class="nt">?&gt;</span>&lt;/h3&gt; </code></pre>
+</div>
+
+    <h3>Available variations</h3>
+    <div class="bs-example">
+
+<span class="label label-default">Default</span> <span class="label label-primary">Primary</span> <span class="label label-success">Success</span> <span class="label label-info">Info</span> <span class="label label-warning">Warning</span> <span class="label label-danger">Danger</span> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::label<span class="na">Tb</span><span class="na">(</span>'Default'<span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::label<span class="na">Tb</span><span class="na">(</span>'Primary', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::LABEL_COLOR_PRIMARY<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::label<span class="na">Tb</span><span class="na">(</span>'Success', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::LABEL_COLOR_SUCCESS<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::label<span class="na">Tb</span><span class="na">(</span>'Info', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::LABEL_COLOR_INFO<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::label<span class="na">Tb</span><span class="na">(</span>'Warning', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::LABEL_COLOR_WARNING<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::label<span class="na">Tb</span><span class="na">(</span>'Danger', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::LABEL_COLOR_DANGER<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+  </div>
+
+
+
+  <!-- Badges
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="badges">Badges</h1>
+    </div>    <div class="bs-example">
+    <a href="#">Inbox <span class="badge">42</span> </a>
+    </div>
+<div class="highlight">
+<pre><code class="html">&lt;a href=&quot;#&quot;&gt;Inbox <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::badge<span class="na">(</span>42<span class="na">)</span>; <span class="nt">?&gt;</span>&lt;/a&gt; </code></pre>
+</div>
+
+    <h4>Adapts to active nav states</h4>
+    <div class="bs-example">
+<div class="row">
+    <div class="col-lg-6">
+<ul class="nav nav-pills"> <li class="active"> <a href="#"><span class="badge pull-right">42</span> Home</a> </li> <li> <a href="#">Profile</a> </li> <li> <a href="#"><span class="badge pull-right">3</span> Messages</a> </li> </ul>         
+    </div>
+    <div class="col-lg-6">
+<ul class="nav nav-stacked nav-pills"> <li class="active"> <a href="#"><span class="badge pull-right">42</span> Home</a> </li> <li> <a href="#">Profile</a> </li> <li> <a href="#"><span class="badge pull-right">3</span> Messages</a> </li> </ul>    
+</div>
+</div>
+
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::navs<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'type' <span class="nt">=&gt;</span> <span class="na">Tb</span>::NAV_PILLS,
+    'items' <span class="nt">=&gt;</span> <span class="na">array</span><span class="na">(</span>
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> <span class="na">Tb</span>::badge<span class="na">(</span>42, <span class="na">array</span><span class="na">(</span>'pull' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PULL_RIGHT<span class="na">)</span><span class="na">)</span> . 'Home', 'url' <span class="nt">=&gt;</span> '#', 'active' <span class="nt">=&gt;</span> true<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Profile'<span class="na">)</span>,
+        <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> <span class="na">Tb</span>::badge<span class="na">(</span>3, <span class="na">array</span><span class="na">(</span>'pull' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PULL_RIGHT<span class="na">)</span><span class="na">)</span> . 'Messages'<span class="na">)</span>
+    <span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+
+</div>
+  </div>
+
+
+
+  <!-- Jumbotron
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="jumbotron">Jumbotron</h1>
+    </div>
+    <div class="bs-example">
+
+<div class="jumbotron"> <div class="container"> <h1 class="text-left">Hello, world!</h1> 
+    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <p><a class="btn btn-primary btn-lg">Learn more</a></p></div> </div> 
+
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::jumbotron<span class="na">(</span>'Hello, world!', '&lt;p&gt;...&lt;/p&gt;'<span class="na">)</span>; ? </code></pre>
+</div>
+  </div>
+
+
+
+  <!-- Page header
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="page-header">Page header</h1>
+    </div>
+    <div class="bs-example">
+
+<div class="page-header"> <h1 class="text-left">Example page header <small class="text-left">Subtext for header</small> </h1> </div> 
+
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::pageHeader<span class="na">(</span>'Example page header', 'Subtext for header'<span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+  </div>
+
+
+
+  <!-- Thumbnails
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="thumbnails">Thumbnails</h1>
+    </div>
+
+    <h3 id="thumbnails-default">Default example</h3>
+    <div class="bs-example">
+      <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <a class="thumbnail" href="#"> <img src="holder.js/100%x180" /></a>         </div>
+        <div class="col-sm-6 col-md-3">
+            <a class="thumbnail" href="#"> <img src="holder.js/100%x180" /></a>         </div>
+        <div class="col-sm-6 col-md-3">
+            <a class="thumbnail" href="#"> <img src="holder.js/100%x180" /></a>         </div>
+        <div class="col-sm-6 col-md-3">
+            <a class="thumbnail" href="#"> <img src="holder.js/100%x180" /></a>         </div>
+      </div>
+    </div><!-- /.bs-example -->
+<div class="highlight">
+<pre><code class="html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-sm-6 col-md-3&quot;&gt;
+        <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::thumbnail<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+            'url' <span class="nt">=&gt;</span> '...', // link
+            'image' <span class="nt">=&gt;</span> '...', // path/to/image
+            'rel' <span class="nt">=&gt;</span> '...' // image description
+        <span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+    &lt;/div&gt;
+&lt;/div&gt; </code></pre></div>
+
+    <h3 id="thumbnails-custom-content">Custom content</h3>
+    <div class="bs-example">
+
+      <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail"> <img src="holder.js/100%x180" /><div class="caption"><h3>Thumbnail label</h3>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p></div> </div>         </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail"> <img src="holder.js/100%x180" /><div class="caption"><h3>Thumbnail label</h3>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p></div> </div>         </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail"> <img src="holder.js/100%x180" /><div class="caption"><h3>Thumbnail label</h3>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p></div> </div>         </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail"> <img src="holder.js/100%x180" /><div class="caption"><h3>Thumbnail label</h3>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p></div> </div>         </div>
+      </div>
+    </div><!-- /.bs-example -->
+<div class="highlight">
+<pre><code class="html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-sm-6 col-md-3&quot;&gt;
+        <span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::thumbnail<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+            'image' <span class="nt">=&gt;</span> '...', // path/to/image
+            'rel' <span class="nt">=&gt;</span> '...', // image description
+            'caption' <span class="nt">=&gt;</span> '...', // content
+        <span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+    &lt;/div&gt;
+&lt;/div&gt; </code></pre></div>
+  </div>
+
+
+
+
+  <!-- Alerts
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="alerts">Alerts</h1>
+    </div>
+    <h2 id="alerts-examples">Examples</h2>
+    <div class="bs-example">
+<div class="alert-success alert"><strong>Well done!</strong> You successfully read this important alert message.</div> <div class="alert-info alert"><strong>Heads up!</strong> This alert needs your attention, but it's not super important.</div> <div class="alert-warning alert"><strong>Warning!</strong> Best check yo self, you're not looking too good.</div> <div class="alert-danger alert"><strong>Oh snap!</strong> Change a few things up and try submitting again.</div>     </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::alert<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ALERT_COLOR_SUCCESS<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::alert<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ALERT_COLOR_INFO<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::alert<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ALERT_COLOR_WARNING<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::alert<span class="na">(</span>'...', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ALERT_COLOR_DANGER<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h2 id="alerts-dismissable">Dismissable alerts</h2>
+    <div class="bs-example">
+
+<div class="alert-warning alert alert-"><botton class="close" data-dismiss="alert" aria-hidden="true">&times;</botton> 
+<strong>Warning!</strong> Best check yo self, you're not looking too good.</div>     </div>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::alert<span class="na">(</span>'...', 
+    <span class="na">array</span><span class="na">(</span>'dismissable' <span class="nt">=&gt;</span> true, 'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ALERT_COLOR_WARNING, 'closeLabel' <span class="nt">=&gt;</span> '&amp;times;'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+  </div>
+
+
+  <!-- Flash Alerts
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="flash-alerts">Flash Alerts</h1>
+    </div>
+    <h2 id="flash-alerts-examples">Examples</h2>
+
+    <div class="bs-example">
+<div class="alert-success alert alert-"><botton class="close" data-dismiss="alert" aria-hidden="true">&times;</botton> 
+<strong>Well done!</strong> You successfully read this important alert message.</div> <div class="alert-info alert alert-"><botton class="close" data-dismiss="alert" aria-hidden="true">&times;</botton> 
+<strong>Heads up!</strong> This alert needs your attention, but it's not super important.</div> <div class="alert-warning alert alert-"><botton class="close" data-dismiss="alert" aria-hidden="true">&times;</botton> 
+<strong>Warning!</strong> Best check yo self, you're not looking too good.</div> <div class="alert-danger alert alert-"><botton class="close" data-dismiss="alert" aria-hidden="true">&times;</botton> 
+<strong>Oh snap!</strong> Change a few things up and try submitting again.</div>     </div>
+<div class="highlight">
+<pre><code class="html"><span class="c">// controller</span> 
+$this-&gt;session-&gt;set_flashdata<span class="na">(</span>'namealert', 
+    '&lt;strong&gt;Message!&lt;/strong&gt; Best check yo self, you\'re not looking too good.'<span class="na">)</span>;
+
+<span class="c">// view</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::flashAlert<span class="na">(</span>'namealert', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ALERT_COLOR_SUCCESS<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::flashAlert<span class="na">(</span>'namealert', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ALERT_COLOR_INFO<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::flashAlert<span class="na">(</span>'namealert', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ALERT_COLOR_WARNING<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::flashAlert<span class="na">(</span>'namealert', <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::ALERT_COLOR_DANGER<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+
+</div>
+</div>
+
+
+  <!-- Progress bars
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="progress">Progress bars</h1>
+    </div>
+
+    <h3 id="progress-basic">Basic example</h3>
+    <div class="bs-example">
+
+<div class="progress"> <div class="progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="60" style="width:60%"> </div> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>60<span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="progress-alternatives">Contextual alternatives</h3>
+    <div class="bs-example">
+
+<div class="progress"> <div class="progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="90" style="width:90%"> </div> </div> <div class="progress"> <div class="progress-bar-success progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="40" style="width:40%"> </div> </div> <div class="progress"> <div class="progress-bar-info progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="20" style="width:20%"> </div> </div> <div class="progress"> <div class="progress-bar-warning progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="60" style="width:60%"> </div> </div> <div class="progress"> <div class="progress-bar-danger progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="80" style="width:80%"> </div> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>90<span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>40, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_SUCCESS<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>20, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_INFO<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>60, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_WARNING<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>80, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_DANGER<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="progress-striped">Striped</h3>
+    <div class="bs-example">
+
+<div class="progress-striped progress"> <div class="progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="20" style="width:20%"> </div> </div> <div class="progress-striped progress"> <div class="progress-bar-success progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="70" style="width:70%"> </div> </div> <div class="progress-striped progress"> <div class="progress-bar-info progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="30" style="width:30%"> </div> </div> <div class="progress-striped progress"> <div class="progress-bar-warning progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="90" style="width:90%"> </div> </div> <div class="progress-striped progress"> <div class="progress-bar-danger progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="60" style="width:60%"> </div> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>20, <span class="na">array</span><span class="na">(</span>'striped' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>70, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_SUCCESS, 'striped' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>30, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_INFO, 'striped' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>90, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_WARNING, 'striped' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>60, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_DANGER, 'striped' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="progress-animated">Animated</h3>
+    <div class="bs-example">
+
+<div class="progress-striped active progress"> <div class="progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="70" style="width:70%"> </div> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>70, <span class="na">array</span><span class="na">(</span>'animated' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="progress-stacked">Stacked</h3>
+    <div class="bs-example">
+
+<div class="progress"> <div class="progress-bar-success progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="20" style="width:20%"> </div> <div class="progress-bar-danger progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="40" style="width:40%"> </div> <div class="progress-bar-warning progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="10" style="width:10%"> </div> </div> 
+<div class="progress-striped active progress"> <div class="progress-bar-success progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="20" style="width:20%"> </div> <div class="progress-bar-danger progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="20" style="width:20%"> </div> <div class="progress-bar-info progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="40" style="width:40%"> </div> </div> 
+    </div>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'value' <span class="nt">=&gt;</span> 20, 'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_SUCCESS<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'value' <span class="nt">=&gt;</span> 40, 'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_DANGER<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'value' <span class="nt">=&gt;</span> 10, 'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_WARNING<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'value' <span class="nt">=&gt;</span> 20, 'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_SUCCESS<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'value' <span class="nt">=&gt;</span> 20, 'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_DANGER<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'value' <span class="nt">=&gt;</span> 40, 'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PROGRESS_COLOR_INFO<span class="na">)</span>
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'animated' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+       <h3 id="progress-label">Label</h3>
+    <div class="bs-example">
+
+<div class="progress-striped active progress"> <div class="progress-bar" role="progressbar" aria-valuemax="100" aria-valuenow="70" style="width:70%"> <span>70% Complete</span> </div> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::progressBar<span class="na">(</span>70, <span class="na">array</span><span class="na">(</span>'animated' <span class="nt">=&gt;</span> true, 'label' <span class="nt">=&gt;</span> '70% Complete'<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+  </div>
+
+
+  <!-- List group
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="list-group">List group</h1>
+    </div>
+    <h3 id="list-group-basic">Basic example</h3>
+    <div class="bs-example">
+
+<ul class="list-group"> <li class="list-group-item"> Cras justo odio</li> <li class="list-group-item"> Dapibus ac facilisis in</li> <li class="list-group-item"> Morbi leo risus</li> <li class="list-group-item"> Porta ac consectetur ac</li> <li class="list-group-item"> Vestibulum at eros</li> </ul> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::listGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Cras justo odio'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Dapibus ac facilisis in'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Morbi leo risus'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Porta ac consectetur ac'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Vestibulum at eros'<span class="na">)</span>
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'static' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="list-group-badges">Badges</h3>
+    <div class="bs-example">
+
+<ul class="list-group"> <li class="list-group-item"> <span class="badge">14</span> Cras justo odio</li> <li class="list-group-item"> <span class="badge">2</span> Dapibus ac facilisis in</li> <li class="list-group-item"> <span class="badge">1</span> Morbi leo risus</li> </ul> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::listGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Cras justo odio', 'badge' <span class="nt">=&gt;</span> 14<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Dapibus ac facilisis in', 'badge' <span class="nt">=&gt;</span> 2<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Morbi leo risus', 'badge' <span class="nt">=&gt;</span> 1<span class="na">)</span>
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'static' <span class="nt">=&gt;</span> true<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="list-group-linked">Linked items</h3>
+    <div class="bs-example">
+
+<div class="list-group"> <a class="list-group-item active" href="#"> Cras justo odio</a> <a class="list-group-item" href="#"> Dapibus ac facilisis in</a> <a class="list-group-item" href="#"> Morbi leo risus</a> <a class="list-group-item" href="#"> Porta ac consectetur ac</a> <a class="list-group-item" href="#"> Vestibulum at eros</a> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::listGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Cras justo odio', 'url' <span class="nt">=&gt;</span> '#', 'active' <span class="nt">=&gt;</span> true<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Dapibus ac facilisis in', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Morbi leo risus', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Porta ac consectetur ac', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'label' <span class="nt">=&gt;</span> 'Vestibulum at eros', 'url' <span class="nt">=&gt;</span> '#'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+    <h3 id="list-group-custom-content">Custom content</h3>
+    <div class="bs-example">
+
+<div class="list-group"> <a class="list-group-item active" href="#"> <h4 class="list-group-item-heading">List group item heading</h4> <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> </a> <a class="list-group-item" href="#"> <h4 class="list-group-item-heading">List group item heading</h4> <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> </a> <a class="list-group-item" href="#"> <h4 class="list-group-item-heading">List group item heading</h4> <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> </a> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::listGroup<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    <span class="na">array</span><span class="na">(</span>'url' <span class="nt">=&gt;</span> '#', 'active' <span class="nt">=&gt;</span> true, 'heading' <span class="nt">=&gt;</span> 'List group item heading', 'text' <span class="nt">=&gt;</span> '...'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'url' <span class="nt">=&gt;</span> '#', 'heading' <span class="nt">=&gt;</span> 'List group item heading', 'text' <span class="nt">=&gt;</span> '...'<span class="na">)</span>,
+    <span class="na">array</span><span class="na">(</span>'url' <span class="nt">=&gt;</span> '#', 'heading' <span class="nt">=&gt;</span> 'List group item heading', 'text' <span class="nt">=&gt;</span> ...'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+  </div>
+
+
+
+
+  <!-- Panels
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="panels">Panels</h1>
+    </div>
+    <h3 id="panels-basic">Basic example</h3>
+    <div class="bs-example">
+
+<div class="panel-default panel"> <div class="panel-body">Basic panel example</div> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::panel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'body' <span class="nt">=&gt;</span> 'Basic panel example'
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+    <h3 id="panels-heading">Panel with heading</h3>
+    <div class="bs-example">
+
+<div class="panel-default panel"> <div class="panel-heading">Panel heading without title</div> <div class="panel-body">Panel content</div> </div> 
+<div class="panel-default panel"> <div class="panel-heading"><h3 class="panel-title">Panel title</h3> </div> <div class="panel-body">Panel content</div> </div> 
+    </div>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::panel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'header' <span class="nt">=&gt;</span> 'Panel heading without title',
+    'body' <span class="nt">=&gt;</span> 'Panel content'
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::panel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'title' <span class="nt">=&gt;</span> 'Panel title',
+    'body' <span class="nt">=&gt;</span> 'Panel content'
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+    <h3 id="panels-footer">Panel with footer</h3>
+    <div class="bs-example">
+
+<div class="panel-default panel"> <div class="panel-body">Panel content</div> <div class="panel-footer">Panel footer</div> </div> 
+    </div>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::panel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'body' <span class="nt">=&gt;</span> 'Panel content',
+    'footer' <span class="nt">=&gt;</span> 'Panel footer'
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+    <h3 id="panels-alternatives">Contextual alternatives</h3>
+    <div class="bs-example">
+
+<div class="panel-primary panel"> <div class="panel-heading"><h3 class="panel-title">Panel title</h3> </div> <div class="panel-body">Panel content</div> </div> 
+<div class="panel-success panel"> <div class="panel-heading"><h3 class="panel-title">Panel title</h3> </div> <div class="panel-body">Panel content</div> </div> 
+<div class="panel-info panel"> <div class="panel-heading"><h3 class="panel-title">Panel title</h3> </div> <div class="panel-body">Panel content</div> </div> 
+<div class="panel-warning panel"> <div class="panel-heading"><h3 class="panel-title">Panel title</h3> </div> <div class="panel-body">Panel content</div> </div> 
+<div class="panel-danger panel"> <div class="panel-heading"><h3 class="panel-title">Panel title</h3> </div> <div class="panel-body">Panel content</div> </div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::panel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'title' <span class="nt">=&gt;</span> 'Panel title',
+    'body' <span class="nt">=&gt;</span> 'Panel content'
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PANEL_COLOR_PRIMARY<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::panel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'title' <span class="nt">=&gt;</span> 'Panel title',
+    'body' <span class="nt">=&gt;</span> 'Panel content'
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PANEL_COLOR_SUCCESS<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::panel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'title' <span class="nt">=&gt;</span> 'Panel title',
+    'body' <span class="nt">=&gt;</span> 'Panel content'
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PANEL_COLOR_INFO<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::panel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'title' <span class="nt">=&gt;</span> 'Panel title',
+    'body' <span class="nt">=&gt;</span> 'Panel content'
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PANEL_COLOR_WARNING<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::panel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'title' <span class="nt">=&gt;</span> 'Panel title',
+    'body' <span class="nt">=&gt;</span> 'Panel content'
+<span class="na">)</span>, <span class="na">array</span><span class="na">(</span>'color' <span class="nt">=&gt;</span> <span class="na">Tb</span>::PANEL_COLOR_DANGER<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+    <h3 id="panels-tables">With other content</h3>
+    <div class="bs-example">
+
+<div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">With list</div>
+       
+        <!-- List group -->
+        <ul class="list-group">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Morbi leo risus</li>
+          <li class="list-group-item">Porta ac consectetur ac</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div>
+
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">With table</div>
+
+        <!-- Table -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::panel<span class="na">(</span><span class="na">array</span><span class="na">(</span>
+    'header' <span class="nt">=&gt;</span> 'With table',
+    'content' <span class="nt">=&gt;</span> $this-&gt;load-&gt;view<span class="na">(</span>'view_name'<span class="na">)</span>
+<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
+
+  </div>
+
+
+
+
+
+  <!-- Wells
+  ================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="wells">Wells</h1>
+    </div>
+
+    <h3>Default well</h3>
+    <div class="bs-example">
+
+
+<div class="well">Look, I'am in a well!</div> 
+    </div>
+<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::well<span class="na">(</span>'Look, I\'am in a well!'<span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+    <h3>Optional classes</h3>
+<div class="well-lg well">Look, I'am in a large well!</div> <div class="well-sm well">Look, I'am in a small well!</div>     </div>
+<div class="highlight">
+
+<pre><code class="html"><span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::well<span class="na">(</span>'Look, I\'am in a large well!', <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::WELL_SIZE_LARGE<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span>
+<span class="nt">&lt;?php</span> <span class="s">echo</span> <span class="na">Tb</span>::well<span class="na">(</span>'Look, I\'am in a small well!', <span class="na">array</span><span class="na">(</span>'size' <span class="nt">=&gt;</span> <span class="na">Tb</span>::WELL_SIZE_SMALL<span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre>
+</div>
+
+  </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- Footer
+    ================================================== -->
+    <footer class="bs-footer" role="contentinfo">
+      <div class="container">
+        <div class="bs-social">
+  <ul class="bs-social-buttons">
+    
+    <li class="follow-btn">
+      <a href="https://twitter.com/cistrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @cistrap</a>
+    </li>
+    <li class="tweet-btn">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://didanurwanda.github.io/CodeIgniterStrap/" data-count="horizontal" data-via="cistrap" data-related="mdo:Creator of CodeIgniterStrap">Tweet</a>
+    </li>
+  </ul>
+</div>
+
+
+
+    <p class="credits">
+      Developed by <a href="http://www.facebook.com/didanurwanda" target="_blank">Dida Nurwanda</a>.
+    </p>
+    <p class="license">
+      Code licensed under <a href="http://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+    </p>
+      </div>
+    </footer>
+
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/dist/js/bootstrap.js"></script>
+<script src="assets/js/holder.js"></script>
+<script src="assets/js/application.js"></script>
+<script type="text/JavaScript">
+!function ($) {
+  jQuery('[data-toggle=tooltip]').tooltip();
+  jQuery('[data-toggle=popover]').popover();
+}(window.jQuery)
+</script>
+
+
+
+  </body>
+</html>
