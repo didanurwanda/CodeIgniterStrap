@@ -290,6 +290,10 @@
     <span class="na">array</span><span class="na">(</span>'image' <span class="nt">=&gt;</span> 'path/to/image', 'label' <span class="nt">=&gt;</span> 'Third slide label', 'content' <span class="nt">=&gt;</span> '...'<span class="na">)</span>
 <span class="na">)</span><span class="na">)</span>; <span class="nt">?&gt;</span> </code></pre></div>
 
+    <div class="bs-callout bs-callout-info">Add this script at the bottom of page
+<code>jQuery('.carousel').carousel();</code>
+    </div>
+
   </div>
 
 
@@ -337,6 +341,7 @@
 !function ($) {
   jQuery('[data-toggle=tooltip]').tooltip();
   jQuery('[data-toggle=popover]').popover();
+  jQuery('.carousel').carousel();
 }(window.jQuery)
 </script>
 
